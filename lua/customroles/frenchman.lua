@@ -11,8 +11,8 @@ kill all others to win!]]
 ROLE.team = ROLE_TEAM_JESTER
 ROLE.isactive = function(ply) return ply:GetNWBool("FrenchmanActive", false) end
 ROLE.shouldactlikejester = function(ply) return not ply:IsRoleActive() end
-ROLE.startinghealth = 1
-ROLE.maxhealth = 1
+ROLE.startinghealth = 5
+ROLE.maxhealth = 5
 ROLE.convars = {}
 
 table.insert(ROLE.convars, {
@@ -83,6 +83,7 @@ if SERVER then
     local GetAllPlayers = player.GetAll
     util.AddNetworkString("FrenchmanBeginScreenEffects")
     util.AddNetworkString("FrenchmanEndScreenEffects")
+    util.AddNetworkString("FrenchmanConfetti")
 
     for i = 1, 6 do
         resource.AddSingleFile("sound/frenchman/death" .. i .. ".mp3")
@@ -132,7 +133,7 @@ if SERVER then
     -- CONVARS --
     -------------
     local frenchman_drain_health_to = CreateConVar("ttt_frenchman_drain_health_to", "0", FCVAR_NONE, "The amount of health to drain the frenchman down to. Set to 0 to disable", 0, 200)
-    local frenchman_adrenaline_rush = CreateConVar("ttt_frenchman_adrenaline_rush", "60", FCVAR_NONE, "The time in seconds the frenchmans adrenaline rush lasts for. Set to 0 to disable", 0, 30)
+    local frenchman_adrenaline_rush = CreateConVar("ttt_frenchman_adrenaline_rush", "52.349", FCVAR_NONE, "The time in seconds the frenchmans adrenaline rush lasts for. Set to 0 to disable", 0, 180)
     local frenchman_adrenaline_baguette = CreateConVar("ttt_frenchman_adrenaline_baguette", "1")
     local frenchman_adrenaline_ramble = CreateConVar("ttt_frenchman_adrenaline_ramble", "1")
     local frenchman_hide_when_active = CreateConVar("ttt_frenchman_hide_when_active", "0")
@@ -140,7 +141,7 @@ if SERVER then
 
     hook.Add("TTTSyncGlobals", "Frenchman_TTTSyncGlobals", function()
         SetGlobalInt("ttt_frenchman_drain_health_to", frenchman_drain_health_to:GetInt())
-        SetGlobalInt("ttt_frenchman_adrenaline_rush", frenchman_adrenaline_rush:GetInt())
+        SetGlobalFloat("ttt_frenchman_adrenaline_rush", frenchman_adrenaline_rush:GetFloat())
         SetGlobalBool("ttt_frenchman_adrenaline_baguette", frenchman_adrenaline_baguette:GetBool())
         SetGlobalBool("ttt_frenchman_hide_when_active", frenchman_hide_when_active:GetBool())
         SetGlobalBool("ttt_frenchman_adrenaline_baguette_damage", frenchman_adrenaline_baguette_damage:GetBool())
@@ -191,7 +192,7 @@ if SERVER then
 
     hook.Add("EntityTakeDamage", "Frenchman_EntityTakeDamage", function(ent, dmginfo)
         -- Don't run this if adrenaline rush is disabled
-        local adrenalineTime = frenchman_adrenaline_rush:GetInt()
+        local adrenalineTime = frenchman_adrenaline_rush:GetFloat()
         if adrenalineTime <= 0 then return end
         if GetRoundState() ~= ROUND_ACTIVE then return end
         if not IsPlayer(ent) or not ent:IsFrenchman() then return end
@@ -214,7 +215,7 @@ if SERVER then
 
     hook.Add("PostEntityTakeDamage", "Frenchman_PostEntityTakeDamage", function(ent, dmginfo, took)
         -- Don't run this if adrenaline rush is disabled
-        local adrenalineTime = frenchman_adrenaline_rush:GetInt()
+        local adrenalineTime = frenchman_adrenaline_rush:GetFloat()
         if adrenalineTime <= 0 then return end
         if GetRoundState() ~= ROUND_ACTIVE then return end
         if not IsPlayer(ent) or not ent:IsFrenchman() then return end
@@ -243,7 +244,7 @@ if SERVER then
                     ent:EmitSound(randomActivationSound)
                 end
 
-                local message = "Meurtre! Kill them all! You will die in " .. tostring(adrenalineTime) .. " seconds."
+                local message = "You're temporarily invincible, kill them all!"
                 ent:PrintMessage(HUD_PRINTTALK, message)
                 ent:PrintMessage(HUD_PRINTCENTER, message)
 
@@ -260,6 +261,10 @@ if SERVER then
 
                 net.Start("FrenchmanBeginScreenEffects")
                 net.Send(ent)
+                net.Start("FrenchmanConfetti")
+                net.WriteEntity(ent)
+                net.WriteBool(frenchman_adrenaline_ramble:GetBool())
+                net.Broadcast()
 
                 timer.Create(ent:Nick() .. "FrenchmanActive", adrenalineTime, 1, function()
                     net.Start("FrenchmanEndScreenEffects")
@@ -434,7 +439,8 @@ if CLIENT then
             -- Use this for highlighting things like "kill"
             local traitorColor = ROLE_COLORS[ROLE_TRAITOR]
             -- Adrenaline Rush
-            local rushTime = GetGlobalInt("ttt_frenchman_adrenaline_rush", 5)
+            local rushTime = GetGlobalInt("ttt_frenchman_adrenaline_rush", 52.349)
+            rushtime = math.Round(rushTime, 0)
 
             if rushTime > 0 then
                 html = html .. "<span style='display: block; margin-top: 10px;'>If the " .. ROLE_STRINGS[ROLE_FRENCHMAN] .. " is hit by enough damage that would kill them, they experience <span style='color: rgb(" .. traitorColor.r .. ", " .. traitorColor.g .. ", " .. traitorColor.b .. ")'>an adrenaline rush</span> and fight off death for " .. rushTime .. " seconds. After their adrenaline runs out, <span style='color: rgb(" .. traitorColor.r .. ", " .. traitorColor.g .. ", " .. traitorColor.b .. ")'>they die</span>. This gives them long enough for the " .. ROLE_STRINGS[ROLE_FRENCHMAN] .. " to exact revenge against other players.</span>"
@@ -458,6 +464,12 @@ if CLIENT then
     --------------------
     -- SCREEN EFFECTS --
     --------------------
+    net.Receive("FrenchmanConfetti", function()
+        local frenchman = net.ReadEntity()
+        local playSound = net.ReadBool()
+        frenchman:Celebrate("clown.wav", playSound)
+    end)
+
     local roleStringsOrig = {}
     local roleStringsExtOrig = {}
     local roleStringsPluralOrig = {}
@@ -1896,12 +1908,12 @@ if CLIENT then
 
         RunConsoleCommand("ttt_reset_weapons_cache")
         timer.Remove("FrenchRoleMusicLoop")
+        RunConsoleCommand("stopsound")
         local delay = 0
 
         -- Plays the ending music
         if music then
             delay = 9
-            RunConsoleCommand("stopsound")
 
             timer.Simple(0.1, function()
                 surface.PlaySound("frenchman/chic_magnet_end.mp3")
