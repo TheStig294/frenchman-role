@@ -97,22 +97,22 @@ if SERVER then
     end)
 
     hook.Add("TTTCheckForWin", "FrenchmanCheckForWin", function()
-        local frenchmanWins = true
-        local isFrenchman = false
+        local isActiveFrenchman = false
+        local otherPlayerAlive = false
 
         for _, ply in ipairs(player.GetAll()) do
             if ply:Alive() and not ply:IsSpec() then
-                if ply:IsFrenchman() then
-                    isFrenchman = true
-                else
-                    frenchmanWins = false
+                if ply:IsFrenchman() and ply:GetNWBool("FrenchmanActive") then
+                    isActiveFrenchman = true
+                elseif not ply:IsFrenchman() then
+                    otherPlayerAlive = true
                 end
             end
         end
 
-        if isFrenchman and frenchmanWins then
+        if isActiveFrenchman and not otherPlayerAlive then
             return WIN_FRENCHMAN
-        elseif isFrenchman then
+        elseif isActiveFrenchman then
             return WIN_NONE
         end
     end)
@@ -1870,13 +1870,6 @@ if CLIENT then
         ROLE_STRINGS = roleStringsOrig
         ROLE_STRINGS_EXT = roleStringsExtOrig
         ROLE_STRINGS_PLURAL = roleStringsPluralOrig
-
-        -- Resets the names of custom passive items
-        for role = 1, ROLE_MAX do
-            if SHOP_ROLES[role] then
-                EquipmentItems[role] = customPassiveItemsOrig[role]
-            end
-        end
 
         -- Resets the names of newly created weapons
         for _, SWEPCopy in ipairs(weapons.GetList()) do
