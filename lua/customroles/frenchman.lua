@@ -473,7 +473,6 @@ if CLIENT then
     local roleStringsOrig = {}
     local roleStringsExtOrig = {}
     local roleStringsPluralOrig = {}
-    local customPassiveItemsOrig = {}
     local flagPanelFrame
 
     net.Receive("FrenchmanBeginScreenEffects", function()
@@ -675,54 +674,6 @@ if CLIENT then
 
             for roleName, roleID in pairs(translatedRoles) do
                 ROLE_STRINGS_PLURAL[roleID] = roleName
-            end
-        end
-
-        -- Renaming custom passive shop items
-        if not istable(SHOP_ROLES) then
-            SHOP_ROLES = {}
-            SHOP_ROLES[ROLE_DETECTIVE] = true
-            SHOP_ROLES[ROLE_TRAITOR] = true
-        end
-
-        if not isnumber(ROLE_MAX) then
-            ROLE_MAX = 2
-        end
-
-        for role = 1, ROLE_MAX do
-            if SHOP_ROLES[role] then
-                customPassiveItemsOrig[role] = table.Copy(EquipmentItems[role])
-
-                for _, equ in pairs(EquipmentItems[role]) do
-                    if equ.id and EQUIP_ASC and equ.id == EQUIP_ASC then
-                        equ.name = "Un Deuxième Chance"
-                        equ.desc = "Petite chance d'être ressuscité à la mort. \n\nAprès avoir tué quelqu'un, les chances augmentent."
-                    elseif equ.id and EQUIP_DEMONIC_POSSESSION and equ.id == EQUIP_DEMONIC_POSSESSION then
-                        equ.name = "Possession démoniaque"
-                        equ.desc = "Permet un contrôle limité sur quelqu'un après sa mort. \n\nUne fois spectateur, faites un clic droit pour faire défiler les joueurs vivants.\n\nAppuyez sur R pour commencer à les manipuler."
-                    elseif equ.id and EQUIP_DOUBLETAP and equ.id == EQUIP_DOUBLETAP then
-                        equ.name = "Tapez deux fois"
-                        equ.desc = "Tirez 50 % plus vite avec n'importe quel pistolet ordinaire."
-                    elseif equ.id and EQUIP_JUGGERNOG and equ.id == EQUIP_JUGGERNOG then
-                        equ.name = "Mastodonte"
-                        equ.desc = "Guérit complètement et accorde 50% de santé en plus."
-                    elseif equ.id and EQUIP_PHD and equ.id == EQUIP_PHD then
-                        equ.name = "Disque de doctorat"
-                        equ.desc = "Au lieu de subir des dégâts de chute, provoquez une explosion de dégâts importants à l'endroit où vous atterrissez. \n\nConfère l'immunité aux explosions."
-                    elseif equ.id and EQUIP_SPEEDCOLA and equ.id == EQUIP_SPEEDCOLA then
-                        equ.name = "Cola rapide"
-                        equ.desc = "Double votre vitesse de rechargement des armes ordinaires."
-                    elseif equ.id and EQUIP_STAMINUP and equ.id == EQUIP_STAMINUP then
-                        equ.name = "Endurance"
-                        equ.desc = "Augmentez considérablement la vitesse de sprint!"
-                    elseif equ.id and EQUIP_BUNKER and equ.id == EQUIP_BUNKER then
-                        equ.name = "Bunker de Bruh"
-                        equ.desc = "Craquement détecté! Présentez-vous au bunker bruh \nimmédiatement! \nCrée un bunker autour de vous lorsque vous subissez des dégâts."
-                    elseif equ.id and EQUIP_CLAIRVOYANT and equ.id == EQUIP_CLAIRVOYANT then
-                        equ.name = "Voyance"
-                        equ.desc = "Quand quelqu'un meurt, vous pouvez voir son corps pendant un bref instant."
-                    end
-                end
             end
         end
 
