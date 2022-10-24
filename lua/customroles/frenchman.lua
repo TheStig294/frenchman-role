@@ -55,7 +55,7 @@ ROLE.translations = {
         be damaged by another player, which will
         let you deal damage and make you invincible for a while!
         Kill all others to win!]],
-        ["hilite_win_frenchman"] = "LA VICTOIRE FRANÇAISE!"
+        ["hilite_win_frenchman"] = "THE FRENCHMAN WINS!"
     },
     ["FrançaisRole"] = {
         ["ev_win_frenchman"] = "Le {role} a apporté le pain pour gagner la manche!",
