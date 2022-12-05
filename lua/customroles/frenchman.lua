@@ -354,6 +354,23 @@ if CLIENT then
     local table = table
     local StringUpper = string.upper
 
+    -----------
+    -- HALOS --
+    -----------
+    hook.Add("PreDrawHalos", "FrenchmanTTTDrawPlayerOutlines", function()
+        if LocalPlayer():GetNWBool("FrenchmanActive", false) then
+            local plys = {}
+
+            for _, ply in ipairs(player.GetAll()) do
+                if ply:Alive() and not ply:IsSpec() and ply ~= client then
+                    table.insert(plys, ply)
+                end
+            end
+
+            halo.Add(plys, COLOR_WHITE, 1, 1, 1, true, true)
+        end
+    end)
+
     -------------
     -- WIN CON --
     -------------
@@ -502,7 +519,7 @@ if CLIENT then
         -- Passive demonic possession
         LANG.AddToLanguage("FrançaisRole", "possess_press_r", "Appuyez sur R (Recharger) pour posséder {ply}!")
         LANG.AddToLanguage("FrançaisRole", "possess_no_longer_possessing", "[Possession démoniaque] Vous ne possédez plus {ply}.")
-        LANG.AddToLanguage("FrançaisRole", "possess_start_observing", "Commencez à observer un joueur pour en prendre le contrôle!")
+        LANG.AddToLanguage("FrançaisRole", "possess_start_observing", "Commencez à observer un joueur pour en prendre le contr����le!")
         LANG.AddToLanguage("FrançaisRole", "possess_available_commands", "Commandes Disponibles")
         LANG.AddToLanguage("FrançaisRole", "possess_move_keys", "Déplacer les clés")
         LANG.AddToLanguage("FrançaisRole", "possess_camera", "Déplacez et contrôlez la caméra")
@@ -786,7 +803,7 @@ if CLIENT then
             weapon_ttt_fakedeath = {
                 name = "Faussaire de la mort",
                 type = "item_weapon",
-                desc = [[Génère un faux cadavre de vous-même à vos pieds!
+                desc = [[Gén�������re un faux cadavre de vous-même à vos pieds!
     
                 Clic gauche: créer un corps
                 
@@ -967,7 +984,7 @@ if CLIENT then
                 Fait du bruit au lancer.]]
             },
             ttt_nisovin_wand = {
-                name = "Baguette des probabilités limitées",
+                name = "Baguette des probabilit��s limitées",
                 type = "item_weapon",
                 desc = [[Effectue des attaques/effets aléatoires lorsque vous faites un clic gauche.
     
@@ -1154,7 +1171,7 @@ if CLIENT then
                 type = "item_weapon",
                 desc = [[Pour vos proches !
     
-                Cuit à la perfection en 12 secondes. Ne le laissez pas tomber !]]
+                Cuit ��� la perfection en 12 secondes. Ne le laissez pas tomber !]]
             },
             weapon_med_defib = {
                 name = "Défibrillateur",
