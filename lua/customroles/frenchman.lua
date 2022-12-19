@@ -48,6 +48,18 @@ table.insert(ROLE.convars, {
     decimal = 0
 })
 
+table.insert(ROLE.convars, {
+    cvar = "ttt_frenchman_baguette_hit_distance",
+    type = ROLE_CONVAR_TYPE_NUM,
+    decimal = 0
+})
+
+table.insert(ROLE.convars, {
+    cvar = "ttt_frenchman_baguette_hitbox_area",
+    type = ROLE_CONVAR_TYPE_NUM,
+    decimal = 0
+})
+
 ROLE.translations = {
     ["english"] = {
         ["ev_win_frenchman"] = "The {role} brought the pain to win the round!",
@@ -138,6 +150,8 @@ if SERVER then
     local frenchman_adrenaline_ramble = CreateConVar("ttt_frenchman_adrenaline_ramble", "1")
     local frenchman_hide_when_active = CreateConVar("ttt_frenchman_hide_when_active", "0")
     local frenchman_adrenaline_baguette_damage = CreateConVar("ttt_frenchman_adrenaline_baguette_damage", "1000", FCVAR_NONE, "Damage the baguette deals", 0, 1000)
+    CreateConVar("ttt_frenchman_baguette_hit_distance", "300", FCVAR_NONE, "How far the baguette can hit", 0, 1000)
+    CreateConVar("ttt_frenchman_baguette_hitbox_area", "30", FCVAR_NONE, "AOE angle the baguette can hit players from the centre of the screen", 0, 360)
 
     hook.Add("TTTSyncGlobals", "Frenchman_TTTSyncGlobals", function()
         SetGlobalInt("ttt_frenchman_drain_health_to", frenchman_drain_health_to:GetInt())
@@ -790,7 +804,7 @@ if CLIENT then
                 Marcher dans n'importe qui alors qu'il est rétréci le tue.]]
             },
             weapon_ttt_thuge = {
-                name = "É.N.O.R.M.E-9001",
+                name = "��������������������.N.O.R.M.E-9001",
                 type = "item_weapon",
                 desc = [[Un LMG à dégâts élevés sans recul et avec une bonne précision.]]
             },

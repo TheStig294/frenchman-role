@@ -23,7 +23,7 @@ SWEP.Weight = 1
 SWEP.AutoSwitchTo = true
 SWEP.AutoSwitchFrom = false
 SWEP.CSMuzzleFlashes = false
-SWEP.Primary.Damage = 50
+SWEP.Primary.Damage = 1000
 SWEP.Primary.ClipSize = -1
 SWEP.Primary.Delay = 0.5
 SWEP.Primary.DefaultClip = 1
@@ -42,10 +42,14 @@ SWEP.InLoadoutFor = nil
 SWEP.AutoSpawnable = false
 SWEP.AllowDrop = false
 SWEP.MissSound = Sound("Weapon_Crowbar.Single")
+SWEP.HitDistance = 300
+SWEP.HitArea = 30
 
 function SWEP:Initialize()
     if SERVER then
         self.Primary.Damage = GetConVar("ttt_frenchman_adrenaline_baguette_damage"):GetFloat()
+        self.HitDistance = GetConVar("ttt_frenchman_baguette_hit_distance"):GetFloat()
+        self.HitArea = GetConVar("ttt_frenchman_baguette_hitbox_area"):GetFloat()
     end
 
     self:SetWeaponHoldType("melee2")
@@ -56,33 +60,45 @@ PrimaryAttack
 ---------------------------------------------------------]]
 function SWEP:PrimaryAttack()
     local owner = self:GetOwner()
-    local tr = {}
-    tr.start = owner:GetShootPos()
-    tr.endpos = owner:GetShootPos() + (owner:GetAimVector() * 90)
-    tr.filter = owner
-    tr.mask = MASK_SHOT
-    local trace = util.TraceLine(tr)
     self:SetNextPrimaryFire(CurTime() + self.Primary.Delay)
     owner:SetAnimation(PLAYER_ATTACK1)
 
-    if trace.Hit then
-        self:SendWeaponAnim(ACT_VM_HITCENTER)
-        bullet = {}
-        bullet.Num = 1
-        bullet.Src = owner:GetShootPos()
-        bullet.Dir = owner:GetAimVector()
-        bullet.Spread = Vector(0, 0, 0)
-        bullet.Tracer = 0
-        bullet.Force = 1
-        bullet.Damage = self.Primary.Damage
-        owner:FireBullets(bullet)
-    else
-        if IsFirstTimePredicted() then
-            self:EmitSound(self.MissSound, 100, math.random(90, 120))
-        end
+    if SERVER then
+        local size = self.HitDistance
+        local dir = owner:GetAimVector()
+        local angle = math.cos(math.rad(self.HitArea)) -- Degrees
+        local startPos = owner:GetShootPos()
+        local entities = ents.FindInCone(startPos, dir, size, angle)
 
-        self:SendWeaponAnim(ACT_VM_MISSCENTER)
+        for _, ent in ipairs(entities) do
+            if not IsValid(ent) then continue end
+            if IsPlayer(ent) and not ent:Alive() and ent:IsSpec() then continue end
+            -- owner:ChatPrint(tostring(ent))
+            local dmginfo = DamageInfo()
+            dmginfo:SetAttacker(owner)
+            dmginfo:SetInflictor(self)
+            dmginfo:SetDamage(self.Primary.Damage)
+            dmginfo:SetDamageType(DMG_CLUB)
+            ent:TakeDamageInfo(dmginfo)
+        end
     end
+
+    local bullet = {}
+    bullet.Num = 1
+    bullet.Src = owner:GetShootPos()
+    bullet.Dir = owner:GetAimVector()
+    bullet.Spread = Vector(0, 0, 0)
+    bullet.Tracer = 0
+    bullet.Force = 1
+    bullet.Damage = self.Primary.Damage
+    bullet.Distance = self.HitDistance
+    owner:FireBullets(bullet)
+
+    if IsFirstTimePredicted() then
+        self:EmitSound(self.MissSound, 100, math.random(90, 120))
+    end
+
+    self:SendWeaponAnim(ACT_VM_MISSCENTER)
 end
 
 -- Taken from "gamemodes/terrortown/entities/weapons/weapon_zm_improvised.lua"
