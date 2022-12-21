@@ -42,8 +42,8 @@ SWEP.InLoadoutFor = nil
 SWEP.AutoSpawnable = false
 SWEP.AllowDrop = false
 SWEP.MissSound = Sound("Weapon_Crowbar.Single")
-SWEP.HitDistance = 300
-SWEP.HitArea = 30
+SWEP.HitDistance = 150
+SWEP.HitArea = 15
 
 function SWEP:Initialize()
     if SERVER then

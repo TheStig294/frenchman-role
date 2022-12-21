@@ -150,8 +150,8 @@ if SERVER then
     local frenchman_adrenaline_ramble = CreateConVar("ttt_frenchman_adrenaline_ramble", "1")
     local frenchman_hide_when_active = CreateConVar("ttt_frenchman_hide_when_active", "0")
     local frenchman_adrenaline_baguette_damage = CreateConVar("ttt_frenchman_adrenaline_baguette_damage", "1000", FCVAR_NONE, "Damage the baguette deals", 0, 1000)
-    CreateConVar("ttt_frenchman_baguette_hit_distance", "300", FCVAR_NONE, "How far the baguette can hit", 0, 1000)
-    CreateConVar("ttt_frenchman_baguette_hitbox_area", "30", FCVAR_NONE, "AOE angle the baguette can hit players from the centre of the screen", 0, 360)
+    CreateConVar("ttt_frenchman_baguette_hit_distance", "150", FCVAR_NONE, "How far the baguette can hit", 0, 1000)
+    CreateConVar("ttt_frenchman_baguette_hitbox_area", "15", FCVAR_NONE, "AOE angle the baguette can hit players from the centre of the screen", 0, 360)
 
     hook.Add("TTTSyncGlobals", "Frenchman_TTTSyncGlobals", function()
         SetGlobalInt("ttt_frenchman_drain_health_to", frenchman_drain_health_to:GetInt())
