@@ -151,7 +151,7 @@ if SERVER then
     local frenchman_hide_when_active = CreateConVar("ttt_frenchman_hide_when_active", "0")
     local frenchman_adrenaline_baguette_damage = CreateConVar("ttt_frenchman_adrenaline_baguette_damage", "1000", FCVAR_NONE, "Damage the baguette deals", 0, 1000)
     CreateConVar("ttt_frenchman_baguette_hit_distance", "150", FCVAR_NONE, "How far the baguette can hit", 0, 1000)
-    CreateConVar("ttt_frenchman_baguette_hitbox_area", "15", FCVAR_NONE, "AOE angle the baguette can hit players from the centre of the screen", 0, 360)
+    CreateConVar("ttt_frenchman_baguette_hitbox_area", "30", FCVAR_NONE, "AOE angle the baguette can hit players from the centre of the screen", 0, 360)
 
     hook.Add("TTTSyncGlobals", "Frenchman_TTTSyncGlobals", function()
         SetGlobalInt("ttt_frenchman_drain_health_to", frenchman_drain_health_to:GetInt())
@@ -533,7 +533,7 @@ if CLIENT then
         -- Passive demonic possession
         LANG.AddToLanguage("FrançaisRole", "possess_press_r", "Appuyez sur R (Recharger) pour posséder {ply}!")
         LANG.AddToLanguage("FrançaisRole", "possess_no_longer_possessing", "[Possession démoniaque] Vous ne possédez plus {ply}.")
-        LANG.AddToLanguage("FrançaisRole", "possess_start_observing", "Commencez à observer un joueur pour en prendre le contr����le!")
+        LANG.AddToLanguage("FrançaisRole", "possess_start_observing", "Commencez à observer un joueur pour en prendre le contrôle!")
         LANG.AddToLanguage("FrançaisRole", "possess_available_commands", "Commandes Disponibles")
         LANG.AddToLanguage("FrançaisRole", "possess_move_keys", "Déplacer les clés")
         LANG.AddToLanguage("FrançaisRole", "possess_camera", "Déplacez et contrôlez la caméra")
@@ -804,7 +804,7 @@ if CLIENT then
                 Marcher dans n'importe qui alors qu'il est rétréci le tue.]]
             },
             weapon_ttt_thuge = {
-                name = "��������������������.N.O.R.M.E-9001",
+                name = "É.N.O.R.M.E-9001",
                 type = "item_weapon",
                 desc = [[Un LMG à dégâts élevés sans recul et avec une bonne précision.]]
             },
@@ -817,7 +817,7 @@ if CLIENT then
             weapon_ttt_fakedeath = {
                 name = "Faussaire de la mort",
                 type = "item_weapon",
-                desc = [[Gén�������re un faux cadavre de vous-même à vos pieds!
+                desc = [[Génère un faux cadavre de vous-même à vos pieds!
     
                 Clic gauche: créer un corps
                 
@@ -998,7 +998,7 @@ if CLIENT then
                 Fait du bruit au lancer.]]
             },
             ttt_nisovin_wand = {
-                name = "Baguette des probabilit��s limitées",
+                name = "Baguette des probabilités limitées",
                 type = "item_weapon",
                 desc = [[Effectue des attaques/effets aléatoires lorsque vous faites un clic gauche.
     
@@ -1025,7 +1025,7 @@ if CLIENT then
                 
                 Clic gauche: Échanger les places avec le joueur marqué
                 
-                R: D�������cocher le joueur]]
+                R: Décocher le joueur]]
             },
             weapon_controllable_manhack = {
                 name = "Manhack contrôlable",
@@ -1061,7 +1061,7 @@ if CLIENT then
                 R : Réinitialisez à la vitesse normale.]]
             },
             weapon_spraymhs = {
-                name = "A��rosol",
+                name = "Aérosol",
                 type = "item_weapon",
                 desc = [[Aérosol
                 La 1ère arme farce que vous achetez une partie est gratuite!
@@ -1129,7 +1129,7 @@ if CLIENT then
             weapon_ttt_detectiveball = {
                 name = "Balle de détective",
                 type = "item_weapon",
-                desc = [[Lancez-vous sur un proche pour le transformer en d��tective !
+                desc = [[Lancez-vous sur un proche pour le transformer en détective !
                 Révèle plutôt son rôle s'il est un traître.
                 
                 Rien ne se passe s'il s'agit d'un innocent spécial ou d'un traître, comme un pépin ou un hypnotiseur.]]
@@ -1140,7 +1140,7 @@ if CLIENT then
                 desc = [[Un tomahawk de retour !
     
                 Réduit de moitié la santé si elle est lancée dès que vous la tenez dans votre main,
-                Tue instantan����ment si vous le tenez un peu en premier.]]
+                Tue instantanément si vous le tenez un peu en premier.]]
             },
             ttt_cmdpmpt = {
                 name = "Invite de commandes",
@@ -1185,7 +1185,7 @@ if CLIENT then
                 type = "item_weapon",
                 desc = [[Pour vos proches !
     
-                Cuit ��� la perfection en 12 secondes. Ne le laissez pas tomber !]]
+                Cuit à la perfection en 12 secondes. Ne le laissez pas tomber !]]
             },
             weapon_med_defib = {
                 name = "Défibrillateur",
@@ -1233,7 +1233,7 @@ if CLIENT then
     
                 A un coup qui tue instantanément mais prend un certain temps à tirer.
                 
-                Peut être largué pour infliger à nouveau des d����gâts avec d'autres armes à feu.]]
+                Peut être largué pour infliger à nouveau des dégâts avec d'autres armes à feu.]]
             },
             weapon_ttt_cloak = {
                 name = "Dispositif de camouflage 2.0",
@@ -1412,7 +1412,7 @@ if CLIENT then
             weapon_ttt_rape = {
                 name = "Lutte câline",
                 type = "item_weapon",
-                desc = [[Faites un clic gauche pour se blottir avec quelqu'un à portée de m��lée, ce qui finit par le tuer.
+                desc = [[Faites un clic gauche pour se blottir avec quelqu'un à portée de mélée, ce qui finit par le tuer.
     
                 Peut être réutilisé à l'infini.
                 
@@ -1783,7 +1783,7 @@ if CLIENT then
             weapon_hyp_brainwash = {
                 name = "Appareil de lavage de cerveau",
                 type = "item_weapon",
-                desc = "Ranime un innocent comme un tra��tre."
+                desc = "Ranime un innocent comme un traétre."
             },
             weapon_com_manifesto = {
                 name = "Manifeste communiste",

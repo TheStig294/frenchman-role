@@ -43,7 +43,7 @@ SWEP.AutoSpawnable = false
 SWEP.AllowDrop = false
 SWEP.MissSound = Sound("Weapon_Crowbar.Single")
 SWEP.HitDistance = 150
-SWEP.HitArea = 15
+SWEP.HitArea = 30
 
 function SWEP:Initialize()
     if SERVER then
@@ -73,7 +73,8 @@ function SWEP:PrimaryAttack()
         for _, ent in ipairs(entities) do
             if not IsValid(ent) then continue end
             if IsPlayer(ent) and not ent:Alive() and ent:IsSpec() then continue end
-            -- owner:ChatPrint(tostring(ent))
+            local entPos = ent:GetPos()
+            if math.Distance(startPos.x, startPos.y, entPos.x, entPos.y) > (164 / 150) * size then continue end
             local dmginfo = DamageInfo()
             dmginfo:SetAttacker(owner)
             dmginfo:SetInflictor(self)
@@ -90,7 +91,7 @@ function SWEP:PrimaryAttack()
     bullet.Spread = Vector(0, 0, 0)
     bullet.Tracer = 0
     bullet.Force = 1
-    bullet.Damage = self.Primary.Damage
+    bullet.Damage = 0
     bullet.Distance = self.HitDistance
     owner:FireBullets(bullet)
 
@@ -139,6 +140,27 @@ function SWEP:SecondaryAttack()
     end
 end
 
+-- local mat = Material("models/shiny")
+-- mat:SetFloat("$alpha", 0.5)
+-- local hitDistance = SWEP.HitDistance
+-- local hitArea = SWEP.HitArea
+-- hook.Add("PostDrawOpaqueRenderables", "TTTFrenchmanBaguetteTest", function()
+--     local size = hitDistance
+--     local dir = LocalPlayer():GetAimVector()
+--     local angle = math.cos(math.rad(hitArea)) -- Degrees
+--     local startPos = LocalPlayer():GetShootPos()
+--     local entities = ents.FindInCone(startPos, dir, size, angle)
+--     -- draw the outer box
+--     local mins = Vector(-size, -size, -size)
+--     local maxs = Vector(size, size, size)
+--     render.SetMaterial(mat)
+--     render.DrawWireframeBox(startPos, Angle(0, 0, 0), mins, maxs, color_white, true)
+--     render.DrawBox(startPos, Angle(0, 0, 0), -mins, -maxs, color_white)
+--     -- draw the lines
+--     for id, ent in ipairs(entities) do
+--         render.DrawLine(ent:WorldSpaceCenter() - dir * (ent:WorldSpaceCenter() - startPos):Length(), ent:WorldSpaceCenter(), Color(255, 0, 0))
+--     end
+-- end)
 --[[---------------------------------------------------------
 Reload
 ---------------------------------------------------------]]
