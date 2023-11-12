@@ -254,7 +254,7 @@ if SERVER then
                 ent:SetNWBool("FrenchmanActive", true)
 
                 if frenchman_adrenaline_ramble:GetBool() then
-                    local randomActivationSound = "frenchman/death" .. math.random(1, 6) .. ".mp3"
+                    local randomActivationSound = "frenchman/death" .. math.random(6) .. ".mp3"
                     ent:EmitSound(randomActivationSound)
                 end
 
@@ -442,10 +442,10 @@ if CLIENT then
     ROLE_IS_TARGETID_OVERRIDDEN[ROLE_FRENCHMAN] = function(ply, target)
         if not IsFrenchmanVisible(target) then return end
 
-        ------ icon, ring, text
         return true, true, true
     end
 
+    ------ icon, ring, text
     ----------------
     -- SCOREBOARD --
     ----------------
@@ -456,10 +456,10 @@ if CLIENT then
     ROLE_IS_SCOREBOARD_INFO_OVERRIDDEN[ROLE_FRENCHMAN] = function(ply, target)
         if not IsFrenchmanVisible(target) then return end
 
-        ------ name,  role
         return false, true
     end
 
+    ------ name,  role
     --------------
     -- TUTORIAL --
     --------------
