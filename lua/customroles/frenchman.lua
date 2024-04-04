@@ -60,6 +60,11 @@ table.insert(ROLE.convars, {
     decimal = 0
 })
 
+table.insert(ROLE.convars, {
+    cvar = "ttt_frenchman_revoke_invincibility_when_only_baddies_left",
+    type = ROLE_CONVAR_TYPE_BOOL
+})
+
 ROLE.translations = {
     ["english"] = {
         ["ev_win_frenchman"] = "The {role} brought the pain to win the round!",
@@ -84,7 +89,6 @@ RegisterRole(ROLE)
 if SERVER then
     AddCSLuaFile()
     local hook = hook
-    local ipairs = ipairs
     local IsValid = IsValid
     local net = net
     local pairs = pairs
@@ -112,7 +116,7 @@ if SERVER then
         local isActiveFrenchman = false
         local otherPlayerAlive = false
 
-        for _, ply in ipairs(player.GetAll()) do
+        for _, ply in player.Iterator() do
             if ply:Alive() and not ply:IsSpec() then
                 if ply:IsFrenchman() and ply:GetNWBool("FrenchmanActive") then
                     isActiveFrenchman = true
@@ -144,22 +148,15 @@ if SERVER then
     -------------
     -- CONVARS --
     -------------
-    local frenchman_drain_health_to = CreateConVar("ttt_frenchman_drain_health_to", "0", FCVAR_NONE, "The amount of health to drain the frenchman down to. Set to 0 to disable", 0, 200)
-    local frenchman_adrenaline_rush = CreateConVar("ttt_frenchman_adrenaline_rush", "52.349", FCVAR_NONE, "The time in seconds the frenchmans adrenaline rush lasts for. Set to 0 to disable", 0, 180)
-    local frenchman_adrenaline_baguette = CreateConVar("ttt_frenchman_adrenaline_baguette", "1")
+    local frenchman_drain_health_to = CreateConVar("ttt_frenchman_drain_health_to", "0", FCVAR_REPLICATED, "The amount of health to drain the frenchman down to. Set to 0 to disable", 0, 200)
+    local frenchman_adrenaline_rush = CreateConVar("ttt_frenchman_adrenaline_rush", "52.349", FCVAR_REPLICATED, "The time in seconds the frenchmans adrenaline rush lasts for. Set to 0 to disable", 0, 180)
+    local frenchman_adrenaline_baguette = CreateConVar("ttt_frenchman_adrenaline_baguette", "1", FCVAR_REPLICATED)
     local frenchman_adrenaline_ramble = CreateConVar("ttt_frenchman_adrenaline_ramble", "1")
-    local frenchman_hide_when_active = CreateConVar("ttt_frenchman_hide_when_active", "0")
-    local frenchman_adrenaline_baguette_damage = CreateConVar("ttt_frenchman_adrenaline_baguette_damage", "1000", FCVAR_NONE, "Damage the baguette deals", 0, 1000)
-    CreateConVar("ttt_frenchman_baguette_hit_distance", "150", FCVAR_NONE, "How far the baguette can hit", 0, 1000)
-    CreateConVar("ttt_frenchman_baguette_hitbox_area", "30", FCVAR_NONE, "AOE angle the baguette can hit players from the centre of the screen", 0, 360)
-
-    hook.Add("TTTSyncGlobals", "Frenchman_TTTSyncGlobals", function()
-        SetGlobalInt("ttt_frenchman_drain_health_to", frenchman_drain_health_to:GetInt())
-        SetGlobalFloat("ttt_frenchman_adrenaline_rush", frenchman_adrenaline_rush:GetFloat())
-        SetGlobalBool("ttt_frenchman_adrenaline_baguette", frenchman_adrenaline_baguette:GetBool())
-        SetGlobalBool("ttt_frenchman_hide_when_active", frenchman_hide_when_active:GetBool())
-        SetGlobalBool("ttt_frenchman_adrenaline_baguette_damage", frenchman_adrenaline_baguette_damage:GetBool())
-    end)
+    CreateConVar("ttt_frenchman_hide_when_active", "0", FCVAR_REPLICATED)
+    CreateConVar("ttt_frenchman_adrenaline_baguette_damage", "1000", FCVAR_REPLICATED, "Damage the baguette deals", 0, 1000)
+    CreateConVar("ttt_frenchman_baguette_hit_distance", "150", nil, "How far the baguette can hit", 0, 1000)
+    CreateConVar("ttt_frenchman_baguette_hitbox_area", "30", nil, "AOE angle the baguette can hit players from the centre of the screen", 0, 360)
+    local onlyBaddiesLeftKillCvar = CreateConVar("ttt_frenchman_revoke_invincibility_when_only_baddies_left", "0", nil, "Whether the frenchman's invincibility is revoked when only non-innocent/detective players are still alive", 0, 1)
 
     -------------------
     -- ROLE FEATURES --
@@ -204,6 +201,34 @@ if SERVER then
 
     local tempHealth = 10000
 
+    local function EndFrenchmanEffects(ply)
+        net.Start("FrenchmanEndScreenEffects")
+        net.Send(ply)
+        ply:SetNWBool("FrenchmanActive", false)
+        ply:SetNWBool("FrenchmanActivated", true)
+        timer.Remove(ply:Nick() .. "FrenchmanActive")
+    end
+
+    local function CheckOnlyBaddiesLeft()
+        for _, ply in player.Iterator() do
+            if ply:IsInnocentTeam() and ply:Alive() and not ply:IsSpec() then return false end
+        end
+
+        return true
+    end
+
+    -- Message to Frenchman players if their invincibility has been revoked
+    hook.Add("PostPlayerDeath", "Frenchman_EntityTakeDamage", function(p)
+        if onlyBaddiesLeftKillCvar:GetBool() and CheckOnlyBaddiesLeft() then
+            for _, ply in player.Iterator() do
+                if ply:IsFrenchman() and ply:Alive() and not ply:IsSpec() then
+                    ply:PrintMessage(HUD_PRINTCENTER, "Invincibility revoked! Only bad guys left!")
+                    ply:PrintMessage(HUD_PRINTTALK, "Invincibility revoked! Only bad guys left!")
+                end
+            end
+        end
+    end)
+
     hook.Add("EntityTakeDamage", "Frenchman_EntityTakeDamage", function(ent, dmginfo)
         -- Don't run this if adrenaline rush is disabled
         local adrenalineTime = frenchman_adrenaline_rush:GetFloat()
@@ -213,8 +238,17 @@ if SERVER then
 
         -- If they are mid adrenaline rush then they take no damage
         if ent:IsRoleActive() then
-            dmginfo:ScaleDamage(0)
-            dmginfo:SetDamage(0)
+            -- If the invincibility revoking convar is enabled, let the player take damage normally
+            if onlyBaddiesLeftKillCvar:GetBool() and CheckOnlyBaddiesLeft() then
+                timer.Simple(0.1, function()
+                    if not ent:Alive() and ent:IsSpec() then
+                        EndFrenchmanEffects(ent)
+                    end
+                end)
+            else
+                dmginfo:ScaleDamage(0)
+                dmginfo:SetDamage(0)
+            end
 
             return
         end
@@ -234,6 +268,7 @@ if SERVER then
         if GetRoundState() ~= ROUND_ACTIVE then return end
         if not IsPlayer(ent) or not ent:IsFrenchman() then return end
         if ent:IsRoleActive() then return end
+        if onlyBaddiesLeftKillCvar:GetBool() and CheckOnlyBaddiesLeft() then return end
         -- Check if they took damage
         local damage = tempHealth - ent:Health()
         -- Reset their health to the real amount
@@ -243,7 +278,10 @@ if SERVER then
         if damage <= 0 then return end
         -- Only give the Frenchman an adrenaline rush once
         if ent:GetNWBool("FrenchmanActivated", false) then return end
-        local att = dmginfo:GetAttacker()
+        local damageInfo = dmginfo
+        local att = damageInfo:GetAttacker()
+        local inflictor = damageInfo:GetInflictor()
+        local damageType = damageInfo:GetDamageType()
         local health = ent.damageHealth
 
         -- If the damage would have killed them then...
@@ -281,22 +319,17 @@ if SERVER then
                 net.Broadcast()
 
                 timer.Create(ent:Nick() .. "FrenchmanActive", adrenalineTime, 1, function()
-                    net.Start("FrenchmanEndScreenEffects")
-                    net.Send(ent)
-                    ent:SetNWBool("FrenchmanActive", false)
-                    ent:SetNWBool("FrenchmanActivated", true)
+                    EndFrenchmanEffects(ent)
 
                     -- Only kill them if they are still the frenchman
                     if ent:IsFrenchman() then
-                        local inflictor = dmginfo:GetInflictor()
-
                         if not IsValid(inflictor) then
                             inflictor = att
                         end
 
                         -- Use TakeDamage instead of Kill so it properly applies karma
                         local dmg = DamageInfo()
-                        dmg:SetDamageType(dmginfo:GetDamageType())
+                        dmg:SetDamageType(damageType)
                         dmg:SetAttacker(att)
                         dmg:SetInflictor(inflictor)
                         -- Use 10 so damage scaling doesn't mess with it. The worse damage factor (0.1) will still deal 1 damage after scaling a 10 down
@@ -375,8 +408,8 @@ if CLIENT then
         if LocalPlayer():GetNWBool("FrenchmanActive", false) then
             local plys = {}
 
-            for _, ply in ipairs(player.GetAll()) do
-                if ply:Alive() and not ply:IsSpec() and ply ~= client then
+            for _, ply in player.Iterator() do
+                if ply:Alive() and not ply:IsSpec() and ply ~= LocalPlayer() then
                     table.insert(plys, ply)
                 end
             end
@@ -420,7 +453,7 @@ if CLIENT then
     -- TARGET ID --
     ---------------
     local function IsFrenchmanVisible(ply)
-        return IsPlayer(ply) and ply:IsFrenchman() and ply:IsRoleActive() and not GetGlobalBool("ttt_frenchman_hide_when_active", false)
+        return IsPlayer(ply) and ply:IsFrenchman() and ply:IsRoleActive() and not GetConVar("ttt_frenchman_hide_when_active"):GetBool()
     end
 
     -- Show the frenchman icon if the player is an activated frenchman
@@ -470,19 +503,19 @@ if CLIENT then
             -- Use this for highlighting things like "kill"
             local traitorColor = ROLE_COLORS[ROLE_TRAITOR]
             -- Adrenaline Rush
-            local rushTime = GetGlobalInt("ttt_frenchman_adrenaline_rush", 52.349)
+            local rushTime = GetConVar("ttt_frenchman_adrenaline_rush"):GetFloat()
             rushtime = math.Round(rushTime, 0)
 
             if rushTime > 0 then
                 html = html .. "<span style='display: block; margin-top: 10px;'>If the " .. ROLE_STRINGS[ROLE_FRENCHMAN] .. " is hit by enough damage that would kill them, they experience <span style='color: rgb(" .. traitorColor.r .. ", " .. traitorColor.g .. ", " .. traitorColor.b .. ")'>an adrenaline rush</span> and fight off death for " .. rushTime .. " seconds. After their adrenaline runs out, <span style='color: rgb(" .. traitorColor.r .. ", " .. traitorColor.g .. ", " .. traitorColor.b .. ")'>they die</span>. This gives them long enough for the " .. ROLE_STRINGS[ROLE_FRENCHMAN] .. " to exact revenge against other players.</span>"
 
-                if GetGlobalBool("ttt_frenchman_adrenaline_baguette", true) then
+                if GetConVar("ttt_frenchman_adrenaline_baguette"):GetBool() then
                     html = html .. "<span style='display: block; margin-top: 10px;'>During the adrenaline rush, the " .. ROLE_STRINGS[ROLE_FRENCHMAN] .. " is given a <span style='color: rgb(" .. traitorColor.r .. ", " .. traitorColor.g .. ", " .. traitorColor.b .. ")'>baguette</span> with heavy melee damage so they cannot be caught unarmed.</span>"
                 end
             end
 
             -- Health Drain
-            local drainTo = GetGlobalInt("ttt_frenchman_drain_health_to", 0)
+            local drainTo = GetConVar("ttt_frenchman_drain_health_to"):GetInt()
 
             if drainTo > 0 then
                 html = html .. "<span style='display: block; margin-top: 10px;'>To give the " .. ROLE_STRINGS[ROLE_FRENCHMAN] .. " a sense of urgency, their <span style='color: rgb(" .. traitorColor.r .. ", " .. traitorColor.g .. ", " .. traitorColor.b .. ")'>health will slowly drain down to " .. drainTo .. "</span>, over time.</span>"
