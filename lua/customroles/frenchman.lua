@@ -14,6 +14,11 @@ ROLE.shouldactlikejester = function(ply) return not ply:IsRoleActive() end
 ROLE.startinghealth = 5
 ROLE.maxhealth = 5
 ROLE.convars = {}
+local frenchman_hide_when_active = CreateConVar("ttt_frenchman_hide_when_active", "0", FCVAR_REPLICATED)
+CreateConVar("ttt_frenchman_adrenaline_baguette_damage", "1000", FCVAR_REPLICATED, "Damage the baguette deals", 0, 1000)
+local frenchman_drain_health_to = CreateConVar("ttt_frenchman_drain_health_to", "0", FCVAR_REPLICATED, "The amount of health to drain the frenchman down to. Set to 0 to disable", 0, 200)
+local frenchman_adrenaline_rush = CreateConVar("ttt_frenchman_adrenaline_rush", "52.349", FCVAR_REPLICATED, "The time in seconds the frenchmans adrenaline rush lasts for. Set to 0 to disable", 0, 180)
+local frenchman_adrenaline_baguette = CreateConVar("ttt_frenchman_adrenaline_baguette", "1", FCVAR_REPLICATED)
 
 table.insert(ROLE.convars, {
     cvar = "ttt_frenchman_drain_health_to",
@@ -148,12 +153,7 @@ if SERVER then
     -------------
     -- CONVARS --
     -------------
-    local frenchman_drain_health_to = CreateConVar("ttt_frenchman_drain_health_to", "0", FCVAR_REPLICATED, "The amount of health to drain the frenchman down to. Set to 0 to disable", 0, 200)
-    local frenchman_adrenaline_rush = CreateConVar("ttt_frenchman_adrenaline_rush", "52.349", FCVAR_REPLICATED, "The time in seconds the frenchmans adrenaline rush lasts for. Set to 0 to disable", 0, 180)
-    local frenchman_adrenaline_baguette = CreateConVar("ttt_frenchman_adrenaline_baguette", "1", FCVAR_REPLICATED)
     local frenchman_adrenaline_ramble = CreateConVar("ttt_frenchman_adrenaline_ramble", "1")
-    CreateConVar("ttt_frenchman_hide_when_active", "0", FCVAR_REPLICATED)
-    CreateConVar("ttt_frenchman_adrenaline_baguette_damage", "1000", FCVAR_REPLICATED, "Damage the baguette deals", 0, 1000)
     CreateConVar("ttt_frenchman_baguette_hit_distance", "150", nil, "How far the baguette can hit", 0, 1000)
     CreateConVar("ttt_frenchman_baguette_hitbox_area", "30", nil, "AOE angle the baguette can hit players from the centre of the screen", 0, 360)
     local onlyBaddiesLeftKillCvar = CreateConVar("ttt_frenchman_revoke_invincibility_when_only_baddies_left", "0", nil, "Whether the frenchman's invincibility is revoked when only non-innocent/detective players are still alive", 0, 1)
@@ -453,7 +453,7 @@ if CLIENT then
     -- TARGET ID --
     ---------------
     local function IsFrenchmanVisible(ply)
-        return IsPlayer(ply) and ply:IsFrenchman() and ply:IsRoleActive() and not GetConVar("ttt_frenchman_hide_when_active"):GetBool()
+        return IsPlayer(ply) and ply:IsFrenchman() and ply:IsRoleActive() and not frenchman_hide_when_active:GetBool()
     end
 
     -- Show the frenchman icon if the player is an activated frenchman
