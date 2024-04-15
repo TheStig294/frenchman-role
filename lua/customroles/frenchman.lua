@@ -541,102 +541,84 @@ if CLIENT then
     local flagPanelFrame
 
     net.Receive("FrenchmanBeginScreenEffects", function()
-        -- Renaming weapons with TTT language support
-        -- CoD Wonder Weapons
-        LANG.AddToLanguage("FrançaisRole", "ww_desc_wunderwaffe", "WUNDERWAFFE DG-2: tire un éclair qui tue instantanément!")
-        LANG.AddToLanguage("FrançaisRole", "ww_desc_wavegun", "PISTOLETS ZAP: Pistolets laser à double arme, appuyez sur le clic gauche ou droit pour tirer !")
-        LANG.AddToLanguage("FrançaisRole", "ww_desc_windstaff", "BÂTON DU VENT: tire des jets d'air à courte portée et à dégâts élevés!")
-        LANG.AddToLanguage("FrançaisRole", "ww_desc_shrinkray", "LE FABRICANT DE BÉBÉS: tire un orbe qui rétrécit tous ceux qu'il touche!\nCela les réduit à 1 point de vie. Marcher dans n'importe qui alors qu'il est rétréci le tue.")
-        LANG.AddToLanguage("FrançaisRole", "ww_desc_vr11", "VR-11: Toute personne que vous tirez a le pouvoir de tuer instantanément avec des armes ordinaires! Dure un temps limité.")
-        LANG.AddToLanguage("FrançaisRole", "ww_desc_wintershowl", "HURLEMENT DE L'HIVER: tire un souffle d'air froid à courte portée qui gèle n'importe qui à mort!")
-        LANG.AddToLanguage("FrançaisRole", "ww_desc_thundergun", "PISTOLET THUNDER: Tire un souffle d'air massif qui envoie n'importe qui dans un vol à courte portée!")
-        LANG.AddToLanguage("FrançaisRole", "ww_desc_lightningstaff", "BÂTON DE LA FOUDRE: tire rapidement des boules de plasma!\nLes projectiles ne sont pas un hitscan et mettent du temps à voyager dans les airs.")
-        LANG.AddToLanguage("FrançaisRole", "ww_desc_sliquifier", "SLIQUIFIER: Tire des boules de slime qui tuent instantanément! Si vous frappez quelqu'un ou le sol, laisse une flaque de boue glissante.")
-        LANG.AddToLanguage("FrançaisRole", "ww_desc_scavenger", "CHAROGNARD: Tire un explosif qui colle aux joueurs et explose après quelques secondes.")
-        LANG.AddToLanguage("FrançaisRole", "ww_desc_raygun_mark2", "PISTOLET À RAYONS MARQUE 2: Tire une rafale de lasers à dégâts élevés!")
-        LANG.AddToLanguage("FrançaisRole", "ww_desc_raygun", "PISTOLET À RAYONS: Tire des lasers à dégâts élevés! Vous subissez des dégâts de recul si vous tirez trop près de votre cible.")
-        LANG.AddToLanguage("FrançaisRole", "ww_desc_jetgun", "LE FUSIL À RÉACTION: Aspire les gens et tue instantanément! Surchauffe si utilisé trop longtemps.")
-        LANG.AddToLanguage("FrançaisRole", "ww_desc_blundergat", "BLUNDERGAT : Un fusil à pompe incroyablement puissant !")
-        LANG.AddToLanguage("FrançaisRole", "ww_desc_acidgat", "GAT ACIDE: Tire une rafale d'explosifs collants qui explosent après un certain délai.")
-        -- Bruh Bunker
-        LANG.AddToLanguage("FrançaisRole", "bunker_name", "Bunker de Bruh")
-        LANG.AddToLanguage("FrançaisRole", "bunker_desc", "Craquement détecté! Présentez-vous au bunker bruh \nimmédiatement! \nCrée un bunker autour de vous lorsque vous subissez des dégâts.")
-        LANG.AddToLanguage("FrançaisRole", "bunker_alert", "Infraction Cringe détectée! Un bunker d'urgence Bruh a été activé!")
-        LANG.AddToLanguage("FrançaisRole", "bunker_buy", "Vous avez reçu un Bunker de Bruh.")
-        -- Passive demonic possession
-        LANG.AddToLanguage("FrançaisRole", "possess_press_r", "Appuyez sur R (Recharger) pour posséder {ply}!")
-        LANG.AddToLanguage("FrançaisRole", "possess_no_longer_possessing", "[Possession démoniaque] Vous ne possédez plus {ply}.")
-        LANG.AddToLanguage("FrançaisRole", "possess_start_observing", "Commencez à observer un joueur pour en prendre le contrôle!")
-        LANG.AddToLanguage("FrançaisRole", "possess_available_commands", "Commandes Disponibles")
-        LANG.AddToLanguage("FrançaisRole", "possess_move_keys", "Déplacer les clés")
-        LANG.AddToLanguage("FrançaisRole", "possess_camera", "Déplacez et contrôlez la caméra")
-        LANG.AddToLanguage("FrançaisRole", "possess_click", "Click gauche")
-        LANG.AddToLanguage("FrançaisRole", "possess_name", "Possession démoniaque")
-        LANG.AddToLanguage("FrançaisRole", "possess_desc", "Permet un contrôle limité sur quelqu'un après sa mort. \n\nUne fois en mode spectateur, faites un clic droit pour faire défiler les joueurs vivants. \n\nAppuyez sur R pour commencer à les manipuler.")
-        LANG.AddToLanguage("FrançaisRole", "possess_no_longer", "Vous n'êtes plus traqué possédé.")
-        LANG.AddToLanguage("FrançaisRole", "possess_attack", "Attaque")
-        LANG.AddToLanguage("FrançaisRole", "possess_switch_weapon", "Changer d'arme")
-        LANG.AddToLanguage("FrançaisRole", "possess_power", "Pouvoir")
-        -- Second Chance
-        LANG.AddToLanguage("FrançaisRole", "2ndchance_desc", "Petite chance d'être ressuscité à la mort. \n\nAprès avoir tué quelqu'un, les chances augmentent.")
-        LANG.AddToLanguage("FrançaisRole", "2ndchance_desc_nerf", "Respawn sur votre corps après un délai. \n\nAprès l'avoir acheté, tout le monde est averti.")
-        LANG.AddToLanguage("FrançaisRole", "2nd_chance_name", "Une seconde chance")
-        LANG.AddToLanguage("FrançaisRole", "2nd_chance_alert", "Quelqu'un a acheté une seconde chance!")
-        LANG.AddToLanguage("FrançaisRole", "2nd_chance_time_left", "Temps restant: ")
-        LANG.AddToLanguage("FrançaisRole", "2nd_chance_r_respawn", "Appuyez sur R pour réapparaître sur votre cadavre")
-        LANG.AddToLanguage("FrançaisRole", "2nd_chance_space_respawn", "Appuyez sur Espace pour réapparaître sur la carte Spawn")
-        LANG.AddToLanguage("FrançaisRole", "2nd_chance_revive_buy", "Vous serez réanimé avec une chance de {chancetxt}% !")
-        LANG.AddToLanguage("FrançaisRole", "2nd_chance_revive_kill", "Vos chances de résurrection ont été changées à {chancetxt}% !")
-        LANG.AddToLanguage("FrançaisRole", "2nd_chance_revive_chat", "Appuyez sur Recharger pour apparaître sur votre corps. Appuyez sur Espace pour apparaître au point d'apparition de la carte.")
-        LANG.AddToLanguage("FrançaisRole", "2nd_chance_revive_chat_nerf", "Appuyez sur Recharger pour apparaître sur votre corps.")
-        LANG.AddToLanguage("FrançaisRole", "2nd_chance_name_colon", "Deuxième chance: ")
-        LANG.AddToLanguage("FrançaisRole", "2nd_chance_not_revived", "Vous ne serez pas réanimé.")
-        LANG.AddToLanguage("FrançaisRole", "2nd_chance_error", "ERREUR")
-        LANG.AddToLanguage("FrançaisRole", "2nd_chance_error_spawn", "Aucun point d'apparition valide! Frai à Map Spawn.")
-        LANG.AddToLanguage("FrançaisRole", "2nd_chance_error_body", "Corps introuvable ou en feu, vous ne pouvez donc pas vous réanimer.")
-        LANG.AddToLanguage("FrançaisRole", "2nd_chance_search", "Ils auront peut-être une seconde chance...")
-        LANG.AddToLanguage("FrançaisRole", "2nd_chance_search_nerf", "Ils auront une seconde chance...")
-        RunConsoleCommand("ttt_language", "FrançaisRole")
         -- Renaming roles
         local translatedRoles = {}
-        translatedRoles["Annonceur"] = ROLE_ANNOUNCER
-        translatedRoles["Mendiant"] = ROLE_BEGGAR
-        translatedRoles["Voleur De Corps"] = ROLE_BODYSNATCHER
-        translatedRoles["Boxeur"] = ROLE_BOXER
-        translatedRoles["Pitre"] = ROLE_CLOWN
-        translatedRoles["Communiste"] = ROLE_COMMUNIST
-        translatedRoles["Adjoint"] = ROLE_DEPUTY
-        translatedRoles["Détective"] = ROLE_DETECTIVE
-        translatedRoles["Médecin"] = ROLE_DOCTOR
-        translatedRoles["Ivre"] = ROLE_DRUNK
-        translatedRoles["Français"] = ROLE_FRENCHMAN
-        translatedRoles["Bug Informatique"] = ROLE_GLITCH
-        translatedRoles["Hypnotiseur"] = ROLE_HYPNOTIST
-        translatedRoles["Imitateur"] = ROLE_IMPERSONATOR
+        -- Base Custom Roles --
+        translatedRoles["Aucune"] = ROLE_NONE
         translatedRoles["Innocente"] = ROLE_INNOCENT
-        translatedRoles["Bouffon"] = ROLE_JESTER
-        translatedRoles["Tueur"] = ROLE_KILLER
-        translatedRoles["Butin Gobelin"] = ROLE_LOOTGOBLIN
-        translatedRoles["Scientifique Fou"] = ROLE_MADSCIENTIST
-        translatedRoles["Voyante"] = ROLE_MEDIUM
-        translatedRoles["Mercenaire"] = ROLE_MERCENARY
-        translatedRoles["Vieil Homme"] = ROLE_OLDMAN
-        translatedRoles["Paladin"] = ROLE_PALADIN
-        translatedRoles["Paramédical"] = ROLE_PARAMEDIC
-        translatedRoles["Parasite"] = ROLE_PARASITE
-        translatedRoles["Fantôme"] = ROLE_PHANTOM
-        translatedRoles["Charlatane"] = ROLE_QUACK
-        translatedRoles["Homme Aléatoire"] = ROLE_RANDOMAN
-        translatedRoles["Vengeur"] = ROLE_REVENGER
-        translatedRoles["Père Noël"] = ROLE_SANTA
-        translatedRoles["Échangeur"] = ROLE_SWAPPER
-        translatedRoles["Taxidermiste"] = ROLE_TAXIDERMIST
-        translatedRoles["Traqueur"] = ROLE_TRACKER
         translatedRoles["Traitre"] = ROLE_TRAITOR
-        translatedRoles["Filou"] = ROLE_TRICKSTER
-        translatedRoles["Vampire"] = ROLE_VAMPIRE
+        translatedRoles["Détective"] = ROLE_DETECTIVE
+        translatedRoles["Bouffon"] = ROLE_JESTER
+        translatedRoles["Échangeur"] = ROLE_SWAPPER
+        translatedRoles["Problème"] = ROLE_GLITCH
+        translatedRoles["Fantôme"] = ROLE_PHANTOM
+        translatedRoles["Hypnotiseur"] = ROLE_HYPNOTIST
+        translatedRoles["Vengeur"] = ROLE_REVENGER
+        translatedRoles["Ivre"] = ROLE_DRUNK
+        translatedRoles["Clown"] = ROLE_CLOWN
+        translatedRoles["Adjoint"] = ROLE_DEPUTY
+        translatedRoles["Imitateur"] = ROLE_IMPERSONATOR
+        translatedRoles["Mendiant"] = ROLE_BEGGAR
+        translatedRoles["Vieil Homme"] = ROLE_OLDMAN
+        translatedRoles["Mercenaire"] = ROLE_MERCENARY
+        translatedRoles["Voleur de Corps"] = ROLE_BODYSNATCHER
         translatedRoles["Vétéran"] = ROLE_VETERAN
+        translatedRoles["Assassin"] = ROLE_ASSASSIN
+        translatedRoles["Tueur"] = ROLE_KILLER
         translatedRoles["Zombi"] = ROLE_ZOMBIE
+        translatedRoles["Vampire"] = ROLE_VAMPIRE
+        translatedRoles["Médecin"] = ROLE_DOCTOR
+        translatedRoles["Charlatan"] = ROLE_QUACK
+        translatedRoles["Parasite"] = ROLE_PARASITE
+        translatedRoles["Filou"] = ROLE_TRICKSTER
+        translatedRoles["Paramédical"] = ROLE_PARAMEDIC
+        translatedRoles["Scientifique Fou"] = ROLE_MADSCIENTIST
+        translatedRoles["Paladin"] = ROLE_PALADIN
+        translatedRoles["Traqueur"] = ROLE_TRACKER
+        translatedRoles["Voyante"] = ROLE_MEDIUM
+        translatedRoles["Butin Gobelin"] = ROLE_LOOTGOBLIN
+        translatedRoles["Transfuge"] = ROLE_TURNCOAT
+        translatedRoles["Sapeur"] = ROLE_SAPPER
+        translatedRoles["Informateur"] = ROLE_INFORMANT
+        translatedRoles["Maréchal"] = ROLE_MARSHAL
+        translatedRoles["Infecté"] = ROLE_INFECTED
+        translatedRoles["Cupidon"] = ROLE_CUPID
+        translatedRoles["Ombre"] = ROLE_SHADOW
+        translatedRoles["Éponge"] = ROLE_SPONGE
+        translatedRoles["Incendiaire"] = ROLE_ARSONIST
+        translatedRoles["Espionner"] = ROLE_SPY
+        translatedRoles["Esprit de la Ruche"] = ROLE_HIVEMIND
+        translatedRoles["Devineur"] = ROLE_GUESSER
+        translatedRoles["Intendante"] = ROLE_QUARTERMASTER
+        translatedRoles["Justicier"] = ROLE_VINDICATOR
+        -- Jingle Jam Pack Roles --
+        translatedRoles["Boxeur"] = ROLE_BOXER
+        translatedRoles["Communiste"] = ROLE_COMMUNIST
+        translatedRoles["Homme Aléatoire"] = ROLE_RANDOMAN
+        translatedRoles["Père Noël"] = ROLE_SANTA
+        translatedRoles["Taxidermiste"] = ROLE_TAXIDERMIST
+        translatedRoles["Détective Clown"] = ROLE_DETECTOCLOWN
+        translatedRoles["Plus Faux"] = ROLE_FAKER
+        translatedRoles["Krampus"] = ROLE_KRAMPUS
+        translatedRoles["Administrateur"] = ROLE_ADMIN
+        translatedRoles["Chuchoteur Fantôme"] = ROLE_GHOSTWHISPERER
+        translatedRoles["Renégate"] = ROLE_RENEGADE
+        translatedRoles["Lié à L'âme"] = ROLE_SOULBOUND
+        translatedRoles["Âme Soeur"] = ROLE_SOULMAGE
+        translatedRoles["Élémentaliste"] = ROLE_ELEMENTALIST
+        translatedRoles["Médecin"] = ROLE_PHYSICIAN
+        -- External Roles --
+        translatedRoles["Annonceur"] = ROLE_ANNOUNCER
+        translatedRoles["Serviteur de L'effroi"] = ROLE_DREADTHRALL
+        translatedRoles["Français"] = ROLE_FRENCHMAN
+        translatedRoles["Opossum"] = ROLE_POSSUM
+        translatedRoles["Invocateur"] = ROLE_SUMMONER
+        translatedRoles["La Chose"] = ROLE_THETHING
+        -- Randomat Roles --
+        translatedRoles["Yéti"] = ROLE_YETI
+        translatedRoles["Abeille"] = ROLE_BEE
+        translatedRoles["Reine Des Abeilles"] = ROLE_QUEENBEE
+        translatedRoles["Elfe"] = ROLE_ELF
 
         if istable(ROLE_STRINGS) then
             roleStringsOrig = table.Copy(ROLE_STRINGS)
@@ -647,44 +629,82 @@ if CLIENT then
         end
 
         table.Empty(translatedRoles)
-        translatedRoles["Un Annonceur"] = ROLE_ANNOUNCER
-        translatedRoles["Un Mendiant"] = ROLE_BEGGAR
-        translatedRoles["Un Voleur De Corps"] = ROLE_BODYSNATCHER
-        translatedRoles["Un Boxeur"] = ROLE_BOXER
-        translatedRoles["Un Pitre"] = ROLE_CLOWN
-        translatedRoles["Un Communiste"] = ROLE_COMMUNIST
-        translatedRoles["Un Adjoint"] = ROLE_DEPUTY
-        translatedRoles["Un Détective"] = ROLE_DETECTIVE
-        translatedRoles["Un Médecin"] = ROLE_DOCTOR
-        translatedRoles["Un Ivre"] = ROLE_DRUNK
-        translatedRoles["Un Français"] = ROLE_FRENCHMAN
-        translatedRoles["Un Bug Informatique"] = ROLE_GLITCH
-        translatedRoles["Un Hypnotiseur"] = ROLE_HYPNOTIST
-        translatedRoles["Un Imitateur"] = ROLE_IMPERSONATOR
+        -- Base Custom Roles --
+        translatedRoles["Un Aucune"] = ROLE_NONE
         translatedRoles["Un Innocente"] = ROLE_INNOCENT
-        translatedRoles["Un Bouffon"] = ROLE_JESTER
-        translatedRoles["Un Tueur"] = ROLE_KILLER
-        translatedRoles["Un Butin Gobelin"] = ROLE_LOOTGOBLIN
-        translatedRoles["Un Scientifique Fou"] = ROLE_MADSCIENTIST
-        translatedRoles["Un Voyante"] = ROLE_MEDIUM
-        translatedRoles["Un Mercenaire"] = ROLE_MERCENARY
-        translatedRoles["Un Vieil Homme"] = ROLE_OLDMAN
-        translatedRoles["Un Paladin"] = ROLE_PALADIN
-        translatedRoles["Un Paramédical"] = ROLE_PARAMEDIC
-        translatedRoles["Un Parasite"] = ROLE_PARASITE
-        translatedRoles["Un Fantôme"] = ROLE_PHANTOM
-        translatedRoles["Un Charlatane"] = ROLE_QUACK
-        translatedRoles["Un Homme Aléatoire"] = ROLE_RANDOMAN
-        translatedRoles["Un Vengeur"] = ROLE_REVENGER
-        translatedRoles["Un Père Noël"] = ROLE_SANTA
-        translatedRoles["Un Échangeur"] = ROLE_SWAPPER
-        translatedRoles["Un Taxidermiste"] = ROLE_TAXIDERMIST
-        translatedRoles["Un Traqueur"] = ROLE_TRACKER
         translatedRoles["Un Traitre"] = ROLE_TRAITOR
-        translatedRoles["Un Filou"] = ROLE_TRICKSTER
-        translatedRoles["Un Vampire"] = ROLE_VAMPIRE
+        translatedRoles["Un Détective"] = ROLE_DETECTIVE
+        translatedRoles["Un Bouffon"] = ROLE_JESTER
+        translatedRoles["Un Échangeur"] = ROLE_SWAPPER
+        translatedRoles["Un Problème"] = ROLE_GLITCH
+        translatedRoles["Un Fantôme"] = ROLE_PHANTOM
+        translatedRoles["Un Hypnotiseur"] = ROLE_HYPNOTIST
+        translatedRoles["Un Vengeur"] = ROLE_REVENGER
+        translatedRoles["Un Ivre"] = ROLE_DRUNK
+        translatedRoles["Un Clown"] = ROLE_CLOWN
+        translatedRoles["Un Adjoint"] = ROLE_DEPUTY
+        translatedRoles["Un Imitateur"] = ROLE_IMPERSONATOR
+        translatedRoles["Un Mendiant"] = ROLE_BEGGAR
+        translatedRoles["Un Vieil Homme"] = ROLE_OLDMAN
+        translatedRoles["Un Mercenaire"] = ROLE_MERCENARY
+        translatedRoles["Un Voleur de Corps"] = ROLE_BODYSNATCHER
         translatedRoles["Un Vétéran"] = ROLE_VETERAN
+        translatedRoles["Un Assassin"] = ROLE_ASSASSIN
+        translatedRoles["Un Tueur"] = ROLE_KILLER
         translatedRoles["Un Zombi"] = ROLE_ZOMBIE
+        translatedRoles["Un Vampire"] = ROLE_VAMPIRE
+        translatedRoles["Un Médecin"] = ROLE_DOCTOR
+        translatedRoles["Un Charlatan"] = ROLE_QUACK
+        translatedRoles["Un Parasite"] = ROLE_PARASITE
+        translatedRoles["Un Filou"] = ROLE_TRICKSTER
+        translatedRoles["Un Paramédical"] = ROLE_PARAMEDIC
+        translatedRoles["Un Scientifique Fou"] = ROLE_MADSCIENTIST
+        translatedRoles["Un Paladin"] = ROLE_PALADIN
+        translatedRoles["Un Traqueur"] = ROLE_TRACKER
+        translatedRoles["Un Voyante"] = ROLE_MEDIUM
+        translatedRoles["Un Butin Gobelin"] = ROLE_LOOTGOBLIN
+        translatedRoles["Un Transfuge"] = ROLE_TURNCOAT
+        translatedRoles["Un Sapeur"] = ROLE_SAPPER
+        translatedRoles["Un Informateur"] = ROLE_INFORMANT
+        translatedRoles["Un Maréchal"] = ROLE_MARSHAL
+        translatedRoles["Un Infecté"] = ROLE_INFECTED
+        translatedRoles["Un Cupidon"] = ROLE_CUPID
+        translatedRoles["Un Ombre"] = ROLE_SHADOW
+        translatedRoles["Un Éponge"] = ROLE_SPONGE
+        translatedRoles["Un Incendiaire"] = ROLE_ARSONIST
+        translatedRoles["Un Espionner"] = ROLE_SPY
+        translatedRoles["Un Esprit de la Ruche"] = ROLE_HIVEMIND
+        translatedRoles["Un Devineur"] = ROLE_GUESSER
+        translatedRoles["Un Intendante"] = ROLE_QUARTERMASTER
+        translatedRoles["Un Justicier"] = ROLE_VINDICATOR
+        -- Jingle Jam Pack Roles --
+        translatedRoles["Boxeur"] = ROLE_BOXER
+        translatedRoles["Communiste"] = ROLE_COMMUNIST
+        translatedRoles["Homme Aléatoire"] = ROLE_RANDOMAN
+        translatedRoles["Père Noël"] = ROLE_SANTA
+        translatedRoles["Taxidermiste"] = ROLE_TAXIDERMIST
+        translatedRoles["Détective Clown"] = ROLE_DETECTOCLOWN
+        translatedRoles["Plus Faux"] = ROLE_FAKER
+        translatedRoles["Krampus"] = ROLE_KRAMPUS
+        translatedRoles["Administrateur"] = ROLE_ADMIN
+        translatedRoles["Chuchoteur Fantôme"] = ROLE_GHOSTWHISPERER
+        translatedRoles["Renégate"] = ROLE_RENEGADE
+        translatedRoles["Lié à L'âme"] = ROLE_SOULBOUND
+        translatedRoles["Âme Soeur"] = ROLE_SOULMAGE
+        translatedRoles["Élémentaliste"] = ROLE_ELEMENTALIST
+        translatedRoles["Médecin"] = ROLE_PHYSICIAN
+        -- External Roles --
+        translatedRoles["Annonceur"] = ROLE_ANNOUNCER
+        translatedRoles["Serviteur de L'effroi"] = ROLE_DREADTHRALL
+        translatedRoles["Français"] = ROLE_FRENCHMAN
+        translatedRoles["Opossum"] = ROLE_POSSUM
+        translatedRoles["Invocateur"] = ROLE_SUMMONER
+        translatedRoles["La Chose"] = ROLE_THETHING
+        -- Randomat Roles --
+        translatedRoles["Yéti"] = ROLE_YETI
+        translatedRoles["Abeille"] = ROLE_BEE
+        translatedRoles["Reine Des Abeilles"] = ROLE_QUEENBEE
+        translatedRoles["Elfe"] = ROLE_ELF
 
         if istable(ROLE_STRINGS_EXT) then
             roleStringsExtOrig = table.Copy(ROLE_STRINGS_EXT)
@@ -695,44 +715,82 @@ if CLIENT then
         end
 
         table.Empty(translatedRoles)
-        translatedRoles["Annonceurs"] = ROLE_ANNOUNCER
-        translatedRoles["Mendiants"] = ROLE_BEGGAR
-        translatedRoles["Voleurs De Corps"] = ROLE_BODYSNATCHER
-        translatedRoles["Boxeurs"] = ROLE_BOXER
-        translatedRoles["Pitres"] = ROLE_CLOWN
-        translatedRoles["Communistes"] = ROLE_COMMUNIST
-        translatedRoles["Adjoints"] = ROLE_DEPUTY
-        translatedRoles["Détectives"] = ROLE_DETECTIVE
-        translatedRoles["Médecins"] = ROLE_DOCTOR
-        translatedRoles["Ivres"] = ROLE_DRUNK
-        translatedRoles["Français"] = ROLE_FRENCHMAN
-        translatedRoles["Bugs Informatique"] = ROLE_GLITCH
-        translatedRoles["Hypnotiseurs"] = ROLE_HYPNOTIST
-        translatedRoles["Imitateurs"] = ROLE_IMPERSONATOR
+        -- Base Custom Roles --
+        translatedRoles["Aucunes"] = ROLE_NONE
         translatedRoles["Innocentes"] = ROLE_INNOCENT
-        translatedRoles["Bouffons"] = ROLE_JESTER
-        translatedRoles["Tueurs"] = ROLE_KILLER
-        translatedRoles["Butin Gobelins"] = ROLE_LOOTGOBLIN
-        translatedRoles["Scientifiques Fou"] = ROLE_MADSCIENTIST
-        translatedRoles["Voyantes"] = ROLE_MEDIUM
-        translatedRoles["Mercenaires"] = ROLE_MERCENARY
-        translatedRoles["Vieil Hommes"] = ROLE_OLDMAN
-        translatedRoles["Paladins"] = ROLE_PALADIN
-        translatedRoles["Paramédicals"] = ROLE_PARAMEDIC
-        translatedRoles["Parasites"] = ROLE_PARASITE
-        translatedRoles["Fantômes"] = ROLE_PHANTOM
-        translatedRoles["Charlatanes"] = ROLE_QUACK
-        translatedRoles["Hommes Aléatoire"] = ROLE_RANDOMAN
-        translatedRoles["Vengeurs"] = ROLE_REVENGER
-        translatedRoles["Père Noëls"] = ROLE_SANTA
-        translatedRoles["Échangeurs"] = ROLE_SWAPPER
-        translatedRoles["Taxidermistes"] = ROLE_TAXIDERMIST
-        translatedRoles["Traqueurs"] = ROLE_TRACKER
         translatedRoles["Traitres"] = ROLE_TRAITOR
-        translatedRoles["Filous"] = ROLE_TRICKSTER
-        translatedRoles["Vampires"] = ROLE_VAMPIRE
+        translatedRoles["Détectives"] = ROLE_DETECTIVE
+        translatedRoles["Bouffons"] = ROLE_JESTER
+        translatedRoles["Échangeurs"] = ROLE_SWAPPER
+        translatedRoles["Problèmes"] = ROLE_GLITCH
+        translatedRoles["Fantômes"] = ROLE_PHANTOM
+        translatedRoles["Hypnotiseurs"] = ROLE_HYPNOTIST
+        translatedRoles["Vengeurs"] = ROLE_REVENGER
+        translatedRoles["Ivres"] = ROLE_DRUNK
+        translatedRoles["Clowns"] = ROLE_CLOWN
+        translatedRoles["Adjoints"] = ROLE_DEPUTY
+        translatedRoles["Imitateurs"] = ROLE_IMPERSONATOR
+        translatedRoles["Mendiants"] = ROLE_BEGGAR
+        translatedRoles["Vieux Hommes"] = ROLE_OLDMAN
+        translatedRoles["Mercenaires"] = ROLE_MERCENARY
+        translatedRoles["Voleurs de Corps"] = ROLE_BODYSNATCHER
         translatedRoles["Vétérans"] = ROLE_VETERAN
+        translatedRoles["Assassins"] = ROLE_ASSASSIN
+        translatedRoles["Tueurs"] = ROLE_KILLER
         translatedRoles["Zombis"] = ROLE_ZOMBIE
+        translatedRoles["Vampires"] = ROLE_VAMPIRE
+        translatedRoles["Médecins"] = ROLE_DOCTOR
+        translatedRoles["Charlatans"] = ROLE_QUACK
+        translatedRoles["Parasites"] = ROLE_PARASITE
+        translatedRoles["Filous"] = ROLE_TRICKSTER
+        translatedRoles["Paramédicals"] = ROLE_PARAMEDIC
+        translatedRoles["Scientifiques Fous"] = ROLE_MADSCIENTIST
+        translatedRoles["Paladins"] = ROLE_PALADIN
+        translatedRoles["Traqueurs"] = ROLE_TRACKER
+        translatedRoles["Voyantes"] = ROLE_MEDIUM
+        translatedRoles["Pillez Les Gobelins"] = ROLE_LOOTGOBLIN
+        translatedRoles["Transfuges"] = ROLE_TURNCOAT
+        translatedRoles["Sapeurs"] = ROLE_SAPPER
+        translatedRoles["Informateurs"] = ROLE_INFORMANT
+        translatedRoles["Les Maréchaux"] = ROLE_MARSHAL
+        translatedRoles["Infectés"] = ROLE_INFECTED
+        translatedRoles["Cupidons"] = ROLE_CUPID
+        translatedRoles["Ombres"] = ROLE_SHADOW
+        translatedRoles["Éponges"] = ROLE_SPONGE
+        translatedRoles["Incendiaires"] = ROLE_ARSONIST
+        translatedRoles["Espionners"] = ROLE_SPY
+        translatedRoles["Esprits de la Ruche"] = ROLE_HIVEMIND
+        translatedRoles["Devineurs"] = ROLE_GUESSER
+        translatedRoles["Intendantes"] = ROLE_QUARTERMASTER
+        translatedRoles["Les Justiciers"] = ROLE_VINDICATOR
+        -- Jingle Jam Pack Roles --
+        translatedRoles["Boxeurs"] = ROLE_BOXER
+        translatedRoles["Communistes"] = ROLE_COMMUNIST
+        translatedRoles["Hommes Aléatoires"] = ROLE_RANDOMAN
+        translatedRoles["Pères Noël"] = ROLE_SANTA
+        translatedRoles["Taxidermistes"] = ROLE_TAXIDERMIST
+        translatedRoles["Clowns Détectives"] = ROLE_DETECTOCLOWN
+        translatedRoles["Les Faussaires"] = ROLE_FAKER
+        translatedRoles["Krampus"] = ROLE_KRAMPUS
+        translatedRoles["Administrateurs"] = ROLE_ADMIN
+        translatedRoles["Chuchoteurs de Fantômes"] = ROLE_GHOSTWHISPERER
+        translatedRoles["Renégates"] = ROLE_RENEGADE
+        translatedRoles["Limites de L'âme"] = ROLE_SOULBOUND
+        translatedRoles["Mages D'âme"] = ROLE_SOULMAGE
+        translatedRoles["Élémentalistes"] = ROLE_ELEMENTALIST
+        translatedRoles["Médecins"] = ROLE_PHYSICIAN
+        -- External Roles --
+        translatedRoles["Annonceurs"] = ROLE_ANNOUNCER
+        translatedRoles["Serviteurs de L'effroi"] = ROLE_DREADTHRALL
+        translatedRoles["Français"] = ROLE_FRENCHMAN
+        translatedRoles["Opossums"] = ROLE_POSSUM
+        translatedRoles["Invocateurs"] = ROLE_SUMMONER
+        translatedRoles["Les Choses"] = ROLE_THETHING
+        -- Randomat Roles --
+        translatedRoles["Yétis"] = ROLE_YETI
+        translatedRoles["Abeilles"] = ROLE_BEE
+        translatedRoles["Reines Des Abeilles"] = ROLE_QUEENBEE
+        translatedRoles["Elfes"] = ROLE_ELF
 
         if istable(ROLE_STRINGS_PLURAL) then
             roleStringsPluralOrig = table.Copy(ROLE_STRINGS_PLURAL)
@@ -743,6 +801,7 @@ if CLIENT then
         end
 
         -- Renaming custom passive shop items
+        -- (Default TTT passive items like the rader are covered by the language file)
         if not istable(SHOP_ROLES) then
             SHOP_ROLES = {}
             SHOP_ROLES[ROLE_DETECTIVE] = true
@@ -753,11 +812,14 @@ if CLIENT then
             ROLE_MAX = 2
         end
 
+        customPassiveItemsOrig = {}
+
         for role = 1, ROLE_MAX do
             if SHOP_ROLES[role] then
                 customPassiveItemsOrig[role] = table.Copy(EquipmentItems[role])
 
                 for _, equ in pairs(EquipmentItems[role]) do
+                    -- My version of the second chance, demoic possession, and clairvoyancy perk use role strings; however, not all versions on the workshop do, so we ALSO have to define hard-coded translations here
                     if equ.id and EQUIP_ASC and equ.id == EQUIP_ASC then
                         equ.name = "Un Deuxième Chance"
                         equ.desc = "Petite chance d'être ressuscité à la mort. \n\nAprès avoir tué quelqu'un, les chances augmentent."
@@ -785,1069 +847,1402 @@ if CLIENT then
                     elseif equ.id and EQUIP_CLAIRVOYANT and equ.id == EQUIP_CLAIRVOYANT then
                         equ.name = "Voyance"
                         equ.desc = "Quand quelqu'un meurt, vous pouvez voir son corps pendant un bref instant."
+                    elseif equ.id and EQUIP_PHS_TRACKER and equ.id == EQUIP_PHS_TRACKER then
+                        -- The Elementalist and Physician roles (at release) don't use translation strings.. so we also have to hard-code them here
+                        equ.name = "Mise à niveau du suivi de santé"
+                        equ.desc = "Améliore la portée et la qualité des informations du Health Tracker."
+                    elseif equ.id and EQUIP_ELEMENTALIST_FROSTBITE and equ.id == EQUIP_ELEMENTALIST_FROSTBITE then
+                        equ.name = "Gelure"
+                        equ.desc = "Tirez sur les joueurs pour ralentir leur mouvement, la force du ralentissement dépend des dégâts infligés."
+                    elseif equ.id and EQUIP_ELEMENTALIST_FROSTBITE_UP and equ.id == EQUIP_ELEMENTALIST_FROSTBITE_UP then
+                        equ.name = "Gelure+"
+                        equ.desc = "Mises à niveau Frostbite, les joueurs qui ont été ralentis ont une chance de se figer lorsqu'ils sont touchés, perdant ainsi tout mouvement."
+                    elseif equ.id and EQUIP_ELEMENTALIST_PYROMANCER and equ.id == EQUIP_ELEMENTALIST_PYROMANCER then
+                        equ.name = "Pyromancien"
+                        equ.desc = "Tirez sur les joueurs pour les enflammer, la durée évoluant en fonction des dégâts infligés."
+                    elseif equ.id and EQUIP_ELEMENTALIST_PYROMANCER_UP and equ.id == EQUIP_ELEMENTALIST_PYROMANCER_UP then
+                        equ.name = "Pyromancien+"
+                        equ.desc = "Mises à niveau du Pyromancien, les joueurs enflammés ont une chance d'exploser lorsqu'ils sont tirés, causant des dégâts à tout le monde autour d'eux."
+                    elseif equ.id and EQUIP_ELEMENTALIST_WINDBURN and equ.id == EQUIP_ELEMENTALIST_WINDBURN then
+                        equ.name = "Coup de vent"
+                        equ.desc = "Tirer sur les joueurs les pousse vers l'arrière et les éloigne de vous, la force de poussée augmentant en fonction des dégâts infligés."
+                    elseif equ.id and EQUIP_ELEMENTALIST_WINDBURN_UP and equ.id == EQUIP_ELEMENTALIST_WINDBURN_UP then
+                        equ.name = "Coup de vent+"
+                        equ.desc = "Mises à niveau Windburn, au lieu de pousser, lance occasionnellement des joueurs qui tirent dans les airs pour un atterrissage dur et douloureux."
+                    elseif equ.id and EQUIP_ELEMENTALIST_DISCHARGE and equ.id == EQUIP_ELEMENTALIST_DISCHARGE then
+                        equ.name = "Décharge"
+                        equ.desc = "Tirez sur les joueurs pour les choquer, en frappant leur vue en fonction des dégâts infligés, en les désorientant."
+                    elseif equ.id and EQUIP_ELEMENTALIST_DISCHARGE_UP and equ.id == EQUIP_ELEMENTALIST_DISCHARGE_UP then
+                        equ.name = "Décharge+"
+                        equ.desc = "La décharge de mise à niveau amène les joueurs abattus à commettre en outre des actions involontaires, telles que bouger, tirer ou sauter."
+                    elseif equ.id and EQUIP_ELEMENTALIST_MIDNIGHT and equ.id == EQUIP_ELEMENTALIST_MIDNIGHT then
+                        equ.name = "Minuit"
+                        equ.desc = "Tirez sur les joueurs pour commencer à les aveugler, à assombrir leur écran et à rendre leur vision difficile."
+                    elseif equ.id and EQUIP_ELEMENTALIST_MIDNIGHT_UP and equ.id == EQUIP_ELEMENTALIST_MIDNIGHT_UP then
+                        equ.name = "Minuit+"
+                        equ.desc = "Mises à niveau à minuit, les joueurs dont les écrans sont atténués ont une chance de devenir complètement aveugles lorsqu'on leur tire dessus, sans rien voir."
+                    elseif equ.id and EQUIP_ELEMENTALIST_LIFESTEAL and equ.id == EQUIP_ELEMENTALIST_LIFESTEAL then
+                        equ.name = "Vol de vie"
+                        equ.desc = "Tirez sur les joueurs pour leur voler leur force vitale, une balle à la fois."
+                    elseif equ.id and EQUIP_ELEMENTALIST_LIFESTEAL_UP and equ.id == EQUIP_ELEMENTALIST_LIFESTEAL_UP then
+                        equ.name = "Vol de vie+"
+                        equ.desc = "Améliore Lifesteal, exécute les joueurs qui tirent si leur santé devient trop faible, les tuant instantanément."
                     end
                 end
             end
         end
 
         -- Renaming weapons
+        -- All in alphabetical order by printname
         local translatedWeapons = {
-            ttt_weapon_eagleflightgun = {
-                name = "Pistolet Eagleflight",
-                type = "item_weapon",
-                desc = [[Tirez pour vous jeter.
-                Si vous tombez sur un joueur, il mourra !
-                Sinon, appuyez à nouveau sur le bouton gauche de la souris pour exploser.]]
+            tfa_acidgat = {
+                name = "Acide Gat",
+                desc = [[Tire plusieurs explosifs qui collent aux joueurs et explosent après quelques secondes.]]
             },
-            weapon_ttt_rsb_defuser = {
-                name = "Désamorceur RSB",
-                type = "item_weapon",
-                desc = [[Un diffuseur pour la Remote Sticky Bomb]]
+            weapon_ttt_adm_menu = {
+                name = "Menu Administrateur",
             },
-            weapon_ttt_powerdeagle = {
-                name = "Pistolet d'or",
-                type = "item_weapon",
-                desc = [[Tirez sur un traître, ils meurent,
-                tirer sur un innocent, tu meurs,
-                tirez sur un bouffon, vous mourrez TOUS LES DEUX.]]
-            },
-            weapon_john_bomb = {
-                name = "Jean Bombe",
-                type = "item_weapon",
-                desc = [[Clic gauche pour vous faire EXPLOSER. Clic droit pour narguer.]]
-            },
-            weapon_ttt_medkit = {
-                name = "Kit médical",
-                type = "item_weapon",
-                desc = [[Faites un clic droit pour vous soigner
-    
-                Clic gauche pour soigner quelqu'un devant vous]]
-            },
-            weapon_randomlauncher = {
-                name = "Lanceur aléatoire",
-                type = "item_weapon",
-                desc = [[Lance un objet aléatoire qui inflige beaucoup de dégâts, tuant généralement instantanément.]]
-            },
-            tfa_shrinkray = {
-                name = "Le fabricant de bébé",
-                type = "item_weapon",
-                desc = [[Tire un orbe qui rétrécit tous ceux qu'il touche!
-                Cela les réduit à 1 santé.
-                
-                Marcher dans n'importe qui alors qu'il est rétréci le tue.]]
-            },
-            weapon_ttt_thuge = {
-                name = "É.N.O.R.M.E-9001",
-                type = "item_weapon",
-                desc = [[Un LMG à dégâts élevés sans recul et avec une bonne précision.]]
-            },
-            weapon_ttt_chickenator = {
-                name = "Pistolet à poulet",
-                type = "item_weapon",
-                desc = [[Tire sur les poulets.
-                Ils attaquent quiconque s'approche.]]
-            },
-            weapon_ttt_fakedeath = {
-                name = "Faussaire de la mort",
-                type = "item_weapon",
-                desc = [[Génère un faux cadavre de vous-même à vos pieds!
-    
-                Clic gauche: créer un corps
-                
-                Clic droit: Modifier le rôle de votre corps
-                
-                R: Changez la façon dont vous êtes mort]]
-            },
-            weapon_ttt_dete_playercam = {
-                name = "Caméra de joueur détective",
-                type = "item_weapon",
-                desc = [[Voyez la perspective de la personne que vous photographiez en haut à gauche de votre écran!]]
-            },
-            tfa_scavenger = {
-                name = "Charognard",
-                type = "item_weapon",
-                desc = [[Un fusil de sniper qui tire un explosif retardé qui explose après quelques secondes.
-    
-                L'explosif colle aux joueurs.]]
-            },
-            weapon_hoff_mysterybox = {
-                name = "Boite mystère",
-                type = "item_weapon",
-                desc = [[Vous donne une arme miracle aléatoire!
-    
-                Faites un clic gauche en regardant le sol pour faire apparaître une boîte.
-                Appuyez sur 'E' pour ramasser l'arme.]]
-            },
-            weapon_gnome_grenade = {
-                name = "Grenade gnome",
-                type = "item_weapon",
-                desc = [[Lancez un gnome qui explose au bout de quelques secondes.
-                Le lancer est très court.]]
-            },
-            tfa_jetgun = {
-                name = "Le pistolet à réaction",
-                type = "item_weapon",
-                desc = [[Aspire les gens et les tue instantanément.
-    
-                Surchauffe et explose s'il est utilisé trop longtemps sans refroidir.]]
-            },
-            weapon_vadim_blink = {
-                name = "Clignoter",
-                type = "item_weapon",
-                desc = [[Téléportez-vous instantanément là où vous regardez!
-    
-                Maintenez le clic gauche pour sélectionner un emplacement, le clic droit pour annuler.]]
-            },
-            weapon_ttt_slam = {
-                name = "Claquer M4",
-                type = "item_weapon",
-                desc = [[Un explosif déclenché à distance.
-    
-                Clic gauche : Lancer au sol
-                Clic droit : Exploser
-                
-                Si vous faites un clic gauche sur un mur, il s'y collera et agira comme un piège à fil-piège. S'il est utilisé comme ça, il ne peut pas être déclenché à distance.]]
-            },
-            death_note_ttt = {
-                name = "Menace de mort",
-                type = "item_weapon",
-                desc = [[Tuer quelqu'un en écrivant son nom...
-    
-                Tout en tenant ceci, tapez le nom de quelqu'un dans le chat et il mourra dans 40 secondes.
-                (Tant que vous êtes encore en vie à ce moment-là!)
-                
-                Clic gauche: modifier la cause de leur décès.]]
-            },
-            tfa_thundergun = {
-                name = "Pistolet Tonnerre",
-                type = "item_weapon",
-                desc = [[Tire un souffle d'air massif qui envoie n'importe qui dans un vol à courte portée!]]
-            },
-            weapon_ttt_artillery = {
-                name = "Canon d'artillerie",
-                type = "item_weapon",
-                desc = [[Génère un canon d'artillerie très puissant qui tire une grosse bombe à longue portée.
-    
-                Pour contrôler, placez-vous juste derrière et appuyez sur "E" sur les commandes qui apparaissent.]]
-            },
-            rotgun = {
-                name = "Pistolet rotatif",
-                type = "item_weapon",
-                desc = [[Tirer sur quelqu'un avec ça le retourne.]]
-            },
-            weapon_ttt_bonk_bat = {
-                name = "Chauve-Souris Bonk",
-                type = "item_weapon",
-                desc = [[Envoie des gens en prison excitée!
-    
-                Une chauve-souris qui emprisonne ceux que vous frappez dans une cage pendant quelques secondes.]]
-            },
-            weapon_ttt_timestop = {
-                name = "Arrêt Horaire",
-                type = "item_weapon",
-                desc = [[Fige le temps pendant quelques secondes.
-                Vous pouvez en tuer d'autres pendant qu'ils sont gelés.
-                
-                N'affecte pas les détectives!]]
-            },
-            ttt_dobbyhack_weapon = {
-                name = "Grenade ratière",
-                type = "item_weapon",
-                desc = [[Une grenade qui engendre un tas de Dobbies volants et posant en T...]]
-            },
-            weapon_ttt_boomerang_randomat = {
-                name = "Boomerang",
-                type = "item_weapon",
-                desc = [[Clic droit pour lancer]]
-            },
-            doncmk2_swep = {
-                name = "Marque de Donconnon 2",
-                type = "item_weapon",
-                desc = [[Tire une tête MASSIVE qui vole à travers les murs.
-    
-                Inflige 50 dégâts à tous ceux qu'il touche.]]
-            },
-            weapon_ttt_barnacle = {
-                name = "Bernacle",
-                type = "item_weapon",
-                desc = [[Un piège extraterrestre mortel au plafond!
-    
-                Clic gauche pour placer le piège au plafond, toute personne qui marche en dessous sera lentement tuée.]]
-            },
-            ttt_slappers = {
-                name = "Gifles",
-                type = "item_weapon",
-                desc = [[La 1ère arme farce que vous achetez une partie est gratuite!
-    
-                Vous permet de gifler quelqu'un et de secouer son écran!
-                
-                Clic gauche - main gauche
-                Clic droit - main droite]]
-            },
-            weapon_ttt_death_link = {
-                name = "Lien de la mort",
-                type = "item_weapon",
-                desc = [[Utilisez sur n'importe quel lecteur. Une fois qu'ils meurent, vous mourez et vice versa.]]
-            },
-            ttt_combine_sniper_summoner = {
-                name = "Invocateur de tireur d'élite",
-                type = "item_weapon",
-                desc = [[Invoque un tireur d'élite qui tuera n'importe qui devant lui!
-    
-                Fait face à la direction dans laquelle vous regardez.
-                
-                Cible à l'envers d'une surface plane.]]
-            },
-            weapon_dubstepgun = {
-                name = "Pistolet Dubstep",
-                type = "item_weapon",
-                desc = [[Maintenez le clic gauche enfoncé pour tirer des lasers musicaux qui infligent beaucoup de dégâts!]]
-            },
-            freeze_swep = {
-                name = "Hurlement des hivers",
-                type = "item_weapon",
-                desc = [[Tire un court souffle d'air froid qui fige les gens sur place pendant quelques secondes.
-    
-                NE TUE PAS TOUT SEUL! TIREZ SUR LES PERSONNES QUE VOUS GELEZ!]]
-            },
-            weapon_ttt_peacekeeper = {
-                name = "Casque bleu",
-                type = "item_weapon",
-                desc = [[Tirez pour rester immobile et verrouillez toute personne que vous voyez.
-    
-                Une fois que vous voyez un symbole de crâne sur quelqu'un, vous pouvez tirer pour le tuer instantanément.
-                
-                Tue tous ceux que vous avez verrouillés une fois que vous l'avez tiré.]]
-            },
-            ttt_m9k_harpoon = {
-                name = "Hwapoun",
-                type = "item_weapon",
-                desc = [[Harpon jetable]]
-            },
-            weapon_ttt_hwapoon = {
-                name = "Hwapoun",
-                type = "item_weapon",
-                desc = [[Lancez un harpon mortel ou "Hwapoon!"
-                Fait du bruit au lancer.]]
-            },
-            ttt_nisovin_wand = {
-                name = "Baguette des probabilités limitées",
-                type = "item_weapon",
-                desc = [[Effectue des attaques/effets aléatoires lorsque vous faites un clic gauche.
-    
-                Spam clic gauche pour un chaos absolu.]]
-            },
-            weapon_ttt_handcuffs = {
-                name = "Menottes",
-                type = "item_weapon",
-                desc = [[Clic gauche: laisse tomber toutes les armes de quelqu'un et l'empêche d'en utiliser.
-    
-                Clic droit : leur permettant d'utiliser à nouveau des armes.
-                
-                Vous ne pouvez pas menotter plus d'une personne à la fois.]]
-            },
-            weapon_ttt_impostor_knife_randomat = {
-                name = "Couteau de tueur de traître"
-            },
-            posswitch = {
-                name = "Échangeur de position",
-                type = "item_weapon",
-                desc = [[Échangez de place avec quelqu'un.
-    
-                Clic droit: Marquer quelqu'un
-                
-                Clic gauche: Échanger les places avec le joueur marqué
-                
-                R: Décocher le joueur]]
-            },
-            weapon_controllable_manhack = {
-                name = "Manhack contrôlable",
-                type = "item_weapon",
-                desc = [[Un drone caméra télécommandé !
-    
-                Clic gauche: Déployer
-                Clic droit: Contrôler/Arrêter le contrôle]]
-            },
-            wt_writingpad = {
-                name = "Bloc-notes",
-                type = "item_weapon",
-                desc = [[La 1ère arme farce que vous achetez une partie est gratuite!
-    
-                Créez un message sur une pancarte que vous tenez, pour que tout le monde puisse le lire.
-                 
-                Quelle meilleure utilisation de votre crédit ?]]
-            },
-            weapon_ttt_headlauncher = {
-                name = "Lanceur de crabe",
-                type = "item_weapon",
-                desc = [[Envoie un missile du ciel vers l'endroit où vous avez tiré.
-    
-                Les extraterrestres " Headcrab " sortent du missile et commencent à attaquer quiconque se trouve à proximité.]]
-            },
-            weapons_ttt_time_manipulator = {
-                name = "Manipulateur de temps",
-                type = "item_weapon",
-                desc = [[Clic gauche : Ralentir le temps.
-    
-                Clic droit : Accélérer le temps.
-                
-                R : Réinitialisez à la vitesse normale.]]
-            },
-            weapon_spraymhs = {
-                name = "Aérosol",
-                type = "item_weapon",
-                desc = [[Aérosol
-                La 1ère arme farce que vous achetez une partie est gratuite!
-                
-                Faites un clic droit pour changer de couleur.]]
-            },
-            weapon_ttt_zombievault = {
-                name = "Coffre de PNJ",
-                type = "item_weapon",
-                desc = [[Sélectionnez un type de PNJ et jetez-le au sol. Serrures
-                en place lorsqu'il est allumé. Plusieurs types de PNJ disponibles.
-                Le suivi peut être inégal, mais dépend du PNJ
-                et environnement.
-                Grande pièce = errer, petite pièce = tortue.]]
-            },
-            weapon_ttt_detective_lightsaber = {
-                name = "Sabre laser Jedi",
-                type = "item_weapon",
-                desc = [[Un sabre laser vert, vert puisque vous êtes détective.
-                Clic gauche : Swing
-                R: Modifier l'action de votre clic droit
-                Clic droit: Tout ce que vous avez défini avec 'R']]
-            },
-            weapon_discordgift = {
-                name = "Table d'harmonie Discord",
-                type = "item_weapon",
-                desc = [[La 1ère arme farce que vous achetez une partie est gratuite!
-    
-                Est-ce que quelqu'un vient de rejoindre? Non! Juste votre propre table d'harmonie discord personnelle!
-                 
-                Clic gauche - Rejoindre le son
-                Clic droit - Quitter le son
-                R - Son ping]]
-            },
-            weapon_ttt_confetti = {
-                name = "Canon à confettis",
-                type = "item_weapon",
-                desc = [[La 1ère arme farce que vous achetez une partie est gratuite!
-    
-                Vaporise des confettis et fait un bruit de yay!]]
-            },
-            weapon_unoreverse = {
-                name = "ONU inverse",
-                type = "item_weapon",
-                desc = [[Renvoie TOUS LES DOMMAGES à l'attaquant tant qu'il est retenu!
-    
-                Utilisable pendant 3 secondes.]]
-            },
-            crimson_new = {
-                name = "Roi Cramoisi",
-                type = "item_weapon",
-                desc = [[Des poings qui tuent en un coup de poing !
-    
-                Vous devez attendre une seconde avant de pouvoir commencer à frapper.]]
-            },
-            weapon_ttt_freezegun = {
-                name = "Congeler le pistolet",
-                type = "item_weapon",
-                desc = [[Gèle la cible pendant 5 secondes.
-                La cible ne peut pas bouger, regarde autour,
-                tirer ou faire autre chose.
-                
-                4 coups]]
-            },
-            weapon_ttt_detectiveball = {
-                name = "Balle de détective",
-                type = "item_weapon",
-                desc = [[Lancez-vous sur un proche pour le transformer en détective !
-                Révèle plutôt son rôle s'il est un traître.
-                
-                Rien ne se passe s'il s'agit d'un innocent spécial ou d'un traître, comme un pépin ou un hypnotiseur.]]
-            },
-            weapon_hellsredeemer = {
-                name = "Rédempteur de l'enfer",
-                type = "item_weapon",
-                desc = [[Un tomahawk de retour !
-    
-                Réduit de moitié la santé si elle est lancée dès que vous la tenez dans votre main,
-                Tue instantanément si vous le tenez un peu en premier.]]
-            },
-            ttt_cmdpmpt = {
-                name = "Invite de commandes",
-                type = "item_weapon",
-                desc = [[Clic gauche: accorde une puissante capacité aléatoire!
-    
-                Une description de la capacité apparaît dans le chat]]
-            },
-            pusher_swep = {
-                name = "Pousseur",
-                type = "item_weapon",
-                desc = [[Faites un clic gauche pour pousser quelqu'un avec vos poings.
-    
-                Ils sont impuissants lorsqu'ils sont étourdis au sol et peuvent être endommagés par une autre arme.
-                
-                Faites un clic droit pour écouter un mec britannique bourré.]]
-            },
-            weapon_ttt_prop_disguiser = {
-                name = "Déguisement d'accessoires",
-                type = "item_weapon",
-                desc = [[Déguisez-vous en objet !
-    
-                R: Sélectionnez un objet que vous regardez
-                
-                Clic gauche: Activer le déguisement]]
-            },
-            weapon_randomat_boxgloves = {
-                name = "Des gants",
-                type = "item_weapon",
-                desc = [[Clic gauche pour attaquer]]
+            weapon_ttt_awp_advanced_silenced = {
+                name = "Av. AWP silencieux",
+                desc = [[Un tir, un mort. Les victimes ne crieront pas lorsqu'elles seront tuées.
+            Fournit des informations avancées sur le HUD.
+            
+            Créé par @josh_caratelli + Liam McLachlan.]]
             },
             equip_airboat = {
                 name = "Générateur d'hydroglisseur",
-                type = "item_weapon",
-                desc = [[La 1ère arme farce que vous achetez une partie est gratuite!
-    
-                Faites un clic gauche pour faire apparaître un hydroglisseur pilotable!
-                N'endommage pas les joueurs.]]
-            },
-            weapon_ttt_hotpotato = {
-                name = "Patate chaude",
-                type = "item_weapon",
-                desc = [[Pour vos proches !
-    
-                Cuit à la perfection en 12 secondes. Ne le laissez pas tomber !]]
-            },
-            weapon_med_defib = {
-                name = "Défibrillateur",
-                type = "item_weapon",
-                desc = [[Ranime un joueur mort.]]
-            },
-            weapon_ttt_rmgrenade = {
-                name = "Bombe de matière rouge",
-                type = "item_weapon",
-                desc = [[Une grenade en forme de cube qui génère un trou noir!
-    
-                Quiconque est trop proche se fait aspirer!
-                
-                Sonne une alarme avant que le trou noir n'apparaisse.]]
-            },
-            weapon_ttt_dragon_elites = {
-                name = "Dragons d'élite",
-                type = "item_weapon",
-                desc = [[Pistolets à double arme avec une recharge cool.]]
-            },
-            weapon_ttt_whoa_randomat = {
-                name = "Attaque Tournante",
-                type = "item_weapon",
-                desc = [[Cliquez pour tourner l'attaque.]]
-            },
-            tfa_raygun_mark2 = {
-                name = "Pistolet à Rayons Marque 2",
-                type = "item_weapon",
-                desc = [[Tire une rafale de lasers à dégâts élevés]]
-            },
-            weapon_detective_defib = {
-                name = "Défibrillateur",
-                type = "item_weapon",
-                desc = [[Ranime un joueur mort, sans changer son rôle.]]
-            },
-            tfa_staff_wind = {
-                name = "Bâton du vent",
-                type = "item_weapon",
-                desc = [[Tire des jets d'air à courte portée et à dégâts élevés!]]
-            },
-            maclunkey = {
-                name = "Maclunkey",
-                type = "item_weapon",
-                desc = [[N'inflige aucun dégât avec d'autres armes tant que tu l'as sur toi.
-    
-                A un coup qui tue instantanément mais prend un certain temps à tirer.
-                
-                Peut être largué pour infliger à nouveau des dégâts avec d'autres armes à feu.]]
-            },
-            weapon_ttt_cloak = {
-                name = "Dispositif de camouflage 2.0",
-                type = "item_weapon",
-                desc = [[Tenir pour devenir presque invisible
-    
-                Ne cache pas les taches de sang ou votre popup nom/santé
-                
-                Certaines cartes peuvent avoir un mauvais éclairage et vous laisser un peu trop visible.]]
-            },
-            thw_swep = {
-                name = "Thwomp",
-                type = "item_weapon",
-                desc = [[Tirez sur le sol près de quelqu'un pour l'écraser avec un "thwomp".
-    
-                Ne fonctionne pas s'il y a un plafond bas.]]
-            },
-            weapon_ttt_boomerang = {
-                name = "Boomerang",
-                type = "item_weapon",
-                desc = [[Un boomerang jetable mortel,
-    
-                Clic gauche : Tue en 1 coup et se déplace plus vite, mais ne revient pas.
-                
-                Clic droit : tue en 2 coups et se déplace plus lentement, mais revient.]]
-            },
-            tfa_blundergat = {
-                name = "Blundergat",
-                type = "item_weapon",
-                desc = [[Un fusil de chasse incroyablement puissant !]]
-            },
-            corpselauncher = {
-                name = "Lanceur de cadavres",
-                type = "item_weapon",
-                desc = [[Tire sur un cadavre en créant une explosion à l'impact. Nécessite un cadavre pour tirer.
-     
-                A assez de munitions pour être tiré deux fois.
-                 
-                Faites un clic droit pour charger un cadavre.
-                Clic gauche pour lancer le cadavre.]]
-            },
-            weapon_mad_zombificator = {
-                name = "Dispositif de zombification",
-                type = "item_weapon",
-                desc = [[Transforme les joueurs morts en zombies.]]
-            },
-            weapon_ttt_jetpackspawner = {
-                name = "Déployeur Jetpack",
-                type = "item_weapon",
-                desc = [[Clic gauche pour déposer un jetpack, appuyez sur 'E' pour l'équiper.]]
-            },
-            weapon_slazer_new = {
-                name = "Laser spartiate",
-                type = "item_weapon",
-                desc = [[Maintenez le clic gauche pour tirer avec ce canon laser MASSIF!
-    
-                Provoque une explosion si puissante qu'elle gèlera le jeu pendant quelques secondes...]]
-            },
-            weapon_ttt_shocktrap = {
-                name = "Piège à choc",
-                type = "item_weapon",
-                desc = [[Posé au sol.
-    
-                Toute personne autre que vous qui marche dessus est ravagée pendant quelques secondes.]]
-            },
-            alex_matrix_stopbullets = {
-                name = "Bloc matriciel",
-                type = "item_weapon",
-                desc = [[Maintenez le clic gauche pour bloquer les balles devant vous.]]
-            },
-            weapon_ttt_knife_randomat = {
-                name = "Couteau de lancer",
-                type = "item_weapon",
-                desc = [[knife_desc]]
-            },
-            weapon_ttt_popupgun = {
-                name = "Pistolet contextuel",
-                type = "item_weapon",
-                desc = [[SMG à tir rapide. Frapper quelqu'un ouvrira une fenêtre contextuelle sur son écran]]
-            },
-            the_xmas_gun = {
-                name = "Le pistolet de Noël",
-                type = "item_weapon",
-                desc = [[Tirez sur des cadeaux qui tuent en un seul coup]]
-            },
-            weapon_ttt_beenade = {
-                name = "Bénade",
-                type = "item_weapon",
-                desc = [[Grenade Abeille.
-                Libère une ruche remplie d'abeilles hostiles.]]
-            },
-            weapon_ttt_beenade2 = {
-                name = "Bénade",
-                type = "item_weapon",
-                desc = [[Grenade Abeille.
-                Libère une ruche remplie d'abeilles hostiles.]]
-            },
-            weapon_ttt_minifier = {
-                name = "Minificateur",
-                type = "item_weapon",
-                desc = [[Faites un clic gauche pour réduire votre taille et votre santé!]]
-            },
-            minecraft_swep = {
-                name = "Bloc Minecraft",
-                type = "item_weapon",
-                desc = [[Placez des blocs Minecraft!
-                Appuyez sur 'R' pour changer de bloc]]
-            },
-            weapon_ttt_traitor_case = {
-                name = "La valise en T",
-                type = "item_weapon",
-                desc = [[Recevez un objet de traître au hasard!]]
-            },
-            weapon_throw_crowbar = {
-                name = "Pied de biche jetable",
-                type = "item_weapon",
-                desc = [[Faites un clic droit pour lancer, ce qui tue instantanément!]]
-            },
-            weapon_undertale_sans = {
-                name = "Mauvais mode de temps",
-                type = "item_weapon",
-                desc = [[Clic gauche: tirez un laser mortel par-dessus votre épaule
-    
-                Clic droit: tirer sur des os à dégâts modérés]]
-            },
-            weapon_hellsretriever = {
-                name = "Retriever de l'enfer",
-                type = "item_weapon",
-                desc = [[Un tomahawk de retour !
-    
-                Réduit de moitié la santé si elle est lancée dès que vous la tenez dans votre main,
-                Tue instantanément si vous le tenez un peu en premier.]]
-            },
-            weapon_ttt_fortnite_building = {
-                name = "Bâtiment fortifié",
-                type = "item_weapon",
-                desc = [[Construisez des murs, des sols et des escaliers!
-    
-                Frappez des objets avec un pied de biche pour obtenir des matériaux avec lesquels construire
-                
-                F: Changez la structure que vous construisez]]
-            },
-            one_punch_skin = {
-                name = "Un coup de poing !!!",
-                type = "item_weapon",
-                desc = [[Poings tueurs à un coup.
-    
-                Joue de la musique et change de modèle de lecteur dès que vous le tenez!]]
-            },
-            weapon_ttt_gimnade = {
-                name = "Grenade à gravité",
-                type = "item_weapon",
-                desc = [[Une grenade qui fait flotter impuissant dans les airs toute personne prise dans l'explosion.]]
-            },
-            destiny_one_thousand_voices = {
-                name = "1000 voix",
-                type = "item_weapon",
-                desc = [[Maintenez le clic gauche pour un faisceau d'explosion retardé!]]
-            },
-            weapon_ttt_skeleton_pumpkin = {
-                name = "Citrouille Squelette",
-                type = "item_weapon",
-                desc = [[Une grenade citrouille !
-    
-                Lorsqu'il est lancé, génère des squelettes hostiles.]]
-            },
-            weapon_ttt_detective_supersheep = {
-                name = "Mouton observateur",
-                type = "item_weapon",
-                desc = [[Libérez un mouton volant !
-    
-                Votre appareil photo le suit pendant que vous restez immobile.
-                
-                Dirigez-le avec votre souris et faites un clic gauche sur quelqu'un pour le marquer et le voir à travers les murs.]]
-            },
-            weapon_ttt_rape = {
-                name = "Lutte câline",
-                type = "item_weapon",
-                desc = [[Faites un clic gauche pour se blottir avec quelqu'un à portée de mélée, ce qui finit par le tuer.
-    
-                Peut être réutilisé à l'infini.
-                
-                Peut tuer le bouffon sans qu'il gagne!]]
-            },
-            weapon_ttt_homingpigeon = {
-                name = "Pigeon voyageur",
-                type = "item_weapon",
-                desc = [[Un pigeon volant qui cherche une cible.]]
-            },
-            weapon_ttt_lightningar1 = {
-                name = "Foudre AR1",
-                type = "item_weapon",
-                desc = [[Une guitare-pistolet!
-    
-                Un fusil musical à dégâts élevés avec des animations et des sons très sympas.]]
-            },
-            weapon_doncombinesummoner = {
-                name = "DoncomInvocateur",
-                type = "item_weapon",
-                desc = [[Invoque une monstruosité absolue...
-    
-                Le "Doncombine" poursuivra et tirera sur tout le monde sauf vous.]]
-            },
-            weapon_prop_blaster = {
-                name = "Soutenir Blaster",
-                type = "item_weapon",
-                desc = [[Fait exploser des accessoires aléatoires dans des directions aléatoires]]
-            },
-            custom_pewgun = {
-                name = "Banc Pistolet",
-                type = "item_weapon",
-                desc = [[The PEW GUN
-                Shoots flaming blue lasers
-                Makes a cool PEW sound]]
-            },
-            weapon_portalgun = {
-                name = "Pistolet de portail",
-                type = "item_weapon",
-                desc = [[Clic gauche pour tirer un trou bleu dans un mur/sol, clic droit pour en tirer un orange.
-    
-                Tout ce qui passe par un trou ressort par l'autre.]]
-            },
-            weapon_ttt_traitor_lightsaber = {
-                name = "Lightsaber",
-                type = "item_weapon",
-                desc = [[Un sabre laser rouge, rouge puisque tu es un traître.
-                Clic gauche : Swing
-                R: Modifier l'action de votre clic droit
-                Clic droit: Tout ce que vous avez défini avec 'R']]
-            },
-            weapon_shark_trap = {
-                name = "Piège à requin",
-                type = "item_weapon",
-                desc = [[Un piège à poser au sol.
-                Peut être ramassé avec un bâton de magnéto...]]
-            },
-            weapon_ttt_moonball = {
-                name = "Boule de lune",
-                type = "item_weapon",
-                desc = [[La 1ère arme farce que vous achetez une partie est gratuite!
-    
-                Lancer à la tête de quelqu'un pour le renverser.
-                
-                Faites un clic droit pour changer les couleurs.
-                
-                Donne 10 boules de lune.]]
-            },
-            tfa_wavegun = {
-                name = "Pistolets Zap",
-                type = "item_weapon",
-                desc = [[Pistolets laser à double arme.
-                Appuyez sur le clic gauche ou droit pour tirer!]]
-            },
-            weapon_ttt_homebat = {
-                name = "Batte de coup de circuit",
-                type = "item_weapon",
-                desc = [[Frappez les gens très loin avec une batte.
-    
-                A 3 coups.]]
-            },
-            weapon_ttt_obc = {
-                name = "Canon basse orbital",
-                type = "item_weapon",
-                desc = [[Tirez sur le sol pour invoquer un laser ABSOLUMENT MASSIF après quelques secondes.]]
-            },
-            stungun = {
-                name = "Pistolet paralysant",
-                type = "item_weapon",
-                desc = [[Stungun utilisé pour paralyser les ennemis en les faisant
-                incapable de parler et de bouger pendant quelques secondes.
-                Il a 3 charges.
-                
-                Créé par : Donkie]]
-            },
-            weapon_ttt_supersheep = {
-                name = "Supermouton",
-                type = "item_weapon",
-                desc = [[Faites voler un mouton volant explosif !
-    
-                Votre appareil photo le suit pendant que vous restez immobile.
-                
-                Dirigez-le avec votre souris, entrez en collision avec quelque chose pour exploser et appuyez sur 'R' pour augmenter la vitesse.]]
-            },
-            weapon_ttt_dancedead = {
-                name = "Pistolet de danse",
-                type = "item_weapon",
-                desc = [[Tirez sur quelqu'un pour le faire danser sur une chanson au hasard, puis mourez.]]
-            },
-            weapon_ttt_comrade_bomb = {
-                name = "Camarade Bombe",
-                type = "item_weapon",
-                desc = [[Une bombe suicide qui transforme n'importe qui dans l'explosion en traître!]]
-            },
-            manipulator = {
-                name = "Changeur de gravité",
-                type = "item_weapon",
-                desc = [[Clic gauche : réduire la gravité.
-    
-                Clic droit : Augmenter la gravité.
-                
-                Recharger: Gravité normale.]]
-            },
-            weapon_smoke_knife = {
-                name = "Couteau",
-                type = "item_weapon",
-                desc = [[Clic gauche: poignarder
-                Clic droit: Lancer une grenade fumigène
-                
-                Les joueurs endommagés sont instantanément tués,
-                sinon inflige 50 dégâts.]]
-            },
-            laserpointer = {
-                name = "Pointeur laser",
-                type = "item_weapon",
-                desc = [[La 1ère arme farce que vous achetez une partie est gratuite!
-    
-                Aveugler temporairement quelqu'un en pointant ceci dans son visage.]]
-            },
-            ttt_deal_with_the_devil = {
-                name = "Traiter avec le diable",
-                type = "item_weapon",
-                desc = [[Révélez que vous êtes un traître à tout le monde, mais recevez un puissant avantage en retour!]]
-            },
-            ttt_kamehameha_swep = {
-                name = "Kamehameha",
-                type = "item_weapon",
-                desc = [[Chargez un faisceau d'énergie dans vos mains et faites exploser tout le monde!]]
-            },
-            tfa_staff_lightning = {
-                name = "Bâton de foudre",
-                type = "item_weapon",
-                desc = [[Tire rapidement des boules de plasma!
-    
-                Les projectiles ne sont pas un hitscan et mettent du temps à voyager dans les airs.]]
-            },
-            ttt_detective_tracker = {
-                name = "Détective Traqueur",
-                type = "item_weapon",
-                desc = [[Marquez quelqu'un de suspect!
-    
-                Met un contour sur un joueur que vous tirez pour le reste du tour.
-                
-                Chacun peut voir sa silhouette à travers les murs.]]
-            },
-            weapon_ttt_dead_ringer = {
-                name = "Sosie",
-                type = "item_weapon",
-                desc = [[Devenez invisible pendant un certain temps et laissez un corps la prochaine fois que vous subissez des dégâts!
-    
-                Clic gauche pour activer.
-                N'a pas besoin d'être tenu une fois allumé.
-                
-                Vous ne pouvez pas tirer en étant invisible.]]
-            },
-            weapon_ttt_rsb = {
-                name = "Bombe collante à distance",
-                type = "item_weapon",
-                desc = [[Faites un clic droit pour poser une bombe sur quelqu'un devant vous.
-    
-                Cliquez à nouveau avec le bouton droit pour le recharger et voir le point de vue de votre victime.
-                
-                Clic gauche pour le faire exploser.]]
-            },
-            weapon_ttt_printer = {
-                name = "Imprimante de crédit",
-                type = "item_weapon",
-                desc = [[Dépensez un crédit pour gagner plus de crédits!
-    
-                Faites un clic gauche pour placer l'imprimante de crédits au sol et, une fois que c'est fait, appuyez sur 'E' pour obtenir vos crédits !
-                
-                Fait du bruit une fois posé...]]
-            },
-            ttt_amaterasu = {
-                name = "Amaterasu",
-                type = "item_weapon",
-                desc = "Mettez le feu à la personne que vous regardez.\n\nVous n'avez pas besoin de l'équiper pour l'utiliser, il suffit de regarder quelqu'un."
+                desc = [[La 1ère arme blague que vous achetez est gratuite !
+
+            Faites un clic gauche pour faire apparaître un hydroglisseur pilotable!
+            N'endommage pas les joueurs.]]
             },
             ttt_player_pinger = {
                 name = "Joueur Pinger",
-                type = "item_weapon",
-                desc = "Vous permet de voir tout le monde à travers les murs pendant un temps limité!"
+                desc = [[Vous permet de voir tout le monde à travers les murs pendant une durée limitée!]]
             },
-            weapon_ttt_randomat = {
-                name = "Machine Aléatoire",
-                type = "item_weapon",
-                desc = "La machine aléatoire fera quelque chose d'aléatoire!\nQui a deviné ça!"
+            weapon_amongussummoner = {
+                name = "Parmi l'invocateur",
+                desc = [[Faites un clic gauche pour placer un piège invisible au sol.
+
+            Si un joueur marche dessus, un monstre porteur d'explosifs apparaît et attaque!]]
             },
-            weapon_catgun = {
-                name = "Chat Pistolet"
+            avengers_ttt_minifier = {
+                name = "Costume D'homme Fourmi"
             },
-            weapon_ttt_flashbang = {
-                name = "Coup de flash"
+            weapon_antlionsummoner = {
+                name = "Invocateur de Fourmilion",
+                desc = [[Invoque un garde fourmilion. Cible sur le dessus d'une surface plane]]
             },
-            tfa_doom_ssg = {
-                name = "Super fusil de chasse"
+            weapon_hp_ares_shrike = {
+                name = "Pie-grièche D'Arès",
             },
-            weapon_ttt_titanfall_autopistol = {
-                name = "Pistolet automatique RE-45"
+            weapon_m9k_ares_shrike = {
+                name = "Pie-grièche D'Arès",
+            },
+            weapon_ttt_artillery = {
+                name = "Canon D'artillerie",
+                desc = [[Génère un canon d'artillerie très puissant qui tire une grosse bombe sur une longue portée.
+
+            Pour contrôler, placez-vous juste derrière et appuyez sur 'E' sur les commandes qui apparaissent.]]
+            },
+            weapon_m9k_val = {
+                name = "COMME VAL",
+            },
+            weapon_ttt_aug = {
+                name = "AOÛT",
             },
             weapon_ttt_titanfall_wingman = {
                 name = "Ailier B3"
             },
-            doom_weapon_pistol = {
-                name = "Pistolet DOOM"
-            },
-            weapon_752_dl44 = {
-                name = "Guerres des étoiles"
-            },
-            fingergun = {
-                name = "Doigt Pistolet"
-            },
-            mc_sword_diamond = {
-                name = "Pée de diamant"
-            },
-            weapon_ttt_axe = {
-                name = "Hache"
-            },
-            weapon_ttt_fryingpan = {
-                name = "Poêle à frire"
-            },
-            tfa_bo3_boxing = {
-                name = "Gants de boxe"
-            },
             ttt_backwards_shotgun = {
-                name = "Fusil de chasse à l'envers"
+                name = "Fusil à Pompe à L'envers",
+                desc = [[La première arme blague que vous achetez une cartouche est gratuite!
+
+            Un fusil de chasse qui tire derrière vous et vous propulse vers l'avant.
+            
+            Faites un clic droit pour vous retourner instantanément.]]
+            },
+            weapon_banana = {
+                name = "Bombe banane",
+                desc = [[Ça sent frais.
+
+            Clic gauche pour lancer,
+            Clic droit pour faire sonner le bon vieux son
+              + Changer le temps du fusible]]
             },
             st_bananapistol = {
-                name = "Banane Pistolet"
+                name = "Pistolet banane"
             },
-            ttt_sahmin_gun = {
-                name = "Simon Pistolet"
+            weapon_ttt_barnacle = {
+                name = "Bernacle",
+                desc = [[Un piège extraterrestre mortel au plafond!
+
+            Faites un clic gauche pour placer le piège au plafond, toute personne passant en dessous sera lentement tuée.]]
             },
-            weapon_long_revolver = {
-                name = "Revolver Longue"
+            weapon_bat = {
+                name = "Batte de Baseball",
             },
-            weapon_paintgun = {
-                name = "Pistolet à peinture"
+            weapon_ttt_beacon = {
+                name = "Balise",
+                desc = [[Diffuse un emplacement à tout le monde.
+
+            À utiliser pour avertir ou regrouper des innocents.]]
+            },
+            weapon_ttt_beartrap = {
+                name = "Piège à Ours",
+                desc = [[OM NOM NOM... OM NOM (Donateur uniquement)]]
+            },
+            weapon_ttt_randomatbeecannon = {
+                name = "Canon à Abeilles",
+            },
+            weapon_ttt_beenade = {
+                name = "Grenade à Abeilles",
+                desc = [[Grenade à abeilles.
+            Libère plusieurs abeilles hostiles lors de la détonation.]]
             },
             tfa_dax_big_glock = {
-                name = "Grosse arme"
+                name = "Gros Glock"
             },
-            tfa_tracer_nope = {
-                name = "Pistolets à impulsion"
+            weapon_vadim_blink = {
+                name = "Clignoter",
+                desc = [[Téléportez-vous instantanément là où vous regardez!
+
+            Maintenez le clic gauche pour sélectionner un emplacement, cliquez avec le bouton droit pour annuler.]]
             },
-            tfa_mercy_nope = {
-                name = "Caducée Blaster"
+            tfa_blundergat = {
+                name = "Tromblon",
+                desc = [[Un fusil de chasse incroyablement puissant!]]
             },
-            c_sombra_gun_n = {
-                name = "Pistolet-mitrailleur"
+            weapon_bod_bodysnatch = {
+                name = "Dispositif D'arrachage de Corps",
+                desc = [[Change votre rôle en celui d'un cadavre.]]
             },
-            c_reaper_nope = {
-                name = "Fusils doubles"
+            weapon_ttt_bomb_station = {
+                name = "Station de Bombes",
+                desc = [[Lorsque des innocents utiliseront ce poste de santé, ce sera
+            bip avant d'exploser.
+            Les traîtres épuiseront simplement la fausse charge.]]
             },
-            c_dvaredux_nope = {
-                name = "Pistolet léger"
+            weapon_thr_bonecharm = {
+                name = "Charme D'os"
             },
-            weapon_sp_striker = {
-                name = "Attaquant 12"
+            weapon_bonesaw = {
+                name = "Scie à Os",
             },
-            weapon_sp_dbarrel = {
-                name = "Double baril"
+            weapon_ttt_bonk_bat = {
+                name = "Chauve-souris Bonk",
+                desc = [[Envoyez les gens en prison !
+
+            Une chauve-souris qui emprisonne ceux que vous frappez dans une cage pendant quelques secondes.]]
             },
-            weapon_rp_railgun = {
-                name = "Fusil à rail"
+            tfa_staff_wind_ult = {
+                name = "La fureur de Borée"
             },
-            weapon_rp_pocket = {
-                name = "Fusil de poche"
+            weapon_bottle = {
+                name = "Bouteille",
             },
-            weapon_pp_rbull = {
-                name = "Taureau furieux"
-            },
-            weapon_hp_glauncher = {
-                name = "Lance-grenades",
-                type = "item_weapon",
-                desc = "Lanceur automatique de grenades explosives. \n\nLivré avec 12 cartouches."
-            },
-            weapon_hp_ares_shrike = {
-                name = "Arès Pie-grièche"
-            },
-            weapon_ap_vector = {
-                name = "Vecteur"
-            },
-            weapon_ttt_honeybadger = {
-                name = "Blaireau de miel"
-            },
-            weapon_ap_hbadger = {
-                name = "Blaireau de miel"
-            },
-            weapon_ap_golddragon = {
-                name = "Dragon d'or",
-                type = "item_weapon",
-                desc = "Fusil d'assaut précis et à \nfaibles dégâts qui met le feu aux ennemis. \n\nUtilise des munitions SMG standard."
-            },
-            weapon_ttt_tmp_s = {
-                name = "Renard silencieux",
-                type = "item_weapon",
-                desc = "SMG à faible bruit qui utilise des munitions normales de 9 mm. \n\nLes victimes ne crieront pas lorsqu'elles seront tuées."
-            },
-            weapon_ttt_suicide = {
-                name = "Bombe suicide",
-                type = "item_weapon",
-                desc = "Sortez dans une frénésie hurlante! \n\nTue l'utilisateur et les terroristes environnants."
-            },
-            weapon_ttt_pump = {
-                name = "Fusil à pompe"
-            },
-            weapon_ttt_mp5 = {
-                name = "MP5 Marine"
-            },
-            weapon_ttt_ak47 = {
-                name = "AK47",
-                type = "item_weapon",
-                desc = [[Fusil d'assaut avec des dégâts très élevés.
-    
-                A un recul très élevé.]]
-            },
-            weapon_ttt_m4a1_s = {
-                name = "M4A1 silencieux",
-                type = "item_weapon",
-                desc = "Un fusil automatique silencieux. Les victimes meurent en silence."
-            },
-            weapon_ttt_frag = {
-                name = "Grenade à fragmentation",
-                type = "item_weapon",
-                desc = "Une grenade hautement explosive."
-            },
-            weapon_ttt_awp = {
-                name = "AWP silencieux",
-                type = "item_weapon",
-                desc = "Fusil de précision AWP silencieux. \n\nUn seul coup. \n\nLes victimes ne crieront pas lorsqu'elles seront tuées."
-            },
-            weapon_m3 = {
-                name = "Pistolet à graisse M3"
-            },
-            weapon_zm_sledge = {
-                name = "É.N.O.R.M.E-249"
-            },
-            weapon_zm_revolver = {
-                name = "Aigle du désert"
-            },
-            weapon_ttt_m16 = {
-                name = "M-Seize"
-            },
-            weapon_ttt_glock = {
-                name = "Pistolet-Mitrailleur"
+            weapon_ttt_brain = {
+                name = "Parasite du Cerveau",
+                desc = [[1 fléchette.
+
+            La victime tire au hasard
+            puis mourir d'une crise cardiaque
+            20 secondes plus tard.]]
             },
             weapon_hyp_brainwash = {
-                name = "Appareil de lavage de cerveau",
-                type = "item_weapon",
-                desc = "Ranime un innocent comme un traétre."
+                name = "Dispositif de Lavage de Cerveau",
+                desc = [[Ressuscite un innocent en traître.]]
             },
-            weapon_com_manifesto = {
-                name = "Manifeste communiste",
-                type = "item_weapon",
-                desc = "Clic gauche pour convertir un autre joueur"
+            tfa_mercy_nope = {
+                name = "Blaster de Caducée"
             },
-            weapon_par_cure = {
-                name = "Parasite Cure"
+            weapon_ttt_randomatcandycane = {
+                name = "Sucre D'orge",
+                desc = [[Faites un clic gauche pour convertir un autre joueur]]
             },
-            weapon_box_gloves = {
-                name = "Des gants",
-                type = "item_weapon",
-                desc = "Clic gauche pour attaquer"
+            avengers_ttt_shield = {
+                name = "Le Bouclier de Capitaine Amérique",
+                desc = [[Clic gauche pour lancer le bouclier brutalement,
+            clic droit pour le lancer doucement et précis]]
+            },
+            weapon_ttt_car_gun = {
+                name = "Pistolet de Voiture",
+                desc = [[Tirez sur quelqu'un avec une voiture volante et figez-le sur place!
+
+            Toute personne coincée sur le chemin de la voiture entre vous et la victime subit également des dégâts.]]
+            },
+            weapon_ttt_chickennade = {
+                name = "Œuf de poule",
+                desc = [[Un poulet agressif !
+            Faites trop chier et ça explose!]]
+            },
+            weapon_ttt_chickenator = {
+                name = "Poulet",
+                desc = [[Le choix de l'arme de Rambo]]
+            },
+            weapon_randomat_christmas_cannon = {
+                name = "Canon de Noël",
+            },
+            weapon_san_christmas_cannon = {
+                name = "Canon de Noël",
+            },
+            weapon_ttt_cracker = {
+                name = "Biscuit de Noël",
+                desc = [[Un cracker de Noël rempli de gourmandises!]]
             },
             weapon_zom_claws = {
-                name = "Les griffes",
-                type = "item_weapon",
-                desc = "Clic gauche pour attaquer. Clic droit pour sauter. Appuyez sur recharger pour cracher."
+                name = "Les Griffes",
+                desc = [[Clic gauche pour attaquer. Faites un clic droit pour sauter. Appuyez sur recharger pour cracher.]]
+            },
+            weapon_ttt_cloak = {
+                name = "Dispositif de Masquage 2.0",
+                desc = [[Tenez pour devenir presque invisible
+
+            Ne cache pas les taches de sang ni votre popup nom/santé
+            
+            Certaines cartes peuvent avoir un mauvais éclairage et vous laisser un peu trop visible.]]
+            },
+            weapon_ttt_clutterbomb = {
+                name = "Bombe Encombrant",
+                desc = [[Une grenade hautement explosive.
+
+            Prudent! Il peut exploser dans votre main si vous
+            faites-le cuire trop longtemps!]]
+            },
+            weapon_com_manifesto = {
+                name = "Manifeste Communiste",
+                desc = [[Faites un clic gauche pour convertir un autre joueur]]
+            },
+            weapon_ttt_comrade_bomb = {
+                name = "Camarade Bombe",
+                desc = [[Un attentat suicide qui transforme tous ceux qui se trouvent dans l'explosion en traîtres!]]
+            },
+            weapon_ttt_confetti = {
+                name = "Canon à Confettis",
+                desc = [[The 1st joke weapon you buy is free! 
+
+            Sprays confetti and makes a yay noise!]]
+            },
+            weapon_controllable_manhack = {
+                name = "Manhack Contrôlable",
+                desc = [[Clic gauche pour déployer, clic droit pour contrôler.]]
+            },
+            corpselauncher = {
+                name = "Lanceur de Cadavres",
+                desc = [[Tire sur un cadavre créant une explosion à l'impact. Nécessite un cadavre pour tirer.
+ 
+            A suffisamment de munitions pour tirer deux fois.
+             
+            Faites un clic droit pour charger un cadavre.
+            Clic gauche pour lancer le cadavre.]]
+            },
+            weapon_ttt_printer = {
+                name = "Imprimante de crédit",
+                desc = [[Dépensez un crédit pour gagner plus de crédits!
+
+            Faites un clic gauche pour placer l'imprimante de crédit au sol et, une fois que c'est fait, appuyez sur 'E' pour obtenir vos crédits !
+            
+            Fait du bruit une fois posé...]]
+            },
+            weapon_cup_bow = {
+                name = "L'arc de Cupidon",
+            },
+            dancedead = {
+                name = "Pistolet de Danse",
+                desc = [[1 coups.
+
+            Fait danser la victime de manière incontrôlable,
+            puis meurt 14 secondes plus tard.]]
+            },
+            weapon_ttt_dancedead = {
+                name = "Pistolet de Danse",
+                desc = [[Tirez sur quelqu'un pour le faire danser sur une chanson aléatoire, puis mourez.]]
+            },
+            weapon_ttt_dd = {
+                name = "Pistolet DD",
+                desc = [[Aveugle mais accorde une vision spéciale pendant 30 secondes]]
+            },
+            weapon_ttt_dead_ringer = {
+                name = "Sosie",
+                desc = [[Devenez invisible pendant un moment et quittez un corps la prochaine fois que vous subirez des dégâts!
+
+            Faites un clic gauche pour allumer.
+            N'a pas besoin d'être tenu une fois allumé.
+            
+            Vous ne pouvez pas tirer en étant invisible.
+            Faites un clic droit pour mettre fin à l'invisibilité plus tôt.]]
+            },
+            weapon_ttt_deadringer = {
+                name = "Sosie",
+                desc = [[Devenez invisible pendant un moment et quittez un corps la prochaine fois que vous subirez des dégâts!
+
+            Faites un clic gauche pour allumer.
+            N'a pas besoin d'être tenu une fois allumé.
+            
+            Vous ne pouvez pas tirer en étant invisible.
+            Faites un clic droit pour mettre fin à l'invisibilité plus tôt.]]
+            },
+            weapon_zm_revolver = {
+                name = "Daigle",
+            },
+            ttt_deal_with_the_devil = {
+                name = "Traiter Avec Le Diable",
+                desc = [[Révélez que vous êtes un traître à tout le monde, mais recevez un puissant avantage en retour!]]
+            },
+            weapon_ttt_death_link = {
+                name = "Lien Mortel",
+                desc = [[À utiliser sur n'importe quel joueur. Une fois qu'ils meurent, vous mourez et vice versa.]]
+            },
+            death_note_ttt = {
+                name = "Menace de Mort",
+                desc = [[Tuez quelqu'un en écrivant son nom...
+
+            Tout en maintenant cela, tapez le nom de quelqu'un dans le chat et il mourra dans 40 secondes.
+            (Tant que vous êtes encore en vie à ce moment-là !)
+            
+            Clic gauche: modifiez la cause du décès.]]
+            },
+            weapon_med_defib = {
+                name = "Défibrillateur",
+                desc = [[Ravive un joueur mort.]]
+            },
+            weapon_vadim_defib = {
+                name = "Défibrillateur",
+                desc = [[Défibrille les gens.]]
+            },
+            weapon_ttt_demonsign = {
+                name = "Possession Démoniaque",
+                desc = [[Placez votre signe démoniaque au sol et
+            prendre le contrôle d'un autre joueur lorsqu'il marche
+            dessus après votre mort.]]
+            },
+            weapon_ttt_force_shield = {
+                name = "Bouclier de Force Déployable",
+                desc = [[À utiliser pour déployer un bouclier de force.
+            Peut être traversé, mais bloque les balles.
+              A 800 ch et une durée de vie de 30 secondes.]]
+            },
+            weapon_mhl_badge = {
+                name = "Insigne D'adjoint",
+            },
+            weapon_m9k_deagle = {
+                name = "Aigle du Désert .40",
+            },
+            weapon_ttt_dete_playercam = {
+                name = "Supprimer la Playercam",
+                desc = [[1 tir avec visée automatique.
+            Montre la vision de la cible qui a été tirée.
+            Cible modifiable en fermant la fenêtre.
+            et tirer à nouveau (ne fonctionne que si vous portez toujours le
+            arme).]]
+            },
+            weapon_ttt_detectiveball = {
+                name = "Boule de Détective",
+                desc = [[Lancez-vous sur un proche pour le transformer en détective !
+            Révèle plutôt leur rôle s'il s'agit d'un traître.
+            
+            Rien ne se passe s'il s'agit d'un innocent ou d'un traître, comme un pépin ou un hypnotiseur.]]
+            },
+            weapon_ttt_randomatdetonator = {
+                name = "Détonateur",
+            },
+            weapon_discordgift = {
+                name = "Table D'harmonie Discord",
+                desc = [[La 1ère arme blague que vous achetez est gratuite !
+
+            Est-ce que quelqu'un vient de nous rejoindre ? Non! Juste votre propre table d'harmonie Discord personnelle!
+             
+            Clic gauche - Rejoindre le son
+            Clic droit - Quitter le son
+            R - Ping sonore]]
+            },
+            weapon_ttt_dislocator = {
+                name = "Dislocateur",
+                desc = [[Tire un disque qui lance les joueurs dans
+            directions aléatoires.]]
+            },
+            weapon_doncombinesummoner = {
+                name = "DoncomInvocateur",
+                desc = [[Invoque un Doncombine hostile à quiconque
+            pas dans l'équipe des traîtres]]
+            },
+            doncmk2_swep = {
+                name = "Donconnon Mark Deux",
+                desc = [[Tire une tête MASSIVE qui vole à travers les murs.
+            Inflige de lourds dégâts à tous ceux qu'il touche.
+            
+            Faites un clic droit tout en regardant quelqu'un pour vous verrouiller sur quelqu'un!]]
+            },
+            weapon_sp_dbarrel = {
+                name = "Double Baril",
+            },
+            weapon_old_dbshotgun = {
+                name = "Double Baril",
+            },
+            weapon_m9k_dbarrel = {
+                name = "Double Baril",
+            },
+            ttt_perk_doubletap = {
+                name = "Bière de Racine à Double Pression",
+            },
+            weapon_ttt_dragon_elites = {
+                name = "Élites Dragons",
+                desc = [[Pistolets à double usage avec une animation de rechargement sympa.]]
+            },
+            weapon_dubstepgun = {
+                name = "Pistolet Dubstep",
+                desc = [[Maintenez le clic gauche pour tirer des lasers musicaux qui infligent beaucoup de dégâts!]]
+            },
+            weapon_ttt_duel_revolver_randomat = {
+                name = "Pistolet de Duel",
+            },
+            ttt_weapon_eagleflightgun = {
+                name = "Pistolet de Vol D'aigle",
+                desc = [[Tirez pour vous jeter.
+            Si vous tombez sur un joueur, il mourra !
+            Sinon, appuyez à nouveau sur le bouton gauche de la souris pour exploser.]]
+            },
+            weapon_pha_exorcism = {
+                name = "Dispositif d'exorcisme",
+                desc = [[Vous permet d'effectuer un exorcisme pour éliminer un fantôme obsédant]]
+            },
+            weapon_ttt_extinguisher = {
+                name = "Extincteur",
+                desc = [[Vaporisez les traîtres et aveuglez-les]]
             },
             weapon_vam_fangs = {
                 name = "Crocs",
-                type = "item_weapon",
-                desc = "Clic gauche pour aspirer le sang. Faites un clic droit pour faire un fondu."
+                desc = [[Faites un clic gauche pour sucer le sang. Cliquez avec le bouton droit pour faire disparaître.]]
             },
-            weapon_bod_bodysnatch = {
-                name = "Dispositif d'arrachage de corps",
-                type = "item_weapon",
-                desc = "Change votre rôle en celui d'un cadavre."
+            weapon_fartgrenade = {
+                name = "Grenade à Pet",
+            },
+            fp = {
+                name = "Fassinateur",
+                desc = [[Placez 5 barils explosifs autour de vos ennemis et profitez du désastre!]]
+            },
+            weapon_ttt_fingergun = {
+                name = "Pistolet à Doigt",
+                desc = [[BOOM BOOM
+            hors de vos doigts !
+            
+            Primaire: Automatique.
+            Secondaire: Fusil de chasse.]]
+            },
+            weapon_fireaxe = {
+                name = "Hache D'incendie",
+            },
+            weapon_ttt_fire_dash = {
+                name = "Tiret de Feu",
+                desc = [[Augmente de manière permanente votre vitesse et vous enflamme.
+
+            Tous ceux que vous rencontrez meurent instantanément!
+            
+            Vous mourez au bout de 10 secondes.]]
+            },
+            custom_firestarter = {
+                name = "Allume Feu",
+                desc = [[Allume feu
+            Clic gauche - Poser un marqueur
+            Clic droit - Allumer le marqueur]]
+            },
+            weapon_fistsheavy = {
+                name = "Poings",
+            },
+            fkg_gifter_swep = {
+                name = "Donateur FKG",
+                desc = [[Supprime toutes les armes de la cible,
+            leur offre un "pistolet gratuit" imparable
+            et les oblige à tirer une fois]]
+            },
+            weapon_ttt_foolsgoldengun = {
+                name = "Le Pistolet F'or du Fou",
+                desc = [[Tirez sur un traître, tuez un traître.
+            Tirer sur un innocent, tuer un traître ?
+            Tirez sur un bouffon, tuez un traître...
+            Quelque chose ne va pas ici...]]
+            },
+            weapon_ttt_fortnite_building = {
+                name = "Bâtiment Fortnite",
+                desc = [[Construisez comme dans Fortnite!
+            Matériaux agricoles en frappant des objets
+            avec votre pied de biche.]]
+            },
+            weapon_ttt_frag = {
+                name = "Grenade à Fragmentation",
+                desc = [[Une grenade hautement explosive.]]
+            },
+            weapon_rp_railgun = {
+                name = "Pistolet à Tuer Gratuit",
+            },
+            weapon_ttt_freezegun = {
+                name = "Pistolet à Glace",
+                desc = [[Gèle la cible pendant 5 secondes.
+            La cible ne peut pas bouger, regarde autour de toi,
+            tirer ou faire autre chose.
+            
+            4 coups]]
+            },
+            terror_fulton = {
+                name = "Fulton",
+                desc = [[Tu vas l'emmener ?
+            Cet équipement peut extraire des cadavres ou des accessoires via le
+            système de récupération de ballons Fulton.
+            Les ballons éclateront s'ils sont tirés ou déployés à l'intérieur.
+            Faites un clic droit pour définir une destination. Rechargez pour l'effacer.]]
+            },
+            weapon_ttt_galil = {
+                name = "Galille",
+            },
+            weapon_ttt_gwh_ghosting = {
+                name = "Dispositif Fantôme",
+            },
+            weapon_randomat_boxgloves = {
+                name = "Gants",
+                desc = [[Clic gauche pour attaquer]]
+            },
+            weapon_box_gloves = {
+                name = "Gants",
+                desc = [[Clic gauche pour attaquer]]
+            },
+            weapon_gnome_grenade = {
+                name = "Grenade Gnome",
+                desc = [[Gnome vos copains avec la nouvelle grenade explosive « Youve been Gnomed ».
+
+            Vous avez été Gnomed!]]
+            },
+            weapon_ap_golddragon = {
+                name = "Dragon D'or",
+                desc = [[Faibles dégâts, fusil d'assaut précis
+            qui met le feu aux ennemis.
+          
+          Utilise des munitions SMG standard.]]
+            },
+            weapon_ttt_nrgoldengun = {
+                name = "Daigle Doré",
+                desc = [[Tirez sur un traître, tuez un traître.
+            Tirez sur un innocent, suicidez-vous.
+            Sois prudent.]]
+            },
+            weapon_kra_carry = {
+                name = "Griffes Saisissantes",
+            },
+            weapon_ttt_gimnade = {
+                name = "Grenade Gravitationnelle",
+                desc = [[Grenade high-tech du futur!]]
+            },
+            manipulator = {
+                name = "Changeur de Gravité",
+                desc = [[Clic gauche : Réduire la gravité.
+
+            Clic droit: Augmenter la gravité.
+            
+            Rechargement: gravité normale.]]
+            },
+            weapon_ttt_gravity_pistol = {
+                name = "Pistolet à Gravité",
+                desc = [[Inverse la gravité du joueur,
+            que vous frappez, pendant quelques secondes.]]
+            },
+            weapon_hp_glauncher = {
+                name = "Lance-Grenades",
+                desc = [[Lance-grenades explosif automatique.
+
+            Livré avec 12 tours.]]
+            },
+            weapon_zm_sledge = {
+                name = "É.N.O.R.M.E-249",
+            },
+            weapon_ttt_handcuffs = {
+                name = "Menottes",
+                desc = [[Menottez quelqu'un pour le forcer à lâcher ses armes et l'empêcher d'en ramasser de nouvelles.]]
+            },
+            weapon_ttt_hwapoon = {
+                name = "Harpon",
+                desc = [[Harpon jetable.
+
+            Silencieux si vous touchez un joueur, tue d'un seul coup.]]
+            },
+            avengers_hawkeye_crybow = {
+                name = "Arc Œil-de-Faucon",
+                desc = [[Fusil d'assaut à très gros dégâts.
+
+            A un recul très élevé.]]
+            },
+            weapon_ttt_headlauncher = {
+                name = "Lanceur de Crabe",
+                desc = [[Lance des capsules remplies de crabes.
+            Dégâts d'impact massifs là où il frappe!
+            A 3 charges.]]
+            },
+            weapon_ttt_mc_healthpotion = {
+                name = "Potion de Vie",
+            },
+            weapon_ttt_phy_tracker = {
+                name = "Suivi de la Santé",
+            },
+            c_reaper_nope = {
+                name = "Fusils de Chasse Hellfire"
+            },
+            weapon_ttt_homebat = {
+                name = "Batte de Circuit",
+                desc = [[Frappez les gens très loin avec une batte!
+            Inflige une quantité modérée de dégâts en cas de coup]]
+            },
+            swep_homingpigeon = {
+                name = "Pigeon Voyageur",
+                desc = [[Un pigeon que l'on peut lancer sur quelqu'un et qui explose !
+
+            Vole très vite, nécessite de regarder directement quelqu'un pour le lancer.]]
+            },
+            weapon_ap_hbadger = {
+                name = "Blaireau au Miel",
+            },
+            weapon_ttt_hotpotato = {
+                name = "Patate Chaude",
+                desc = [[Faites un clic gauche sur quelqu'un à portée de mêlée pour lui donner la patate chaude!
+
+            S'ils ne le transmettent pas en 12 secondes, ils explosent !]]
+            },
+            avengers_fists = {
+                name = "Poings Hulk",
+                desc = [[Fist-les.]]
+            },
+            weapon_ttt_id_bomb = {
+                name = "Bombe D'identification",
+                desc = [[Le cadavre signalé (clic gauche) explosera après identification.]]
+            },
+            weapon_ttt_id_bomb_defuser = {
+                name = "Désamorceur de bombe d'identification",
+                desc = [[Faites un clic gauche sur un cadavre bombardé d'identité pour désamorcer la bombe!]]
+            },
+            weapon_ars_igniter = {
+                name = "Allumeur",
+            },
+            weapon_ttt_mc_immortpotion = {
+                name = "Potion D'immortalité",
+            },
+            weapon_m9k_intervention = {
+                name = "Intervention",
+            },
+            weapon_ttt_mc_invispotion = {
+                name = "Potion D'invisibilité",
+            },
+            avengers_ironman = {
+                name = "Homme de Fer",
+                desc = [[Armure spécialisée conçue par Tony Stark. AVERTISSEMENT: Impossible de laisser tomber!]]
+            },
+            weapon_ttt_jarate = {
+                name = "Jaraté",
+                desc = [[Un pot de pisse
+            Toute personne couverte subira deux fois plus de dégâts]]
+            },
+            weapon_ttt_detective_lightsaber = {
+                name = "Sabre Laser Jedi",
+                desc = [[Un sabre laser vert, vert puisque vous êtes détective.
+            Clic gauche : Swing
+            R: Changez l'effet de votre clic droit
+            Clic droit: ce que vous avez défini avec "R"
+            
+            Vous pouvez basculer entre:
+            - Réfléchir les balles
+            - Pousser quelqu'un en utilisant la force
+            - Tirer quelqu'un en utilisant la force]]
+            },
+            shared = {
+                name = "Émulateur de bouffon",
+                desc = [[Un M16 qui n'inflige aucun dégât.]]
+            },
+            weapon_ttt_jetpackspawner = {
+                name = "Déployeur Jetpack",
+                desc = [[Faites un clic gauche pour déposer un jetpack, appuyez sur 'E' pour l'équiper.]]
+            },
+            weapon_ttt_jihad = {
+                name = "Bombe du Jihad",
+                desc = [[Une bombe suicide qui fera un câlin à vos amis.
+            Veuillez noter que ce montant n'est pas remboursable après utilisation.]]
+            },
+            weapon_john_bomb = {
+                name = "John Bombe",
+                desc = [[Clic gauche pour vous faire EXPLOSER. Faites un clic droit pour narguer.]]
+            },
+            weapon_ttt_jumpgun = {
+                name = "Pistolet de Saut",
+                desc = [[Tirez pour aller dans la direction opposée (par exemple, tirez vers le bas pour monter).]]
+            },
+            ttt_kamehameha_swep = {
+                name = "Kaméhaméha",
+                desc = [[Plus de 9 000. Gèle le traître lors du tir. Attention à l'explosion !]]
+            },
+            tfa_staff_lightning_ult = {
+                name = "La morsure de Kimat"
+            },
+            crimson_new = {
+                name = "Roi Cramoisi",
+                desc = [[Des poings qui tuent d'un seul coup !
+
+            Vous devez attendre une seconde avant de pouvoir commencer à frapper.]]
+            },
+            weapon_m9k_vector = {
+                name = "Kriss Vecteur",
+            },
+            laserpointer = {
+                name = "Pointeur Laser",
+                desc = [[La 1ère arme blague que vous achetez est gratuite !
+
+            Aveuglez temporairement quelqu'un en le pointant devant son visage.]]
+            },
+            weapon_ttt_liftgren = {
+                name = "Grenade de Levage",
+                desc = [[Une grenade hautement explosive.
+
+            Prudent! Il peut exploser dans votre main si vous
+            faites-le cuire trop longtemps!]]
+            },
+            c_dvaredux_nope = {
+                name = "Pistolet Léger"
+            },
+            weapon_ttt_lightningar1 = {
+                name = "Foudre AR1",
+                desc = [[Un pistolet-guitare!
+
+            Un fusil musical à dégâts élevés avec des animations et des sons très sympas.]]
+            },
+            avengers_smooleystormbreaker = {
+                name = "Éclair",
+                desc = [[Une arme conçue pour le roi d'Asgard, forgée au cœur d'une étoile mourante.]]
+            },
+            weapon_ttt_traitor_lightsaber = {
+                name = "Sabre Laser",
+                desc = [[Un sabre laser rouge, rouge puisque tu es un traître.
+            Clic gauche : Swing
+            R: Changez l'effet de votre clic droit
+            Clic droit: ce que vous avez défini avec "R"
+            
+            Vous pouvez basculer entre:
+            - Réfléchir les balles
+            - Tirez sur la foudre
+            - Pousser quelqu'un en utilisant la force
+            - Tirer quelqu'un en utilisant la force]]
+            },
+            weapon_long_revolver = {
+                name = "Revolver Longue",
+                desc = [[La 1ère arme blague que vous achetez est gratuite !
+
+            Un revolver ridiculement long.]]
+            },
+            weapon_catgun = {
+                name = "Pistolet à Chat",
+            },
+            weapon_m3 = {
+                name = "Pistolet Graisseur M3",
+            },
+            c_sombra_gun_n = {
+                name = "Pistolet-Mitrailleur"
+            },
+            weapon_ttt_malfunctionpistol = {
+                name = "Dysfonctionnement du Pistolet",
+                desc = [[Force le joueur sur lequel vous tirez à tirer
+            une série de coups de feu incontrôlés.]]
+            },
+            giantsupermariomushroom = {
+                name = "Champignon Mario",
+                desc = [[Une utilisation, gagnez beaucoup de santé et devenez énorme pendant 30 secondes!]]
+            },
+            weapon_mastersword = {
+                name = "Maître Épée",
+                desc = [[Tir principal: attaque
+            Tir secondaire: attaque sautée
+            Recharger: Kamikaze Spin Attack]]
+            },
+            weapon_ttt_medkit = {
+                name = "Kit Médical",
+                desc = [[Faites un clic droit pour vous soigner
+
+            Faites un clic gauche pour soigner quelqu'un devant vous]]
+            },
+            weapon_ttt_meme_gun = {
+                name = "Pistolet Mème",
+                desc = [[Tirez sur quelqu'un pour générer un mème mortel!
+
+            Les poursuit, tue au toucher et disparaît.]]
+            },
+            weapon_ttt_minic = {
+                name = "Mimer le Générateur",
+                desc = [[Lors de son utilisation, transforme des accessoires aléatoires sur la carte en accessoires d'imitation hostiles.
+
+            Ils sautent vers les joueurs et les endommagent au toucher!]]
+            },
+            weapon_ttt_mine_turtle = {
+                name = "Tortue Minière",
+                desc = [[Faites un clic gauche pour lancer au sol, faites un clic droit pour placer contre un mur.
+
+            S'arme au bout de quelques secondes, si un autre joueur passe, il explose!]]
+            },
+            minecraft_swep = {
+                name = "Bloc Minecraft",
+                desc = [[Placez des blocs Minecraft!
+            Appuyez sur 'R' pour changer de bloc]]
+            },
+            weapon_ttt_minifier = {
+                name = "Minificateur",
+                desc = [[Faites un clic gauche pour réduire votre taille et votre santé!]]
+            },
+            weapon_ttt_moonball = {
+                name = "Boule de Lune",
+                desc = [[Maintenez le clic gauche pour modifier la quantité de force utilisée.
+            Clic droit pour changer les couleurs.]]
+            },
+            weapon_ttt_mud_device_randomat = {
+                name = "Appareil D'analyse de Boue",
+            },
+            avengers_nick_pistol = {
+                name = "Le pistolet de Nick Fury",
+                desc = [[Le pistolet pratique de Nick Fury]]
+            },
+            ttt_no_scope_awp = {
+                name = "Aucune portée Awp",
+                desc = [[Une arme puissante qui ne peut être tirée que lorsque le compteur 'Cool' est chargé en effectuant un 360.]]
+            },
+            weapon_ttt_zombievault = {
+                name = "Coffre-fort des PNJ",
+                desc = [[Sélectionnez un type de PNJ et jetez-le par terre. Serrures
+            en place lorsqu'il est allumé. Plusieurs types de PNJ disponibles.
+            Le suivi peut être irrégulier, mais dépend du PNJ
+            et l'environnement.
+            Grande pièce = errer, petite pièce = tortue.]]
+            },
+            weapon_ttt_detective_supersheep = {
+                name = "Mouton Observateur",
+                desc = [[Lancez l'Observer Sheep pour traquer vos ennemis!
+            Clic gauche: marquer une personne
+            Clic droit: récupérez le mouton]]
+            },
+            one_punch_skin = {
+                name = "Un Coup de Poing !!!",
+                desc = [[Poings mortels d'un seul coup.
+
+            Joue de la musique et change de modèle de lecteur dès que vous le tenez!]]
+            },
+            weapon_ttt_pistol_randomat = {
+                name = "Pistolet à un Coup",
+            },
+            weapon_ttt_obc = {
+                name = "Canon à basse orbitale",
+                desc = [[Tirez sur le sol pour invoquer un laser ABSOLUMENT MASSIF après quelques secondes.]]
+            },
+            weapon_valenok = {
+                name = "Oscar le Chat",
+                desc = [[La 1ère arme blague que vous achetez est gratuite !
+
+            Achetez un chat portable dès aujourd'hui!
+            Son nom est "Oscar"]]
+            },
+            weapon_ttt_painkillers = {
+                name = "Analgésiques",
+                desc = [[Accorde un boost de santé qui guérit complètement l'utilisateur mais se désintègre avec le temps.]]
+            },
+            weapon_paintgun = {
+                name = "Pistolet à Peinture",
+                desc = [[Faites un clic droit pour changer les couleurs.]]
             },
             weapon_qua_fake_cure = {
-                name = "Guérir les parasites"
+                name = "Remède contre les parasites"
+            },
+            weapon_par_cure = {
+                name = "Remède contre les parasites"
+            },
+            custom_pewgun = {
+                name = "Pistolet de Banc",
+                desc = [[Le pistolet PEW
+            Tire des lasers bleus flamboyants
+            Fait un son PEW sympa]]
+            },
+            ttt_perk_phd = {
+                name = "Flopper de Doctorat",
+            },
+            weapon_ttt_pickle_rick_gun = {
+                name = "Pickle Rick Pistolet",
+                desc = [[Tirez sur quelqu'un pour le transformer en cornichon
+            et réglez-les sur 1 santé
+            
+            Faites un clic droit pour vous transformer!]]
+            },
+            weapon_teleport_gun_t = {
+                name = "Pistolet d'échange de joueur",
+                desc = [[Un pistolet de téléportation !
+            Tirez pour changer de place avec un joueur.
+            Ne fonctionne que si vous êtes au sol et
+            si vous et votre cible n'êtes pas accroupis.]]
+            },
+            weapon_rp_pocket = {
+                name = "Fusil de Poche",
+            },
+            weapon_ttt_popupgun = {
+                name = "Pistolet Contextuel",
+                desc = [[SMG à tir rapide. Frapper quelqu'un ouvrira une fenêtre contextuelle sur son écran.]]
+            },
+            weapon_portalgun = {
+                name = "Pistolet à Portail",
+                desc = [[Clic gauche pour tirer un trou bleu dans un mur/sol, clic droit pour tirer un trou orange.
+
+            Tout ce qui passe par un trou ressort par l'autre.]]
+            },
+            weapon_possessed_melon_launcher = {
+                name = "PossMelLancement",
+                desc = [[Tirez sur des fragments à tête chercheuse avec une attaque principale
+            et possédait des melons avec attaque secondaire]]
+            },
+            weapon_prop_blaster = {
+                name = "Blaster à Accessoires",
+                desc = [[Fait exploser des accessoires aléatoires dans des directions aléatoires]]
+            },
+            weapon_ttt_prop_disguiser = {
+                name = "Déguisement D'accessoires",
+                desc = [[Déguisez-vous en objet !
+
+            R: Sélectionnez un objet que vous regardez
+            
+            Clic gauche: activer le déguisement]]
+            },
+            weapon_ttt_prop_hunt_gun = {
+                name = "Déguisement d'accessoires",
+                desc = [[Faites un clic gauche pour vous cacher comme un tonneau!
+
+            Montez jusqu'à un accessoire et appuyez sur "E" pour y changer votre déguisement]]
+            },
+            weapon_ttt_propexploder = {
+                name = "Exploseur D'accessoires",
+                desc = [[Le PE fera exploser tous les accessoires que vous voulez!
+            Cela ressemble à un Magnet-O-Stick!
+            Faites un clic gauche sur un accessoire, puis cliquez avec le bouton droit pour exploser !.]]
+            },
+            tfa_tracer_nope = {
+                name = "Pistolets à Impulsions"
+            },
+            weapon_ttt_pump = {
+                name = "Fusil à Pompe",
+            },
+            pusher_swep = {
+                name = "Poussoir",
+                desc = [[Devenez le pousseur de Bristol
+            Clic gauche pour pousser
+            Faites un clic droit pour narguer vos victimes]]
+            },
+            weapon_pp_rbull = {
+                name = "Taureau Furieux",
+            },
+            weapon_m9k_ragingbull = {
+                name = "Taureau Furieux",
+            },
+            weapon_m9k_scoped_taurus = {
+                name = "Porté Taureau Furieux",
+            },
+            weapon_randomlauncher = {
+                name = "Lanceur Aléatoire",
+                desc = [[Lance un objet aléatoire qui inflige beaucoup de dégâts, tuant généralement instantanément.]]
+            },
+            weapon_ttt_randomat = {
+                name = "Appareil aléatoire 4000",
+                desc = [[Le RAppareil aléatoire 4000 fera quelque chose de aléatoire!
+            Qui a deviné ça !]]
+            },
+            tfa_raygun = {
+                name = "Pistolet à Rayons",
+                desc = [[Tirez avec des lasers à dégâts élevés!
+
+            Ne tirez pas trop près, sinon vous vous blesserez.]]
+            },
+            tfa_raygun_mark2 = {
+                name = "Pistolet à Rayons Mark Deux",
+                desc = [[Tire une rafale de lasers à dégâts élevés]]
+            },
+            weapon_ttt_titanfall_autopistol = {
+                name = "Pistolet Automatique RE-45"
+            },
+            weapon_ttt_rmgrenade = {
+                name = "Bombe de Matière Rouge",
+                desc = [[Une grenade en forme de cube qui génère un trou noir!
+
+            Quiconque est trop proche est aspiré!
+            
+            Sonne une alarme avant que le trou noir n'apparaisse.]]
+            },
+            weapon_ttt_mc_jumppotion = {
+                name = "Potion de Fusée",
+            },
+            weapon_ttt_rocket_thruster = {
+                name = "Propulseur de Fusée",
+                desc = [[Lance L'utilisateur à L'envers.]]
+            },
+            weapon_gue_guesser = {
+                name = "Devineur de Rôle",
+            },
+            weapon_ttt_rollermine = {
+                name = "Mine à Rouleaux",
+                desc = [[Les Rollermines poursuivront les joueurs,
+            faire des dégâts de choc.
+            
+            Assurez-vous de prévenir vos coéquipiers...]]
+            },
+            rotgun = {
+                name = "Pistolet Rotatif",
+                desc = [[Tirer sur quelqu'un avec ça le retourne.]]
+            },
+            weapon_ttt_rsb = {
+                name = "BCD",
+                desc = [[Une bombe collante à distance. "Bombe vivante"]]
+            },
+            weapon_ttt_rsb_defuser = {
+                name = "Désamorceur BCD",
+                desc = [[Un diffuseur pour la Remote Sticky Bomb]]
+            },
+            weapon_m9k_model3russian = {
+                name = "Modèle S&W 3",
+            },
+            weapon_m9k_model627 = {
+                name = "Modèle S&W 627",
+            },
+            ttt_sahmin_gun = {
+                name = "Pistolet Sahmin",
+                desc = [[La première arme blague que vous achetez une cartouche est gratuite!
+
+            Sahmin Sahmin Sahmin Sahmin Sahmin Sahmin Sahmin Sahmin Sahmin Sahmin Sahmin Sahmin Sahmin Sahmin Sahmin Sahmin Sahmin Sahmin Sahmin Sahmin Sahmin Sahmin Sahmin Sahmin Sahmin Sahmin Sahmin Sahmin Sahmin Sahmin Sahmin Sahmin Sahmin Sahmin Sahmin Sahmin Sahmin Sahmin Sahmin Sahmin Sahmin Sahmin Sahmin Sahmin Sahmin Sahmin Sahmin Sahmin Sahmin Sahmin Sahmin Sahmin Sahmin Sahmin Sahmin Sahmin Sahmin Sahmin Sahmin Sahmin Sahmin]]
+            },
+            weapon_inf_scanner = {
+                name = "Scanner",
+            },
+            weapon_m9k_scar = {
+                name = "CICATRICE-H",
+            },
+            weapon_scattergun = {
+                name = "Fusil à Dispersion",
+            },
+            tfa_scavenger = {
+                name = "Charognard",
+                desc = [[Un fusil de sniper qui tire un explosif à retardement qui explose après quelques secondes.
+
+            L'explosif colle aux joueurs.]]
+            },
+            weapon_ttt_cloak_randomat = {
+                name = "Cape D'ombre",
+            },
+            weapon_shark_idol = {
+                name = "Idole de Requin",
+                desc = [[Arme de mêlée qui sacrifiera sa vie
+            gardez le vôtre s'il en est équipé
+            
+            Deviendra un projectile après activation]]
+            },
+            weapon_shark_trap = {
+                name = "Piège à Requin",
+                desc = [[Un piège à poser au sol.
+            Peut être ramassé avec un bâton magnéto...]]
+            },
+            weapon_ttt_shocktrap = {
+                name = "Piège à Choc",
+                desc = [[template]]
+            },
+            weapon_shovel = {
+                name = "Pelle",
+            },
+            weapon_ttt_awp = {
+                name = "AWP Silencieux",
+                desc = [[Fusil de précision AWP silencieux.
+
+            Il n'a qu'un seul coup.
+            
+            Les victimes ne crieront pas lorsqu'elles seront tuées.]]
+            },
+            weapon_ttt_m4a1_s = {
+                name = "M4A1 Réduit au Silence",
+                desc = [[Un fusil automatique silencieux. Les victimes meurent en silence.]]
+            },
+            weapon_ttt_tmp_s = {
+                name = "Renard Silencieux",
+                desc = [[SMG à faible bruit qui utilise des munitions normales de 9 mm.
+
+            Les victimes ne crieront pas lorsqu'elles seront tuées.]]
+            },
+            weapon_ttt_slam = {
+                name = "CLAQUER",
+                desc = [[Allez et claque!]]
+            },
+            tfa_sliquifier = {
+                name = "Slicificateur",
+                desc = [[Tire des boules de slime qui tuent instantanément!
+
+            Si vous touchez quelqu'un ou le sol, cela laisse une flaque de bave glissante.]]
+            },
+            weapon_ttt_timeslowgrenade = {
+                name = "Grenade au ralenti",
+                desc = [[Grenade qui ralentit temporairement
+            temps d'arrêt pour tout le monde
+            toute la carte.]]
+            },
+            weapon_ttt_paper_plane = {
+                name = "Avion escargot",
+                desc = [[Vole sans but jusqu'à ce qu'il trouve un joueur à proximité ne faisant pas partie de votre équipe, puis le poursuit!
+
+            Le joueur entend de la musique une fois poursuivi et est tué au toucher.]]
+            },
+            ttt_combine_sniper_summoner = {
+                name = "Invocateur de tireur d'élite",
+                desc = [[Invoque un tireur d'élite qui tuera tous ceux qui se trouvent devant lui!
+
+            Fait face à la direction dans laquelle vous regardez.
+            
+            Ciblez sur le dessus d'une surface plane.]]
+            },
+            weapon_ttt_smg_soulbinding = {
+                name = "Dispositif de Lien D'âme",
+            },
+            weapon_slazer_new = {
+                name = "Laser Spartiate",
+                desc = [[Maintenez le clic gauche pour tirer avec ce canon laser MASSIF!
+
+            Provoque une puissante explosion]]
+            },
+            ttt_perk_speedcola = {
+                name = "Cola Rapide",
+            },
+            weapon_ttt_mc_speedpotion = {
+                name = "Potion de Vitesse",
+            },
+            speedgun = {
+                name = "Fusil Rapide",
+                desc = [[Une arme qui les rend plus rapides, pour toujours.
+            (Jusqu'à la fin du tour)]]
+            },
+            weapon_ttt_whoa_randomat = {
+                name = "Attaque Tournante",
+                desc = [[Cliquez pour lancer une attaque.]]
+            },
+            weapon_spn_spongifier = {
+                name = "Spongifiant",
+            },
+            weapon_spraymhs = {
+                name = "Aérosol",
+                desc = [[La 1ère arme blague que vous achetez est gratuite !
+
+            Faites un clic droit pour changer de couleur.]]
+            },
+            weapon_m9k_vikhr = {
+                name = "SR-3M Vikhr",
+            },
+            tfa_staff_lightning = {
+                name = "Bâton de Foudre",
+                desc = [[Tire rapidement des boules de plasma!
+
+            Les projectiles ne sont pas un hitscan et mettent du temps à voyager dans les airs.]]
+            },
+            tfa_staff_wind = {
+                name = "Bâton du Vent",
+                desc = [[Tire des explosions aériennes à courte portée et causant de gros dégâts!]]
+            },
+            ttt_perk_staminup = {
+                name = "Endurance",
+            },
+            weapon_stenmk3 = {
+                name = "Sten Mark Trois",
+            },
+            weapon_m9k_auga3 = {
+                name = "Steyr AOÛT A3",
+            },
+            weapon_m9k_striker12 = {
+                name = "Attaquant 12",
+            },
+            weapon_sp_striker = {
+                name = "Attaquant 12",
+            },
+            stungun = {
+                name = "Pistolet Paralysant",
+                desc = [[Stungun utilisé pour paralyser les ennemis en les rendant
+            incapable de parler et de bouger pendant quelques secondes.
+            Il a 3 charges.
+            
+            Créé par: Donkie]]
+            },
+            weapon_ttt_suicide = {
+                name = "Bombe suicide",
+                desc = [[Sortez en hurlant !
+
+            Tue l'utilisateur et les terroristes environnants.]]
+            },
+            tfa_doom_ssg = {
+                name = "Super Fusil de Chasse",
+                desc = [[Le super fusil de chasse de DOOM.]]
+            },
+            weapon_ttt_supersheep = {
+                name = "Super Mouton",
+                desc = [[Laissez voler un mouton volant explosif!
+
+            Votre caméra le suit pendant que vous restez immobile.
+            
+            Dirigez-le avec votre souris, entrez en collision avec quelque chose pour exploser et appuyez sur 'R' pour augmenter la vitesse.]]
+            },
+            surprisesoldiers = {
+                name = "Soldats Surprises",
+                desc = [[Générez un soldat combiné aléatoire là où vous tirez!]]
+            },
+            weapon_syringegun = {
+                name = "Pistolet à Seringue",
+            },
+            weapon_taser_derens = {
+                name = "Pistolet Paralysant",
+                desc = [[Doit être à courte portée pour l'instakill. Usage unique.]]
+            },
+            weapon_tax_kit = {
+                name = "Kit de Taxidermie",
+                desc = [[Ressuscite un innocent en traître.]]
+            },
+            weapon_tf2pistol = {
+                name = "Pistolet TF2",
+            },
+            weapon_tf2revolver = {
+                name = "Revolver TF2",
+            },
+            weapon_tf2shotgun = {
+                name = "Fusil à Pompe TF2",
+            },
+            weapon_tf2smg = {
+                name = "Pistolet-Mitrailleur TF2",
+            },
+            weapon_sniper = {
+                name = "Tireur D'élite TF2",
+            },
+            tfa_shrinkray = {
+                name = "Le Créateur de Bébé",
+                desc = [[Tire un orbe qui rétrécit tous ceux qu'il touche!
+            Cela les réduit à 1 point de vie.
+            
+            Marcher sur quelqu'un alors qu'il est rétréci le tue.]]
+            },
+            tfa_jetgun = {
+                name = "Le Pistolet à Réaction",
+                desc = [[Aspire les gens et les tue instantanément.
+
+            Surchauffe et explose s'il est utilisé trop longtemps sans refroidir.]]
+            },
+            the_xmas_gun = {
+                name = "Le Pistolet de Noël",
+                desc = [[Tirez des cadeaux qui tuent d'un seul coup]]
+            },
+            weapon_ttt_knife_randomat = {
+                name = "Couteau de lancer"
+            },
+            tfa_thundergun = {
+                name = "Fusil-Tonnerre",
+                desc = [[Tire une explosion aérienne massive qui envoie voler toute personne se trouvant à courte distance!]]
+            },
+            weapons_ttt_time_manipulator = {
+                name = "Manipulateur de Temps",
+                desc = [[Clic gauche: Ralentir le temps.
+
+            Clic droit: accélérer le temps.
+            
+            R: Réinitialisation à la vitesse normale.]]
+            },
+            weapon_ttt_timestop = {
+                name = "Arrêt du Temps",
+                desc = [[Gèle le temps pendant quelques secondes.
+            Vous pouvez en tuer d'autres pendant qu'ils sont gelés.
+            
+            N'affecte pas les détectives!]]
+            },
+            weapon_m9k_thompson = {
+                name = "Mitraillette",
+            },
+            weapon_ttt_bike = {
+                name = "Vélo de Traître",
+                desc = [[Lancez un vélo sur quelqu'un.
+
+            Fais-le, espèce de merde.]]
+            },
+            weapon_ttt_impostor_knife_randomat = {
+                name = "Couteau de tueur de Traître"
+            },
+            weapon_ttt_turret = {
+                name = "Tourelle",
+                desc = [[Générez une tourelle pour tirer sur des ennemis innocents]]
+            },
+            weapon_ttt_turtlenade = {
+                name = "Grenade Tortue",
+                desc = [[Grenade à tortue.
+            Libère plusieurs tortues hostiles lors de la détonation.]]
+            },
+            weapon_unoreverse = {
+                name = "ONU inversé",
+                desc = [[Lors de l'activation, renvoie TOUS LES DOMMAGES à l'attaquant!
+
+            Dure 3 secondes.]]
+            },
+            weapon_m9k_usas = {
+                name = "États-Unis",
+            },
+            weapon_ap_vector = {
+                name = "Vecteur",
+            },
+            swep_rifle_viper = {
+                name = "Fusil Vipère",
+            },
+            weapon_ttt_wpnjammer = {
+                name = "Brouilleur d'armes",
+                desc = [[Désactivez complètement l'arme équipée de quelqu'un.
+
+            Pour l'utiliser, appuyez sur 'E' sur une cible tout en sélectionnant n'importe quelle arme.]]
+            },
+            ttt_weeping_angel = {
+                name = "Ange Pleurant",
+                desc = [[Tirez sur quelqu'un pour qu'une statue "Weeping Angel" le suive.
+
+            Pendant qu'ils ne la regardent pas, la statue de l'ange se rapproche d'eux.
+            
+            Si la statue les touche, ils meurent.]]
+            },
+            tfa_wintershowl = {
+                name = "Le Hurlement de L'hiver",
+                desc = [[Tire un souffle d'air froid à courte portée qui gèle les gens et les tue après quelques secondes.]]
+            },
+            weapon_wrench = {
+                name = "Clé",
+            },
+            wt_writingpad = {
+                name = "Bloc-notes",
+                desc = [[La première arme blague que vous achetez une cartouche est gratuite!
+
+            Créez un message sur une pancarte que vous tenez, pour que tout le monde puisse le lire.
+             
+            Quelle meilleure utilisation de votre crédit ?
+             
+            R-Modifier
+            Clic gauche - Afficher le signe]]
+            },
+            tfa_wunderwaffe = {
+                name = "Wunderwaffe DG-2",
+                desc = [[Fusil éclair puissant qui tue en 1 seul coup !
+
+            Vous tuera également si vous tirez trop près!]]
+            },
+            weapon_ttt_zapgren = {
+                name = "Grenade Zap",
+                desc = [[Une grenade hautement explosive.
+
+            Prudent! Il peut exploser dans votre main si vous
+            faites-le cuire trop longtemps !]]
+            },
+            tfa_wavegun = {
+                name = "Pistolets Zap",
+                desc = [[Pistolets laser à double usage.
+            Appuyez sur le clic gauche ou droit pour tirer!]]
+            },
+            zombiegunspawn = {
+                name = "Pistolet zombie",
+                desc = [[Placez 15 Zombies autour de vos ennemis et profitez du désastre!]]
+            },
+            weapon_mad_zombificator = {
+                name = "Dispositif de Zombification",
+                desc = [[Transforme les joueurs morts en zombies.]]
             }
         }
 
@@ -1865,10 +2260,10 @@ if CLIENT then
 
                 if SWEP.EquipMenuData and SWEP.EquipMenuData.type then
                     SWEP.EquipMenuData.origType = SWEP.EquipMenuData.type
-                    SWEP.EquipMenuData.type = translatedWeapons[classname].type
+                    SWEP.EquipMenuData.type = translatedWeapons[classname].type or "item_weapon"
                 end
 
-                if SWEP.EquipMenuData and SWEP.EquipMenuData.desc then
+                if SWEP.EquipMenuData and SWEP.EquipMenuData.desc and translatedWeapons[classname].desc then
                     SWEP.EquipMenuData.origDesc = SWEP.EquipMenuData.desc
                     SWEP.EquipMenuData.desc = translatedWeapons[classname].desc
                 end

@@ -15,6 +15,9 @@ L.independent = "Indépendant"
 L.independents = "Indépendants"
 L.innocent = "Innocente"
 L.innocents = "Innocentes"
+L.detective = "Détective"
+L.detectives = "Détectives"
+L.shoprole = "Rôle de la boutique"
 --- Round status messages
 L.round_minplayers = "Pas assez de joueurs pour commencer un nouveau round..."
 L.round_voting = "Vote en cours, le round est retardé de {num} secondes..."
@@ -30,17 +33,20 @@ L.limit_time = "Limite de temps atteinte. {mapname} va bientôt charger."
 L.win_traitor = "Les Traitres ont gagné !"
 L.win_innocent = "Les Traitres ont été battus !"
 L.win_monster = "Les Monstres ont gagné !"
+L.win_draw = "Le temps est écoulé ! C'est un match nul!"
 L.limit_round = "Limite de round atteinte. {mapname} va bientôt charger."
 L.limit_time = "Limite de temps atteinte. {mapname} va bientôt charger."
 L.limit_left = "Il reste {num} round(s) ou {time} minutes avant que la carte change vers {mapname}."
 --- Credit awards
 L.credit_all = "{role}, vous avez reçu {num} crédit(s) d'équipement pour votre performance."
+L.credit_search = "{role}, vous avez reçu {num} crédits d'équipement parce que {source} a fouillé un corps."
 L.credit_kill = "Vous avez reçu {num} crédit(s) pour avoir tué un {role}."
 --- Karma
 L.karma_dmg_full = "Votre Karma est à {amount}, donc vous ferez plein dégâts ce round !"
 L.karma_dmg_other = "Votre Karma est à {amount}. De ce fait tous les dégâts que vous faites seront réduits de {num}%"
 --- Body identification messages
 L.body_found = "{finder} à trouvé le corps de {victim}. {role}"
+L.body_found_updated = "{finder} a découvert plus d'informations sur {victim}. Ils étaient {role}"
 L.body_confirm = "{finder} a confirmé la mort de {victim}."
 L.body_call = "{player} a appelé un Détective pour le corps de {victim} !"
 L.body_call_error = "Vous devez confirmer la mort de ce joueur avant d'appeler un Détective !"
@@ -136,6 +142,8 @@ L.search_title = "Résultats de la fouille"
 L.search_info = "les renseignements"
 L.search_confirm = "Confirmer la mort"
 L.search_call = "Appeler {role}"
+L.search_sample = "Prendre un échantillon d'ADN"
+L.search_scan_open = "Scanner d'ADN ouvert"
 -- Descriptions of pieces of information found
 L.search_nick = "C'est le corps de {player}."
 L.search_role = "C'était un {role}."
@@ -169,6 +177,7 @@ L.sb_playing = "Vous jouez à {map} avec {version} sur..."
 L.sb_mapchange = "On change de carte dans {num} round(s) ou dans {time}"
 L.sb_mia = "Sans nouvelles"
 L.sb_confirmed = "Confirmés Morts"
+L.sb_investigated = "Enquête"
 L.sb_ping = "Ping"
 L.sb_deaths = "Morts"
 L.sb_score = "Score"
@@ -187,6 +196,8 @@ L.help_tut_tip = "Comment fonctionne le TTT, en quelques étapes"
 L.help_tut_find_role = "Trouver mon rôle"
 L.help_settings = "Options"
 L.help_settings_tip = "Options client"
+L.help_roles = "Les rôles"
+L.help_roles_tip = "Configuration des rôles côté client"
 -- Settings
 L.set_title_gui = "Options d'interface"
 L.set_tips = "Montrer des astuces en bas de l'écran pendant que vous êtes spectateurs"
@@ -207,6 +218,8 @@ L.set_wswitch_tip = "Par défaut les menu des armes ferme automatiquement après
 L.set_swselect = "Fermer le menu lorsque l'arme est sélectionnée"
 L.set_swselect_tip = "Par défaut, le sélecteur d'arme se ferme lorsqu'une arme est sélectionnée. Désactivez-le pour qu'il reste actif. Ignoré lorsque la commutation rapide est activée."
 L.set_cues = "Émettre un son quand un round commence ou finit"
+L.set_msg_cue = "Jouer un signal sonore lorsqu'une notification apparaît"
+L.set_msg_cue_tip = "S'il faut émettre un son chaque fois qu'un message contextuel apparaît (des messages contextuels apparaissent dans le coin supérieur droit lorsque les tours commencent/finissent et lorsque des corps sont trouvés/recherchés)"
 L.set_raw_karma = "Afficher la valeur du karma brut"
 L.set_raw_karma_tip = "Affiche la valeur brute du karma dans le tableau de bord au lieu du pourcentage de dégâts infligés par chaque joueur"
 L.set_karma_total_pct = "Afficher le karma en pourcentage du total"
@@ -218,6 +231,10 @@ L.set_hide_ammo = "Cachez vos munitions d'armes dans le HUD"
 L.set_hide_ammo_tip = "Par défaut, les munitions de votre arme apparaîtront en bas à gauche du HUD. Activez cette option si vous avez un autre module complémentaire qui le fait pour vous."
 L.set_radio_button = "Bouton de menu radio"
 L.set_radio_button_tip = "Sur quel bouton appuyer pour ouvrir/fermer le menu radio"
+L.set_bypass_culling = "Contourner l'élimination de la carte"
+L.set_bypass_culling_tip = "S'il faut contourner les feuilles de vis et sélectionner les cartes pour les icônes des joueurs et les mettre en surbrillance. Désactivez-le pour des raisons de performances si vous ne vous souciez pas des icônes et de la mise en évidence parfois des joueurs en retard."
+L.set_distance_unit = "Unité de distance"
+L.set_distance_unit_tip = "Quelle unité de distance afficher. Utilisé pour des choses comme le radar"
 L.set_title_play = "Options de gameplay"
 L.set_specmode = "Mode spectateur uniquement (toujours rester spectateur)"
 L.set_specmode_tip = "Mode spectateur uniquement vous empêche de réapparaître quand une nouvelle partie commence, à la place vous resterez spectateur."
@@ -332,6 +349,7 @@ distinct.]]
 -- Health station
 L.hstation_name = "Station de Soins"
 L.hstation_hint = "Appuyez sur {usekey} pour recevoir des soins. Charge : {num}."
+L.hstation_hint_reduce = "Appuyez sur {usekey} pour réduire la santé maximale. Frais: {num}."
 L.hstation_broken = "Votre Station de Soins a été détruite !"
 L.hstation_help = "{primaryfire} place la Station de Soins."
 L.hstation_desc = [[
@@ -484,10 +502,17 @@ L.karma_low = "Dangereux"
 L.karma_min = "Irresponsable"
 -- TargetID misc
 L.corpse = "Corps"
-L.corpse_hint = "Appuyez sur {usekey} pour fouiller. {walkkey} + {usekey} pour une fouille approfondie."
+L.corpse_hint = "Appuyez sur {usekey} pour effectuer une recherche."
+L.corpse_hint_covert = "PAppuyez sur {usekey} pour effectuer une recherche. Appuyez sur {walkkey}+{usekey} pour effectuer une recherche secrète."
+L.corpse_hint_possess = "Appuyez sur {usekey} pour posséder ce cadavre."
+L.corpse_hint_search_possess = "Appuyez sur {usekey} pour effectuer une recherche. Appuyez sur {walkkey}+{usekey} pour posséder ce cadavre."
+L.corpse_hint_call = "Appuyez sur {utiliser la touche} pour appeler {un détective}."
 L.target_disg = "(DÉGUISÉ)"
 L.target_unid = "Corps non-identifié"
 L.target_credits = "Fouiller pour récupérer crédit non dépensés"
+L.target_unknown_team = "INCONNU {targettype}"
+L.target_unconfirmed_role = "NON CONFIRMÉ {targettype}"
+L.target_not_role = "NON-{targettype}"
 -- Traitor buttons (HUD buttons with hand icons that only traitors can see)
 L.tbut_single = "Usage unique"
 L.tbut_reuse = "Réutilisable"
@@ -621,6 +646,7 @@ L.col_kills2 = "Meurtres {traitor}"
 L.col_kills3 = "Meurtres {jester}"
 L.col_kills4 = "Meurtres Indep."
 L.col_kills5 = "Meurtres Monstre"
+L.col_totalkills = "Nombre total de victimes"
 L.col_points = "Points"
 L.col_team = "Bonus d'équipe"
 L.col_total = "Points totaux"
@@ -668,6 +694,7 @@ L.ev_win_traitor = "L'ignoble {role} a remporté la manche!"
 L.ev_win_inno = "L'adorable {role} a remporté la manche!"
 L.ev_win_monster = "Les monstres maléfiques ont gagné la manche!"
 L.ev_win_time = "Le {role} a manqué de temps et a été perdu!"
+L.ev_win_draw = "Le temps s'est écoulé, ce qui a donné lieu à un match nul!"
 L.ev_win_icon = "{role} a gagné"
 L.ev_win_icon_time = "Limite de temps"
 L.ev_win_icon_also = "{role} a également gagné"
@@ -691,8 +718,10 @@ L.aw_fst4_title = "Premier Coup"
 L.aw_fst4_text = "a envoyé le premier (bon) coup pour les terroristes innocents en abattant en premier un traitre."
 L.aw_all1_title = "Le Plus Mortel Parmi Ses Pairs"
 L.aw_all1_text = "est responsable de tous les meurtres des innocents ce round."
-L.aw_all2_title = "Loup Solitaire"
-L.aw_all2_text = "est responsable de tous les meurtres des traitres ce round."
+L.aw_all2_title = "Loup solitaire"
+L.aw_all2_text = "était responsable du meurtre de tous les {innocent} ce tour-ci."
+L.aw_all3_title = "Van Helsing"
+L.aw_all3_text = "était responsable de chaque {monster} tué ce tour."
 L.aw_nkt1_title = "J'en Ai Eu Un, Patron !"
 L.aw_nkt1_text = "a réussi à tuer un seul innocent. Sympa !"
 L.aw_nkt2_title = "Une Balle Pour Deux"
@@ -851,223 +880,869 @@ L.roleweapons_option_exclude = "Exclure"
 L.roleweapons_option_exclude_tooltip = "Marquez cette arme comme explicitement NON achetable"
 L.roleweapons_option_norandom = "Non aléatoire"
 L.roleweapons_option_norandom_tooltip = "Assurez-vous que cette arme reste dans la boutique, quelle que soit la randomisation"
+L.roleweapons_option_loadout = "Chargement"
+L.roleweapons_option_loadout_tooltip = "Ajoutez-le à l'équipement du rôle, en leur donnant gratuitement à chaque tour"
 L.roleweapons_select_searchrole = "-Rôle de recherche-"
 L.roleweapons_select_searchrole_tooltip = "Dans quel magasin de rôle rechercher"
 L.roleweapons_select_saverole = "-Enregistrer le rôle-"
 L.roleweapons_select_saverole_tooltip = "Quelle boutique de rôles affecter par ces changements de configuration"
--- Custom Roles sneaky in-built translations
+L.roleweapons_commandtitle = "Commandes"
+L.roleweapons_commandtitle_tooltip = "Exécutez des commandes pour aider à gérer les configurations d'armes de rôle"
+L.roleweapons_command_print = "Configurations d'impression"
+L.roleweapons_command_print_desc = "Imprimez la configuration actuelle dans la console du serveur, en mettant en évidence tout ce qui n'est pas valide."
+L.roleweapons_command_clean = "Nettoyer les configurations invalides"
+L.roleweapons_command_clean_desc = "Supprime toutes les configurations non valides. AVERTISSEMENT: Ceci NE PEUT PAS être annulé!"
+L.roleweapons_command_reload = "Recharger les configurations"
+L.roleweapons_command_reload_desc = "Recharge les configurations depuis le système de fichiers du serveur."
+L.roleweapons_buyable_tooltip = "Achetable"
+L.roleweapons_exclude_tooltip = "Exclue"
+L.roleweapons_norandom_tooltip = "Randomisation contournée"
+L.roleweapons_loadout_tooltip = "En chargement"
+-- Role Packs Configuration
+L.rolepacks_title = "Configuration des packs de rôles"
+L.rolepacks_role_tabtitle = "Les rôles"
+L.rolepacks_role_tabtitle_tooltip = "Configurer les rôles qui apparaissent dans chaque pack de rôles"
+L.rolepacks_roleblock_tabtitle = "Blocs de rôle"
+L.rolepacks_roleblock_tabtitle_tooltip = "Configurer les blocs de rôles en vigueur dans chaque pack de rôles"
+L.rolepacks_weapon_tabtitle = "Armes"
+L.rolepacks_weapon_tabtitle_tooltip = "Configurez quelles armes peuvent être achetées dans chaque pack de rôle"
+L.rolepacks_convar_tabtitle = "Variables de la console"
+L.rolepacks_convar_tabtitle_tooltip = "Configurer les variables de la console qui sont modifiés dans chaque pack de rôles"
+L.rolepacks_add = "Ajouter"
+L.rolepacks_rename = "Renommer"
+L.rolepacks_delete = "Supprimer"
+L.rolepacks_save = "Sauvegarder"
+L.rolepacks_apply = "Appliquer au serveur"
+L.rolepacks_clear = "Désactiver le pack de rôles actifs"
+L.rolepacks_add_role = "Ajouter un rôle"
+L.rolepacks_delete_role = "Supprimer le rôle"
+L.rolepacks_add_slot = "Ajouter un emplacement"
+L.rolepacks_delete_slot = "Supprimer l'emplacement"
+L.rolepacks_use_default = "L'utilisation par défaut"
+-- Role Blocks Configuration
+L.roleblocks_title = "Configuration des blocs de rôles"
+L.roleblocks_add_group = "Ajouter un groupe"
+L.roleblocks_delete_group = "Supprimer le groupe"
+-- Player name disguising
+L.player_name_disguised = "{name} (déguisé en {disguise})"
+-- CUSTOM ROLES NON-LANGUAGE FILE TRANSLATIONS --
+-- Quartermaster crate
+L.qmr_crate_name = "Caisse d'armes"
+L.qmr_crate_hint = "Appuyez sur '{usekey}' pour recevoir l'article"
+-- Death radar
+L.item_death_radar = "Radar de la mort"
+L.item_death_radar_desc = [[Vous permet de rechercher des cadavres.
+
+Démarre les analyses automatiques dès que vous
+Achète-le. Configurez-le dans l'onglet Death Radar
+de ce menu.]]
+L.equip_tooltip_deathradar = "Contrôle du radar de la mort"
+L.deathradar_name = "Radar de la mort"
+L.deathradar_menutitle = "Contrôle du radar de la mort"
+L.deathradar_not_owned = "Vous ne portez pas de radar de la mort!"
+L.deathradar_scan = "Effectuer une analyse"
+L.deathradar_auto = "Analyse à répétition automatique"
+L.deathradar_help = "Les résultats de l'analyse s'affichent pendant {num} secondes, après quoi le Death Radar se sera rechargé et pourra être à nouveau utilisé."
+L.deathradar_charging = "Votre Death Radar est toujours en charge!"
+L.deathradar_hud = "Death Radar est prêt pour la prochaine analyse dans: {time}"
+-- Tracker radar
+L.item_track_radar = "Radar de suivi"
+L.item_track_radar_desc = [[Vous permet de rechercher tous les joueurs, vivants et morts.
+
+La couleur de l'icône de numérisation correspondra à celle
+couleur de l'empreinte du joueur.
+
+Démarre les analyses automatiques dès que vous
+Achète-le. Configurez-le dans le radar de suivi
+onglet de ce menu.]]
+L.equip_tooltip_trackradar = "Contrôle du radar de suivi"
+L.trackradar_name = "Radar de suivi"
+L.trackradar_menutitle = "Contrôle du radar de suivi"
+L.trackradar_not_owned = "Vous ne transportez pas de radar de suivi!"
+L.trackradar_scan = "Effectuer une analyse"
+L.trackradar_auto = "Analyse à répétition automatique"
+L.trackradar_help = "Les résultats de l'analyse s'affichent pendant {num} secondes, après quoi le radar de suivi se sera rechargé et pourra être à nouveau utilisé."
+L.trackradar_charging = "Votre radar de suivi est toujours en charge!"
+L.trackradar_hud = "Radar de suivi prêt pour la prochaine analyse dans: {time}"
+-- Death notifications
+L.deathnotify_suicide = "Tu t'es suicidé!"
+L.deathnotify_burned = "Vous êtes mort brûlé vif!"
+L.deathnotify_prop = "Vous avez été tué par un accessoire!"
+L.deathnotify_ply_start = "Tu as été tué par "
+L.deathnotify_ply_mid = ", ils étaient "
+L.deathnotify_ply_end = "!"
+L.deathnotify_fell = "Vous êtes tombé à mort!"
+L.deathnotify_water = "Tu t'es noyé!"
+L.deathnotify_nil = "Tu es mort!"
+-- Buy menu F1 menu options
+L.set_title_equipment = "Paramètres de l'équipement/magasin"
+L.set_label_equipment = "Toutes les modifications apportées ici sont côté client et ne s'appliqueront qu'à votre propre menu!"
+L.set_equipment_convar_slot = "Afficher le marqueur d'emplacement"
+L.set_equipment_convar_custom = "Afficher le marqueur d'élément personnalisé"
+L.set_equipment_convar_fav = "Afficher le marqueur d'élément favori"
+L.set_equipment_convar_loadout = "Afficher les éléments de chargement"
+L.set_equipment_convar_alpha = "Trier par ordre alphabétique"
+L.set_equipment_convar_sort_by_slot = "Trier d'abord par emplacement"
+-- Hitmarkers F1 options
+L.set_title_hitmarkers = "Paramètres des marqueurs de réussite"
+L.set_label_hitmarkers = [[Toutes les modifications apportées ici sont côté client et ne s'appliqueront qu'à votre propre menu!
+Utilisez la commande !hmcolor dans le chat pour modifier les couleurs des marqueurs.
+Utilisez la commande !hmcritcolor dans le chat pour changer la couleur des marqueurs de coups critiques.
+Utilisez la commande !hmimmunecolor dans le chat pour changer la couleur des marqueurs d'attaque immunitaire.
+Utilisez la commande !hmjestercolor dans le chat pour changer la couleur des marqueurs de frappe des bouffons.]]
+L.set_hitmarkers_convar_enabled = "Activé"
+L.set_hitmarkers_convar_showcrits = "Afficher les coups critiques"
+L.set_hitmarkers_convar_showimmune = "Mettre en évidence les coups sur la cible immunitaire"
+L.set_hitmarkers_convar_showjester = "Mettez en surbrillance les hits sur les bouffons qui veulent mourir"
+L.set_hitmarkers_convar_hitsound = "Jouer le son du coup"
+L.set_hitmarkers_convar_hitimmunesound = "Jouer du son lorsque vous frappez des cibles immunitaires"
+L.set_hitmarkers_convar_hitjestersound = "Jouez du son lorsque vous frappez des bouffons qui veulent mourir"
+-- ROLES START HERE --
+-- Arsonist
+L.arsonistigniter_help_pri = "Appuyez sur {primaryfire} pour enflammer les joueurs éteints."
+L.arsonistigniter_help_sec = "Ne peut être utilisé qu'une seule fois"
+L.arsonist_body_doused = "Ils ont été aspergés il y a {time} par {anarsonist}!"
+L.ev_arsonignite = "Tout le monde a été enflammé par le {arsonist}"
+L.win_arsonist = "Le {role} a brûlé tout le monde!"
+L.ev_win_arsonist = "Le {role} flamboyant a remporté la manche!"
+L.arsdouse_dousing = "ARROSAGE {target}"
+L.arsdouse_dousing_corpse = "ASPERSION DU CADAVRE de {target}"
+L.arsdouse_doused = "ARROSÉ"
+L.arsdouse_failed = "ÉCHEC DE L'ARROSAGE"
+L.arsonist_hud = "Arrosage terminé. Allumeur actif."
+L.info_popup_arsonist = [[Vous êtes {role}! Rapprochez-vous des autres joueurs
+pour les arroser d'essence.
+
+Une fois que chaque joueur a été arrosé, vous pouvez utiliser votre allumeur pour les activer.
+tout en feu. Soyez la dernière personne à gagner!]]
+-- Assassin
 L.target_assassin_target = "CIBLE"
 L.target_assassin_target_team = "CIBLE de {player}"
-L.target_current_target = "CIBLE ACTUELLE"
-L.info_popup_assassin = [[Vous êtes {role}! {comrades}
+L.target_current_target = "CIBLE ACTUEL"
+L.info_popup_assassin = [[Vous êtes {role}! {camarades}
 
 Votre premier objectif est:
 {assassintarget}
 
 Vous infligerez plus à votre cible et moins de dégâts
-à tous les autres joueurs. Mais prends soin de tuer le mal
+à tous les autres joueurs. Mais faites attention, car vous tuez le mal
 joueur vous fera perdre votre bonus de dégâts et
-peut-être même souffrir d'une pénalité!
+peut-être même subir une pénalité !
 
 Appuyez sur {menukey} pour recevoir votre équipement spécial!]]
+-- Beggar
+L.beggar_config_show_radius = "Afficher le cercle du rayon de suivi"
 L.ev_beggar_converted = "Le {beggar} ({victim}) a été converti en {team} par {attacker}"
-L.ev_beggar_killed = "Le {beggar} ({victim}) a été tué par {attacker} mais a réapparu"
+L.ev_beggar_killed = "Le {beggar} ({victim}) a été tué par {attacker} mais est réapparu"
 L.ev_beggar_killed_delay = "Le {beggar} ({victim}) a été tué par {attacker} mais réapparaîtra dans {delay} secondes"
-L.beggar_hidden_all_hud = "Vous apparaissez toujours comme {beggar} pour les autres"
-L.beggar_hidden_innocent_hud = "Vous apparaissez toujours comme {beggar} pour {innocents}"
-L.beggar_hidden_traitor_hud = "Vous apparaissez toujours comme {beggar} pour {traitors}"
-L.info_popup_beggar = [[Vous êtes {role}! {traitors} pensent que vous êtes {ajester} et vous
-n'inflige aucun dégât. Cependant, si vous pouvez convaincre quelqu'un de donner
+L.beggar_hidden_all_hud = "Vous apparaissez toujours comme {beggar} aux yeux des autres"
+L.beggar_hidden_innocent_hud = "Vous apparaissez toujours comme {beggar} aux yeux de {innocents}"
+L.beggar_hidden_traitor_hud = "beggar_hidden_traitor_hud"
+L.info_popup_beggar_jester = [[Vous êtes {role}! Les {traîtres} pensent que vous êtes un {ajester} et vous
+n'infliger aucun dégât. Cependant, si vous parvenez à convaincre quelqu'un de donner
 vous un article de la boutique, vous rejoindrez leur équipe.]]
-L.ev_bodysnatch = "{attacker} arraché au corps {role}, {victim}"
-L.ev_bodysnatch_killed = "Le {bodysnatch} ({victim}) a été tué par {attacker} mais a réapparu"
+L.info_popup_beggar_indep = [[Vous êtes {role}! Si tu peux convaincre quelqu'un de donner
+vous un article de la boutique, vous rejoindrez leur équipe.]]
+-- Bodysnatcher
+L.ev_bodysnatch = "{attacker} corps arraché {role}, {victim}"
+L.ev_bodysnatch_killed = "Le {bodysnatch} ({victim}) a été tué par {attacker} mais est réapparu"
 L.ev_bodysnatch_killed_delay = "Le {bodysnatch} ({victim}) a été tué par {attacker} mais réapparaîtra dans {delay} secondes"
-L.bodysnatcher_hidden_all_hud = "Vous apparaissez toujours comme {bodysnatcher} pour les autres"
+L.bodysnatcher_hidden_all_hud = "Vous apparaissez toujours comme {bodysnatcher} aux autres"
 L.bodysnatcher_hidden_team_hud = "Seule votre équipe sait que vous n'êtes plus {bodysnatcher}"
-L.info_popup_bodysnatcher = [[Vous êtes {role}! {traitors} pensent que vous êtes {ajester} et vous
-n'inflige aucun dégât. Utilisez votre dispositif d'arrachage de corps sur un cadavre
+L.score_bodysnatcher_bodysnatched = "Corps arraché par"
+L.info_popup_bodysnatcher_jester = [[Vous êtes {role}! Les {traitors} pensent que vous êtes un {ajester} et vous
+n'infliger aucun dégât. Utilisez votre dispositif d'arrachage de corps sur un cadavre
 pour prendre leur rôle et rejoindre le combat!]]
+L.info_popup_bodysnatcher_indep = [[Vous êtes {role}! Utilisez votre dispositif d'arrachage de corps sur un cadavre
+pour assumer leur rôle et rejoindre l'équipe gagnante!]]
+-- Clown
 L.ev_clown = "Le clown, {player}, s'est déchaîné"
 L.win_clown = "Le {role} vous a tous assassiné!"
 L.ev_win_clown = "Le {role} vicieux a remporté la manche!"
-L.info_popup_clown = [[Vous êtes {role}! {traitors} pensent que vous êtes {ajester} et vous
-n'inflige aucun dégât. Cependant, si une équipe gagnait la manche à la place, vous
+L.info_popup_clown = [[Vous êtes {role}! Les {traitors} pensent que vous êtes un {ajester} et vous
+n'infliger aucun dégât. Cependant, si une équipe gagnait la manche à la place, vous
 deviennent hostiles, sont révélés à tous les joueurs et peuvent infliger des dégâts
-Ordinaire. Soyez le dernier joueur debout à gagner.]]
+normale. Soyez le dernier joueur à gagner.]]
+-- Lovers
+L.win_lovers = "Les amoureux ont survécu à tout le monde!"
+L.hilite_lovers_primary = "LES AMOUREUX GAGNENT"
+L.hilite_lovers_secondary = "ET LES AMOUREUX GAGNENT"
+L.ev_win_lovers = "Les amoureux ont gagné la manche!"
+L.scoreboard_cupid_your_lover = "VOTRE AMANT"
+L.scoreboard_cupid_lover = "AMOUREUSE"
+L.score_cupid_pairnames = "{lover1} et {lover2}"
+L.score_cupid_paired = "Jumelé"
+L.ev_cupid_paired = "{cupid} a fait tomber amoureux {lover1} et {lover2}"
+L.info_popup_cupid_jester = [[Vous êtes {role}! Les {traîtres} pensent que vous êtes un {ajesteur} et vous
+n'infliger aucun dégât. Cependant, vous pouvez utiliser votre arc pour en faire deux
+les joueurs tombent amoureux pour gagner/mourir ensemble.]]
+L.info_popup_cupid_indep = [[Vous êtes {role}! Vous pouvez utiliser votre arc pour en faire deux
+les joueurs tombent amoureux pour gagner/mourir ensemble.]]
+-- Deputy
 L.info_popup_deputy = [[Vous êtes {role}! Si le {detective} meurt, vous prendrez
-et obtenez la possibilité d'acheter des articles de magasin et de rechercher des corps.]]
+et obtenez la possibilité d'acheter des articles de magasin et des corps de recherche.]]
+-- Detective
 L.info_popup_detective = [[Vous êtes {role}! Le QG vous a donné des ressources spéciales pour trouver les {traitors}.
 Utilisez-les pour aider les {innocents} à survivre, mais soyez prudent:
-les {traitors} chercheront à vous abattre en premier!
+les {traitors} chercheront à vous éliminer en premier!
+
 Appuyez sur {menukey} pour recevoir votre équipement!]]
+-- Detective-like
 L.ev_promote = "{player} a été promu {detective}"
 L.detective_promotion_hud = "Vous avez été promu {detective}"
-L.detective_special_hidden_hud = "Vous apparaissez comme {detective} pour les autres"
+L.detective_special_hidden_hud = "Votre type {detective} est masqué aux autres"
+-- Doctor
 L.info_popup_doctor = [[Vous êtes {role}! Vous êtes ici pour garder vos coéquipiers en vie.
-Utilisez vos outils pour garder vos compagnons {innocents} dans le combat!
+Utilisez vos outils pour garder vos camarades {innocents} dans le combat!
+
 Appuyez sur {menukey} pour recevoir votre équipement spécial!]]
-L.drunk_hud = "Vous serez dégrisé dans: {time}"
+-- Drunk
+L.drunk_hud = "Vous redeviendrez sobre dans: {time}"
 L.ev_drunk = "{player} s'est souvenu qu'il était {team}"
-L.info_popup_drunk = [[Vous êtes {role}! Vous avez oublié dans quelle équipe vous êtes !
-Attendez d'être sobre et rappelez-vous. Essayez de faire profil bas en attendant.]]
-L.info_popup_glitch = [[Vous êtes {role}! Les {traitors} pensent que vous êtes l'un d'entre eux.
+L.info_popup_drunk = [[Vous êtes {role}! Vous avez oublié à quelle équipe vous appartenez!
+Attendez d'être sobre et souvenez-vous. Essayez de faire profil bas en attendant.]]
+-- Glitch
+L.info_popup_glitch = [[Vous êtes {role}! Les {traitors} pensent que vous en faites partie.
 Essayez de vous fondre dans la masse et ne vous trahissez pas.]]
+-- Guesser
+L.guessingdevice_help_pri = "Appuyez sur {primaryfire} pour deviner le rôle d'un joueur."
+L.guessingdevice_help_sec = "Appuyez sur {secondaryfire} pour sélectionner un rôle."
+L.guessingdevice_title = "Sélection du devineur de rôle"
+L.guesser_selection = "Rôle sélectionné: "
+L.guesser_unguessable = "INDEVINABLE"
+L.score_guesser_guessed_by = "Deviné par"
+L.ev_guesser_correct = "{guesser} a correctement deviné le rôle de {victim}"
+L.ev_guesser_incorrect = "{guesser} a mal deviné le rôle de {victim}"
+L.info_popup_guesser = [[Vous êtes {role}! Les {traitors} pensent que vous êtes un {ajester} et vous ne faites rien
+dommage. Cependant, vous pouvez utiliser votre devineur de rôle pour essayer de deviner le rôle d'un joueur. Deviner
+correctement pour voler leur rôle. Devinez mal et vous mourez. Tu es immortel et si
+les joueurs tentent de vous endommager, vous apprendrez lentement des informations sur leur rôle.]]
+-- Hive Mind
+L.win_hivemind = "Nous sommes {role}!"
+L.ev_win_hivemind = "Le {role} a assimilé tout le monde!"
+L.info_popup_hivemind = [[Vous êtes {role}! Tuer les autres
+les joueurs les feront vous rejoindre, fusionnant leur santé
+piscine et armes disponibles dans le magasin.
+
+Appuyez sur {menukey} pour recevoir votre équipement spécial!]]
+-- Hypnotist
 L.brainwash_help_pri = "Maintenez {primaryfire} pour faire revivre le cadavre."
 L.brainwash_help_sec = "Le joueur ressuscité deviendra un traître."
 L.ev_hypno = "{victim} a été hypnotisée"
-L.info_popup_hypnotist = [[Vous êtes {role}! {comrades}
-Vous pouvez utiliser votre appareil de lavage de cerveau sur un cadavre pour le faire revivre en tant que {atraitor}.
+L.info_popup_hypnotist = [[Vous êtes {role}! {camarades}
+
+Vous pouvez utiliser votre appareil de lavage de cerveau sur un cadavre pour le réanimer en tant que {traître}.
+
 Appuyez sur {menukey} pour recevoir votre équipement spécial!]]
+-- Impersonator
 L.info_popup_impersonator = [[Vous êtes {role}! {comrades}
 
-Si le {detective} meurt, vous semblerez devenir un nouveau {detective} et gagnerez leur
-capacités tout comme le {deputy}. Cependant, vous travaillez toujours pour les {traitors}.
+Si le {detective} meurt, vous apparaîtrez pour devenir un nouveau {detective} et gagnerez leur
+des capacités tout comme le {deputy}. Cependant, vous travaillez toujours pour les {traitors}.
 
 Appuyez sur {menukey} pour recevoir votre équipement spécial!]]
-L.info_popup_innocent = [[Vous êtes {role}! Mais il y a des {traitors} autour...
-À qui pouvez-vous faire confiance et qui est là pour vous remplir de balles?
+-- Infected
+L.ev_infected_succumbed = "L'{infected} ({victim}) a succombé à sa maladie et est devenu {azombie}"
+L.infected_hud = "Vous succomberez dans: {time}"
+L.info_popup_infected = [[Vous êtes {role}! Tu as une maladie secrète
+cela finira par vous transformer en {azombie}!
+Aidez votre équipe à gagner ou attendez de tourner
+et propage ta maladie vers la victoire...]]
+-- Informant
+L.infscanner_help_pri = "Regardez un joueur pour lancer la numérisation."
+L.infscanner_help_sec = "Gardez la ligne de vue ou vous perdrez votre cible."
+L.infscanner_team = "ÉQUIPE"
+L.infscanner_role = "RÔLE"
+L.infscanner_track = "PISTE"
+L.informant_config_show_radius = "Afficher le cercle du rayon de suivi"
+L.info_popup_informant = [[Vous êtes {role}! {comrades}
+
+Tenez votre scanner tout en regardant un joueur pour en savoir plus sur lui.
+
+Appuyez sur {menukey} pour recevoir votre équipement spécial!]]
+-- Innocent
+L.info_popup_innocent = [[Vous êtes {role}! Mais il y a des {traîtres} dans le coin...
+À qui pouvez-vous faire confiance et qui veut vous remplir de balles ?
 
 Surveillez vos arrières et travaillez avec vos camarades pour vous en sortir vivant!]]
-L.win_jester = "Le {role} vous a tous trompés!"
+-- Jester
+L.win_jester = "Le {role} vous a tous trompé!"
 L.ev_win_jester = "Le {role} délicat a remporté la manche!"
+L.score_jester_killedby = "Tue par"
 L.info_popup_jester = [[Vous êtes {role}! Tu veux mourir mais toi
-n'inflige aucun dégât, vous devez donc être tué par quelqu'un d'autre.]]
+n'infligez aucun dégât, vous devez donc être tué par quelqu'un d'autre.]]
+-- Killer
 L.win_killer = "Le {role} vous a tous assassiné!"
-L.ev_win_killer = "Le boucher {role} a remporté la manche!"
-L.info_popup_killer = [[Vous êtes {role}! Essayez de tuer tout le monde et soyez le dernier debout!
+L.ev_win_killer = "Le {role} boucher a remporté la manche!"
+L.info_popup_killer = [[Vous êtes {role}! Essayez de tuer tout le monde et soyez le dernier survivant !
 
 Appuyez sur {menukey} pour recevoir votre équipement spécial!]]
+L.kil_knife_desc = [[
+Blesse gravement les cibles vivantes en silence.
+Tue instantanément les cibles blessées et
+silencieusement.
+
+Peut larguer une grenade fumigène en utilisant un tir alternatif.]]
+L.kil_crowbar_name = "Pied de biche jetable"
+L.kil_crowbar_desc = [[
+Utilisé pour se fondre dans les autres joueurs et infliger des dégâts mineurs.
+
+Peut être lancé en utilisant un tir alternatif.]]
+-- Loot Goblin
 L.ev_win_lootgoblin = "Le {role} s'est échappé et a également remporté la manche!"
-L.lootgoblin_hud = "Tu vas te transformer en: {time}"
-L.info_popup_lootgoblin = [[Vous êtes {role}! Tout ce que vous voulez faire, c'est thésauriser votre
-butin! Mais attention... Tout le monde veut tuer
+L.lootgoblin_hud = "Vous vous transformerez en: {time}"
+L.lootgoblin_config_radar_sound = "Jouer le son du ping radar"
+L.info_popup_lootgoblin = [[Vous êtes {role}! Tout ce que vous voulez, c'est accumuler votre
+butin! Mais soyez prudent... Tout le monde veut tuer
 vous et le voler pour eux-mêmes!]]
-L.zombificator_help_pri = "Maintenez {primaryfire} pour zombifier un cadavre."
+-- Mad Scientist
+L.zombificator_help_pri = "Maintenez {primaryfire} pour zombifier le cadavre."
 L.zombificator_help_sec = "Le joueur ressuscité deviendra un zombie."
 L.info_popup_madscientist = [[Vous êtes {role}! Essayez de propager votre virus à
-toutes les personnes! Utiliser votre appareil de zombification sur un mort
-corps les fera revivre comme {azombie}.]]
-L.info_popup_medium = [[Vous êtes {role}! En tant qu'{adetective}, le QG vous a donné des ressources spéciales pour trouver les {traitors}.
+tout le monde! Utiliser votre appareil de zombification sur un mort
+le corps les fera revivre en tant que {azombie}.]]
+-- Marshal
+L.marshalbadge_help_pri = "Maintenez {primaryfire} pour remplacer un joueur."
+L.marshalbadge_help_sec = "Le joueur ciblé deviendra un adjoint ou un imitateur"
+L.ev_marshal_deputize = "{target} a été suppléé par {marshal}"
+L.marshal_deputize_announce = "{amarshal} a promu {target} au rang de {adeputy}"
+L.info_popup_marshal = [[Vous êtes {role}! En tant que {détective}, le QG vous a donné des ressources spéciales pour trouver les {traîtres}.
+Vous disposez d'un badge {deputy} qui peut transformer n'importe quel joueur en {deputy}.
+Attention cependant ! S'ils sont utilisés sur un mauvais joueur, ils deviendront des {animpersonator} à la place!
+
+Appuyez sur {menukey} pour recevoir votre équipement!]]
+-- Medium
+L.mdmseance_name = "NOM"
+L.mdmseance_team = "ÉQUIPE"
+L.mdmseance_role = "RÔLE"
+L.medium_reveal_name = "{medium} a effectué une séance et a découvert l'esprit de {spirit}."
+L.medium_reveal_role = "{medium} a effectué une séance et a découvert que {spirit} était {role}."
+L.info_popup_medium = [[Vous êtes {role}! En tant que {adetective}, le QG vous a donné des ressources spéciales pour trouver les {traitors}.
 Vous pouvez voir les esprits des morts. Suivez les esprits
-pour découvrir des secrets emportés dans la tombe.
+pour découvrir des secrets qui ont été emportés dans la tombe.
+
 Appuyez sur {menukey} pour recevoir votre équipement!]]
-L.info_popup_mercenary = [[Vous êtes {role}! Essayez de survivre et aidez vos amis {innocents}!
+-- Mercenary
+L.info_popup_mercenary = [[Vous êtes {role}! Essayez de survivre et d'aider vos amis {innocent}!
+
 Appuyez sur {menukey} pour recevoir votre équipement!]]
-L.ev_win_oldman = "Le {role} a en quelque sorte survécu et a également remporté la manche!"
+-- Old Man
+L.ev_win_oldman = "Le {role} a survécu d'une manière ou d'une autre et a également remporté la manche!"
 L.info_popup_oldman = [[Vous êtes {role}! La moindre brise pourrait tuer
-vous si vous ne faites pas attention. Vous ne vous souciez pas de qui gagne aussi longtemps
-tant que vous êtes vivant à la fin du tour.]]
-L.info_popup_paladin = [[Vous êtes {role}! En tant qu'{adetective}, le QG vous a donné des ressources spéciales pour trouver les {traitors}.
-Vous avez une aura de guérison qui est visible pour tout le monde.
-Gardez vos amis près de vous, mais ne laissez surtout pas vos ennemis s'approcher!
+vous si vous ne faites pas attention. Peu importe qui gagne, tant que
+puisque vous êtes en vie à la fin du tour.]]
+-- Paladin
+L.info_popup_paladin = [[Vous êtes {role}! En tant que {adetective}, le QG vous a donné des ressources spéciales pour trouver les {traitors}.
+Vous possédez une aura de guérison visible par tous.
+Gardez vos amis proches, mais ne laissez surtout pas vos ennemis se rapprocher!
+
 Appuyez sur {menukey} pour recevoir votre équipement!]]
-L.defibrillator_help_pri = "Tenez {primaryfire} pour faire revivre le cadavre."
-L.defibrillator_help_sec = "The revived player will be respawned at their body's location."
+-- Paramedic
+L.defibrillator_help_pri = "Maintenez {primaryfire} pour faire revivre le cadavre."
+L.defibrillator_help_sec = "Le joueur réanimé réapparaîtra à l'emplacement de son corps."
 L.info_popup_paramedic = [[Vous êtes {role}! Vous pouvez donner à vos camarades {innocents}
 une seconde chance avec votre défibrillateur. Reste en vie
 et ramenez le joueur le plus fort de votre équipe.]]
+-- Parasite
 L.cure_help_pri = "{primaryfire} pour soigner un autre joueur."
-L.cure_help_sec = "{secondfire} pour vous guérir."
-L.cure_desc = [[Utiliser sur un joueur pour le soigner des {parasites}.
-L'utiliser sur un joueur qui n'est pas infecté le tuera!]]
+L.cure_help_sec = "{secondaryfire} pour vous guérir."
+L.cure_desc = [[Utiliser sur un joueur pour le guérir des {parasites}.
+
+Utiliser ceci sur un joueur qui n'est pas infecté le tuera!]]
 L.target_infected = "INFECTÉ PAR UN PARASITE"
-L.infect_title = "L' INFECTION"
+L.infect_title = "INFECTION"
 L.infect_help = "Vous réapparaîtrez lorsque la barre d'infection sera pleine."
-L.ev_infect = "{victim} a infecté {attacker}"
+L.ev_infect = "{victim} infecté {attacker}"
 L.info_popup_parasite = [[Vous êtes {role}! {comrades}
+
 Infectez ceux qui vous tuent et attendez patiemment une chance de prendre le contrôle.
 Assurez-vous de rester discret car votre hôte doit rester en vie pour que vous puissiez
-réapparaître. Essayez d'éviter qu'ils soient guéris ou tués!
+réapparaître. Essayez d'éviter de les guérir ou de les tuer!
+
 Appuyez sur {menukey} pour recevoir votre équipement spécial!]]
+-- Phantom
+L.target_haunted = "Hanté par un fantôme"
 L.haunt_title = "VOLONTÉ"
-L.haunt_move = "DÉPLACER LES CLÉS: Déplacer (coût: {num}%)"
-L.haunt_jump = "ESPACE: Sauter (Coût: {num}%)"
+L.haunt_move = "DÉPLACER LES CLÉS: Déplacer (Coût: {num}%)"
+L.haunt_jump = "ESPACE: Saut (Coût: {num}%)"
 L.haunt_drop = "CLIC DROIT: Drop (Coût: {num}%)"
 L.haunt_attack = "CLIC GAUCHE: Attaque (Coût: {num}%)"
 L.ev_haunt = "{victim} a commencé à hanter {attacker}"
-L.exor_help_pri = "{primaryfire} pour nettoyer un autre joueur."
-L.exor_help_sec = "{secondfire} pour vous purifier."
+L.exor_help_pri = "{victim} a commencé à hanter {attacker}"
+L.exor_help_sec = "{secondaryfire} pour vous purifier."
 L.exor_desc = "Utiliser sur un joueur pour exorciser un {phantom}"
-L.info_popup_phantom = [[Vous êtes {role}! Essayez de survivre et aidez vos amis {innocent}!
-Vous allez hanter le joueur qui vous tue en faisant apparaître de la fumée noire.
-Si le joueur que vous hantez meurt, vous serez réapparu!]]
-L.fake_cure_desc = "À utiliser sur un joueur pour lui faire croire que vous avez guéri le {parasite}."
+L.info_popup_phantom = [[Vous êtes {role}! Essayez de survivre et d'aider vos amis {innocent}! {abilities}]]
+L.info_popup_phantom_haunt = "Vous hanterez le joueur qui vous tue."
+L.info_popup_phantom_smoke = "Les joueurs hantés seront enveloppés de fumée noire."
+L.info_popup_phantom_respawn = "Si le joueur que vous hantez meurt, vous réapparaîtrez!"
+-- Quack
+L.fake_cure_desc = "Utilisez-le sur un joueur pour lui faire croire que vous avez guéri le {parasite}."
 L.bstation_name = "Station de bombes"
-L.bstation_hint = "Appuyez sur {usekey pour simuler la réception de la santé. Charge: {num}."
-L.bstation_broken = "Votre station de bombardement a été détruite!"
+L.bstation_hint = "Appuyez sur {usekey} pour faire semblant de recevoir de la santé. Frais: {num}."
+L.bstation_broken = "Votre station de bombes a été détruite!"
 L.bstation_help = "{primaryfire} place la station de bombes."
 L.bstation_desc = [[
-Apparaît comme une station de santé pour les non-{traitors}.
-   
+Apparaît comme un poste de santé pour les non-{traitors}.
+
 Explose lorsqu'il est utilisé par un non-{traitor}.
-{traitors} peuvent utiliser pour épuiser la fausse charge.]]
-L.stationb_name = "Gare à la bombe"
-L.stationb_help = "Maintenez {primaryfire} pour ajouter une bombe à une station de santé."
-L.stationb_desc = [[
-Convertit un {healthstation}
+Les {traitors} peuvent utiliser pour épuiser les fausses charges.]]
+L.stationb_name = "Bombe de gare"
+L.stationb_help = "Maintenez {primaryfire} pour ajouter une bombe à un poste de santé."
+L.stationb_desc = [[Convertit un {healthstation}
 dans une {bombstation}.]]
 L.info_popup_quack = [[Vous êtes {role}! {comrades}
+
 Essayez de convaincre les autres que vous êtes un vrai {doctor}! Cependant, vos outils nuisent
-au lieu de guérir. Vous savez que le meilleur remède à tout mal est la mort.
-Appuyez sur {menukey} pour recevoir votre équipement spécial!]]
-L.target_revenger_lover = "VOTRE ÂME SOEUR"
-L.info_popup_revenger = [[Vous êtes {role}! Vous êtes désespérément amoureux de {lover}.
-Faites tout ce que vous pouvez pour les protéger. S'ils meurent, vous
-être en mesure de retrouver leur meurtrier et d'obtenir votre vengeance.]]
-L.ev_swap = "{victim} échangé avec {attacker}"
-L.info_popup_swapper = [[Vous êtes {role}! {traitors} pensent que vous êtes {ajester} et vous
-n'inflige aucun dégât cependant, si quelqu'un vous tue, il devient
-le {swapper} et vous prenez leur rôle et pouvez rejoindre le combat.]]
-L.info_popup_tracker = [[Vous êtes {role}! En tant qu'{adetective}, le QG vous a donné des ressources spéciales pour trouver les {traitors}.
-Vous pouvez voir les pas des joueurs et suivre leurs traces.
-Utilisez vos compétences pour garder un œil sur où les joueurs ont été.
-Appuyez sur {menukey} pour recevoir votre équipement!]]
-L.info_popup_traitor = [[Vous êtes {role}! {comrades}
-Appuyez sur {menukey} pour recevoir votre équipement spécial!]]
-L.info_popup_trickster = [[Vous êtes {role}! Vous êtes {aninnocent} qui pouvez voir et
-utilisez des pièges {traitor} sur toute la carte. S'amuser!]]
-L.win_vampires = "Le {role} a pris le dessus!"
-L.ev_win_vampire = "Le {role} a aspiré la vie de tout le monde!"
-L.ev_vampi = "{victim} a été transformée en {vampire}"
-L.ev_vampi_revert_converted = "Le dernier {vampire} Prime ({prime}) a été tué et tous leurs esclaves ont retrouvé leur humanité"
-L.ev_vampi_kill_converted = "Le dernier {vampire} Prime ({prime}) a été tué et a emporté tous ses esclaves avec lui"
-L.vam_fangs_help_pri = "Hold {primaryfire} to suck blood"
-L.vam_fangs_help_sec = "Press {secondaryfire} to fade from view"
-L.info_popup_vampire = [[Vous êtes {role}! {comrades}
-Vous pouvez utiliser vos crocs (maintenez le clic gauche) pour boire du sang et recharger votre santé ou pour disparaître de la vue (clic droit).
+au lieu de guérir. Vous savez que le meilleur remède à toute maladie est la mort.
 
 Appuyez sur {menukey} pour recevoir votre équipement spécial!]]
+-- Quartermaster
+L.info_popup_quartermaster = [[Vous êtes {role}! En tant que {adetective}, le QG vous a donné des ressources spéciales pour trouver les {traitors}.
+Vous avez infiltré leurs lignes de ravitaillement, vous permettant ainsi de lâcher des caisses d'armes remplies de cadeaux pour vos alliés.
+
+Appuyez sur {menukey} pour procurer des équipements spéciaux aux autres!]]
+-- Revenger
+L.target_revenger_lover = "TON ÂME SOEUR"
+L.info_popup_revenger = [[Vous êtes {role}! Vous êtes impuissant amoureux de {lover}.
+Faites tout ce que vous pouvez pour les protéger. S'ils meurent, tu le feras
+pouvoir retrouver leur assassin et vous venger.]]
+-- Sapper
+L.info_popup_sapper = [[Vous êtes {role}! En tant que {adetective}, le QG vous a donné des ressources spéciales pour trouver les {traîtres}.
+Vous disposez d'une aura de protection contre les explosions visible par tout le monde.
+Gardez vos amis proches, mais ne laissez surtout pas vos ennemis se rapprocher!
+
+Appuyez sur {menukey} pour recevoir votre équipement!]]
+-- Shadow
+L.info_popup_shadow = [[Vous êtes {role}! Trouvez rapidement votre cible
+et restez près d'eux. Si vous ne le faites pas, vous serez puni.
+
+Survivez jusqu'à la fin du tour pour gagner.]]
+L.shadow_delay_target = "Cible identifiée dans: {time}"
+L.shadow_find_target = "TROUVEZ VOTRE CIBLE - {time}"
+L.shadow_return_target = "RETOUR À VOTRE CIBLE - {time}"
+L.shadow_buff_progress = "ACTIVATION DU BUFF - {time}"
+L.shadow_buff_hud_active = "Cible {buff} active"
+L.shadow_buff_hud_time = "Temps jusqu'à ce que la cible {buff} soit active: {time}"
+L.shadow_buff_1 = "régénération de la santé"
+L.shadow_buff_2 = "réapparaître"
+L.shadow_buff_3 = "bonus de dégâts"
+L.shadow_buff_4 = "rejoindre l'équipe"
+L.shadow_buff_5 = "vol de rôle"
+L.shadow_target = "VOTRE CIBLE"
+L.ev_win_shadow = "Le {role} est resté proche de sa cible et a également remporté la manche!"
+L.score_shadow_following = "Suivante"
+-- Sponge
+L.win_sponge = "Le {role} s'est absorbé à mort!"
+L.ev_win_sponge = "Le {role} absorbant a remporté la manche!"
+L.spongifier_help_pri = "{primaryfire} pour vous transformer en éponge."
+L.spongifier_help_sec = "Commencer à utiliser l'appareil déclenchera une annonce globale."
+L.score_sponge_killedby = "Tue par"
+L.score_sponge_damaging = "{attacker} endommageant"
+L.info_popup_sponge = [[Vous êtes {role}! Tu veux mourir mais toi
+n'infliger aucun dégât, vous devez donc être tué en absorbant
+dégâts causés aux autres joueurs. Absorber les dégâts en
+garder les joueurs à l'intérieur de votre aura visible.]]
+-- Spy
+L.info_popup_spy = [[Vous êtes {role}! {comrades}
+
+Lorsque vous tuez un joueur, vous volez son identité.
+
+Appuyez sur {menukey} pour recevoir votre équipement spécial!]]
+-- Swapper
+L.ev_swap = "{victim} a échangé avec {attacker}"
+L.score_swapper_killed = "Tué"
+L.info_popup_swapper = [[Vous êtes {role}! Les {traitors} pensent que vous êtes un {ajester} et vous
+n'infligez aucun dégât cependant, si quelqu'un vous tue, il devient
+le {swapper} et vous prenez leur rôle et pouvez rejoindre le combat.]]
+-- Tracker
+L.info_popup_tracker = [[Vous êtes {role}! En tant que {adetective}, le QG vous a donné des ressources spéciales pour trouver les {traîtres}.
+Vous pouvez voir les traces des joueurs et suivre leurs traces.
+Utilisez vos compétences pour garder un œil sur où se trouvent les joueurs.
+
+Appuyez sur {menukey} pour recevoir votre équipement!]]
+-- Traitor
+L.info_popup_traitor = [[Vous êtes {role}! {comrades}
+
+Appuyez sur {menukey} pour recevoir votre équipement spécial!]]
+-- Trickster
+L.info_popup_trickster = [[Vous êtes {role}! Vous êtes {aninnocent} qui peut voir et
+utilisez des pièges {traitor} sur toute la carte. Amusez-vous!]]
+-- Turncoat
+L.ev_turncoat = "{nick} est {role} et a rejoint les {traitors}"
+L.tur_changer = "Changeur d'équipe"
+L.tur_changer_help_pri = "Appuyez sur {primaryfire} pour changer d'équipe."
+L.tur_changer_help_sec = "Sois prudent! Tout le monde le saura."
+L.info_popup_turncoat = [[Vous êtes {role}! Vous êtes {aninnocent} et possédez un appareil
+ce qui vous fera passer dans l'équipe {traitor} mais
+annoncez-le à tout le monde. Fais-en bon usage!]]
+-- Vampire
+L.win_vampires = "Les {role} ont pris le relais!"
+L.ev_win_vampire = "Les {role} ont vidé la vie de tout le monde!"
+L.ev_vampi = "{victim} a été transformée en {avampire}"
+L.ev_vampi_revert_converted = "Le dernier {vampire} Prime ({prime}) a été tué et tous leurs esclaves ont retrouvé leur humanité."
+L.ev_vampi_kill_converted = "Le dernier {vampire} Prime ({prime}) a été tué et a emmené tous ses esclaves avec lui"
+L.vam_fangs_help_pri = "Tenez {primaryfire} pour sucer le sang"
+L.vam_fangs_help_sec = "Appuyez sur {secondaryfire} pour disparaître de la vue."
+L.vam_fangs_convert = "CONVERTIR"
+L.vam_fangs_converting = "CONVERSION"
+L.vam_fangs_kill = "TUER"
+L.vam_fangs_killing = "MEURTRE"
+L.info_popup_vampire = [[Vous êtes {role}! {comrades}
+
+Vous pouvez utiliser vos crocs (maintenez le clic gauche) pour boire du sang et reconstituer votre santé ou pour disparaître de la vue (clic droit).
+
+Appuyez sur {menukey} pour recevoir votre équipement spécial!]]
+-- Veteran
 L.info_popup_veteran = [[Vous êtes {role}! Vous travaillez mieux sous pression.
-Si vous êtes le dernier joueur {innocent} en vie, vous
-inflige des dégâts supplémentaires.]]
-L.win_zombies = "Le {role} a pris le dessus!"
+Si vous êtes le dernier joueur {innocent} en vie, vous le ferez
+infliger des dégâts supplémentaires.]]
+-- Vindicator
+L.win_vindicator = "Le {role} a pris sa revanche!"
+L.ev_win_vindicator = "Le {role} a remporté la manche!"
+L.ev_vindicator_active = "{vindicator} traque leur assassin, {target}"
+L.ev_vindicator_success = "{vindicator} a pris sa revanche sur {target}"
+L.ev_vindicator_fail = "{vindicator} ne s'est pas vengé de {target}"
+L.score_vindicator_killedby = "Tue par"
+L.info_popup_vindicator = [[Vous êtes {role}! Travaillez avec les {innocents}
+pour essayer de retrouver les {traitors}! Si quelqu'un
+te tue, tu reviendras d'entre les morts
+pour vous venger de votre assassin.]]
+-- Zombie
+L.win_zombies = "Les {role} ont pris le relais!"
 L.ev_win_zombie = "L'infection {role} a conquis le monde!"
-L.ev_zombi = "{victim} a été transformée en {zombie}"
+L.ev_zombi = "{victim} a été transformée en {azombie}"
 L.info_popup_zombie = [[Vous êtes {role}! {comrades}
 Tous les dégâts que vous infligez avec des armes à feu sont réduits.
 Tuer quelqu'un avec vos griffes le transformera en {azombie}.
-Appuyez sur la {menukey} pour recevoir votre équipement spécial!]]
+Appuyez sur {menukey} pour recevoir votre équipement spécial!]]
 L.zom_claws_help_pri = "Appuyez sur {primaryfire} pour attaquer."
-L.zom_claws_help_sec = "Appuyez sur {secondfire} pour sauter. Appuyez sur {reload} pour cracher."
--- Jingle Jam 2021 role translations
+L.zom_claws_help_sec = "Appuyez sur {secondaryfire} pour sauter. Appuyez sur {reload} pour cracher."
+L.zom_claws_help_sec_noleap = "Appuyez sur {reload} pour cracher."
+L.zom_claws_help_sec_nospit = "Press {secondaryfire} to leap."
+-- JINGLE JAM ROLE PACKS ---
+-- Jingle Jam 2021 Roles
 -- Boxer
 L.box_gloves_help_pri = "Utilisez {primaryfire} pour faire tomber les armes des mains des joueurs"
-L.box_gloves_help_sec = "Attaquez avec {secondfire} pour assommer les joueurs"
-L.box_revive = "Appuyez sur '{usekey}' pour relancer"
+L.box_gloves_help_sec = "Attaquez avec {secondaryfire} pour assommer les joueurs"
+L.box_revive = "Appuyez sur '{usekey}' pour réactiver"
 L.ev_win_boxer = "Le {role} s'est frayé un chemin vers la victoire"
-L.win_boxer = "Le {role} a marqué un KO!"
+L.win_boxer = "Le {role} a réussi un KO!"
+L.info_popup_boxer = [[Vous êtes {role}! Utilisez vos gants de boxe
+pour obliger les autres à lâcher leurs armes ou
+assommez-les.
+
+Éliminez tous les joueurs vivants à
+en même temps pour gagner!]]
 -- Communist
 L.manifesto_help_pri = "Utilisez {primaryfire} pour convertir un joueur au communisme"
 L.manifesto_help_sec = "Tous les {nameplural} gagnent ensemble"
-L.ev_communismconvert = "{victim} s'est convertie et s'est tournée vers le communisme!"
-L.ev_win_communist = "Le {role} a converti tous les joueurs restants"
+L.ev_communismconvert = "{victim} a été convertie et tournée vers le communisme!"
+L.ev_win_communist = "Les {role} ont converti tous les joueurs restants"
 L.win_communist = "Le communisme s'est propagé à tous les survivants"
-L.hilite_win_communist = "COMMUNISME GAGNE"
+L.hilite_win_communist = "LE COMMUNISME GAGNE"
 L.hilite_lose_communist = "ET LE CAPITALISME GAGNE"
+L.info_popup_communist = [[Vous êtes {role}! Votre objectif est de
+convertir tous les joueurs au communisme
+en utilisant votre Manifeste Communiste]]
+-- Randoman
+L.win_randoman = "Le chaos du {role} a pris le dessus!"
+L.hilite_win_randoman = "LE {role} GAGNE"
+L.info_popup_randoman_independent = [[Vous êtes {role}!
+Achetez des randomats pour vous aider à tuer tous les autres et à gagner!]]
+L.info_popup_randoman = [[Vous êtes {role}!
+Vous êtes {adetective}, mais vous pouvez acheter des objets aléatoires au lieu d'objets {detective}!]]
 -- Santa
-L.santa_help_pri = "Utilisez {primaryfire} pour offrir des cadeaux à de gentils enfants"
-L.santa_help_sec = "Utilisez {secondfire} pour tirer du charbon sur de vilains enfants"
+L.santa_help_pri = "Utilisez {primaryfire} pour offrir des cadeaux à des enfants gentils"
+L.santa_help_sec = "Utilisez le {secondaryfire} pour tirer du charbon sur des enfants coquins"
 L.santa_load_gift = "Ouvrez votre menu d'achat avec {menukey} pour charger un cadeau!"
+L.info_popup_santa = [[Vous êtes {role}! En tant que {detective}, le QG vous a donné des ressources spéciales pour trouver les {traîtres}.
+Vous pouvez utiliser votre canon de Noël pour offrir des cadeaux aux enfants gentils et du charbon aux enfants coquins.
+
+Appuyez sur {menukey} pour recevoir votre équipement!]]
 -- Taxidermist
-L.taxidermy_help_pri = "Utilisez {primaryfire} pour taxidermiser un cadavre"
-L.taxidermy_help_sec = "Les cadavres taxidermisés ne peuvent pas être inspectés"
+L.taxidermy_help_pri = "Utilisez {primaryfire} pour empailler un cadavre"
+L.taxidermy_help_sec = "Les cadavres taxidermiés ne peuvent pas être inspectés"
+L.info_popup_taxidermist = [[Vous êtes {role}! {comrades}
+
+Vous pouvez utiliser votre kit de taxidermie sur un cadavre pour le rendre impossible à identifier.
+
+Appuyez sur {menukey} pour recevoir votre équipement spécial!]]
+-- Jingle Jam 2022 Roles
+-- Detectoclown
+L.info_popup_detectoclown = [[Vous êtes {role}! 50 % clown, 50 % {deputy}, 100 % chaos.
+Les {traitors} pensent que vous êtes un {ajester} et vous n'infligez aucun dégât. Toutefois, si
+une équipe gagnerait la manche au lieu de cela, vous devenez hostile, sont révélés
+à tous les joueurs et peut infliger des dégâts normalement. Mais ce n'est pas tout, si
+le {detective} meurt, vous apparaîtrez pour devenir un nouveau {detective} et
+acquérez leurs capacités tout comme le {deputy}. Cependant tu es toujours
+visant à tuer tout le monde. Soyez le dernier joueur à gagner.]]
+-- Faker
+L.ev_win_faker = "Le {role} qui a évité les soupçons a également remporté la manche!"
+L.score_faker_fakes_used = "Utilisée"
+L.info_popup_faker = [[Vous êtes {role}! Achetez et utilisez un faux traître
+articles sans éveiller les soupçons!
+
+Utilisez suffisamment de fausses armes et survivez
+jusqu'à la fin du tour pour gagner!]]
+-- Krampus
+L.kra_carry_help_pri = "Appuyez sur {primaryfire} pour attraper un joueur."
+L.kra_carry_help_sec = "Appuyez sur {secondaryfire} pour libérer un joueur retenu."
+L.krampus_hud = "Temps restant pour chasser les joueurs coquins: {time}"
+L.target_krampus_target = "CIBLE"
+L.win_krampus = "Tous les joueurs coquins ont été tués par {role}!"
+L.ev_win_krampus = "Le {role} a éliminé tous les joueurs coquins et a remporté la manche!"
+L.info_popup_krampus = [[Vous êtes {role}! Votre travail consiste à traquer et à tuer les joueurs coquins ciblés.
+Tout joueur qui nuit à vous ou à des innocents est considéré comme méchant.
+{naughtylist}]]
+-- Jingle Jam 2023 Roles
+-- Admin
+L.adminmenu_help_pri = "Utilisez {primaryfire} pour ouvrir le menu administrateur"
+L.admin_power_title = "POUVOIR D'ADMINISTRATION"
+L.info_popup_admin = [[Vous êtes {role}! En tant que {adetective}, le QG vous a donné des ressources spéciales pour trouver les {traitors}.
+Vous pouvez utiliser votre menu d'administration pour accéder aux commandes
+cela aidera dans la bataille contre les {traitors}.
+
+Appuyez sur {menukey} pour recevoir votre équipement!]]
+-- Ghost Whisperer
+L.ghostingdevice_help_pri = "Maintenez {primaryfire} sur un cadavre pour permettre à ce joueur de parler dans le chat."
+L.info_popup_ghostwhisperer = [[Vous êtes {role}! Utilisez votre appareil fantôme pour
+permettre à un joueur mort de parler dans le chat.]]
+-- Renegade
+L.win_renegade = "Le {role} a vaincu ses ennemis pour gagner!"
+L.ev_win_renegade = "Le puissant {renegade} s'est frayé un chemin vers la victoire!"
+L.info_popup_renegade_glitch = [[Vous êtes {role}! Méfiez-vous des {traitors}!
+Vous pouvez voir qui ils sont, mais ils peuvent aussi voir qui vous êtes.
+Créer un partenariat silencieux ou travailler secrètement à les saper,
+c'est entièrement à vous de décider !
+
+MAIS MÉFIEZ-VOUS! Il y avait {aglitch} dans le système et un parmi les
+{traitors} ne poursuit pas le même objectif.
+
+Il peut s'agir ou non des {traitors}:
+{traitorlist}]]
+L.info_popup_renegade = [[Vous êtes {role}! Méfiez-vous des {traitors}!
+Vous pouvez voir qui ils sont, mais ils peuvent aussi voir qui vous êtes.
+Créer un partenariat silencieux ou travailler secrètement à les saper,
+c'est entièrement à vous de décider !
+
+Voici les {traitors}:
+{traitorlist}]]
+-- Soulbound
+L.c4_disarm_fake = "Coupez un fil pour désamorcer la bombe. C'est une fausse bombe, donc chaque fil entraînera une explosion de confettis."
+L.sbd_abilities_title = "Sélection des capacités"
+L.sbd_abilities_confirm = "Sélectionnez la capacité"
+L.sbd_abilities_random = "Select random ability"
+L.info_popup_soulbound = [[Vous êtes un {role}! {comrades}
+
+Voir ce message devrait être impossible! S'il vous plaît laissez
+nous savons comment vous voyez cela afin que nous puissions y remédier.
+
+Appuyez sur {menukey} pour recevoir votre équipement spécial!]]
+-- Soulmage
+L.soulbindingdevice_help_pri = "Maintenez {primaryfire} sur un cadavre pour le convertir en âme liée."
+L.info_popup_soulmage = [[Vous êtes un {role}! {comrades}
+
+Utilisez votre dispositif de liaison d'âme pour amener un joueur mort à
+aidez-vous, vous et vos camarades {traitors}, en faisant semblant
+être un fantôme innocent.
+
+Appuyez sur {menukey} pour recevoir votre équipement spécial!]]
+-- Elementalist
+L.info_popup_elementalist = [[Vous êtes un {role}! {comrades}
+
+Les balles que vous tirez peuvent activer des effets spéciaux lorsqu'elles atteignent votre cible.
+
+Appuyez sur {menukey} pour acheter de nouveaux effets tout en débloquant des points d'équipement supplémentaires!]]
+-- Physician
+L.phy_dead = "Pas de signal"
+L.phy_normal = "Normale"
+L.phy_elevated = "Élevé"
+L.phy_dangerous = "Dangereuse"
+L.phy_col_status = "Statut"
+L.phy_col_heartrate = "Rythme cardiaque"
+L.info_popup_physician = [[Vous êtes un {role}!
+
+Utilisez votre appareil Health Tracker pour installer des trackers sur les joueurs afin de surveiller leur rythme cardiaque.
+Ouvrez le tableau de bord pour afficher l'état de santé du joueur suivi, mais méfiez-vous de sa portée limitée!
+
+Appuyez sur {menukey} pour accéder à la boutique d'équipement standard, proposant une mise à niveau pour votre tracker.]]
+-- EXTERNAL ROLES --
+-- Announcer
+L.info_popup_announcer = [[Vous êtes {role}!
+Vous êtes {adetective} qui peut voir chaque fois que quelqu'un achète un article!]]
+-- Dread Thrall
+L.dreadthrall_powers_title = "Choisissez une capacité"
+L.dreadthrall_powers_subtitle = "   Toutes les capacités coûtent\n {credits} crédits) par utilisation"
+L.dreadthrall_powers_credits = "{credits} crédits disponibles"
+L.dreadthrall_powers_close = "Fermer"
+L.dreadthrall_powers_spiritwalk = "Marche spirituelle"
+L.dreadthrall_powers_spiritwalk_tooltip = "Devenez invisible et déplacez-vous rapidement pour vous échapper"
+L.dreadthrall_powers_blizzard = "Invocation de Blizzard"
+L.dreadthrall_powers_blizzard_tooltip = "Invoquez un brouillard semblable à un blizzard pour réduire la visibilité"
+L.dreadthrall_powers_cannibal = "Attaque cannibale"
+L.dreadthrall_powers_cannibal_tooltip = "Invoquez des cannibales agressifs près d'un ennemi vivant aléatoire"
+L.bonecharm_help_pri = "Utilisez {primaryfire} ou {secondaryfire} pour endommager vos ennemis"
+L.bonecharm_help_sec = "Appuyez sur {reload} pour sélectionner et utiliser une action spéciale"
+L.info_popup_dreadthrall = [[Vous êtes {role}! {comrades}
+
+Utilisez vos capacités de charme osseux pour aider votre équipe
+en battant vos ennemis.]]
+-- Enhanced Detectives
+L.target_haunted_medium = "Hanté par le médium"
+-- Frenchman
+L.ev_win_frenchman = "Le {role} a apporté le pain pour gagner la manche!"
+L.info_popup_frenchman = [[Vous êtes {role}! Votre objectif est de
+être endommagé par un autre joueur, ce qui
+vous permet d'infliger des dégâts et de vous rendre invincible pendant un certain temps!
+Tuez tous les autres pour gagner!]]
+L.hilite_win_frenchman = "LA VICTOIRE FRANÇAISE!"
+-- Possum
+L.psm_disguiser = "Déguisement de la mort"
+L.psm_disguiser_charge = "DÉGUISEMENT RESTANT"
+L.psm_disguiser_charge_info = "Appuyez sur {secondaryfire} pour arrêter de faire le mort plus tôt"
+L.psm_disguiser_hud = "Déguisement de la mort actif"
+L.psm_disguiser_help_pri = "Utilisez {primaryfire} pour allumer et éteindre l'appareil"
+L.psm_disguiser_help_sec = "Lorsque l'appareil est actif, subir des dégâts vous fera faire le mort"
+L.info_popup_possum = [[Vous êtes {role}!
+
+Protégez-vous de vos ennemis en
+utiliser votre appareil pour faire le mort en cas d'attaque.]]
+-- Summoner
+L.info_popup_summoner = [[Vous êtes {role}! {comrades}
+
+Invoquez des serviteurs pour vous aider à vaincre vos ennemis.
+
+Appuyez sur {menukey} pour recevoir votre équipement spécial!]]
+-- The Thing
+L.ev_thingcontam = "{victim} a été contaminée et transformée en {thething}!"
+L.ev_win_thething = "{role} a assimilé les vivants et pris le relais"
+L.win_thething = "La contamination de {role} a anéanti tous les ennemis"
+L.hilite_win_thething = "{role} WINS"
+L.info_popup_thething = [[Vous êtes {role}!
+
+Sacrifiez-vous en tuant vos ennemis
+pour les convertir et gagner par attrition.]]
+-- RANDOMAT TRANSLATIONS --
+-- Jingle Jam 2021 Randomats
+L.rdmtbox_gloves_help_pri = "Utilisez {primaryfire} pour faire tomber les armes des mains des joueurs"
+L.rdmtbox_gloves_help_sec = "Attaquez avec {secondaryfire} pour assommer les joueurs"
+L.rdmtsanta_xmascannon_help_pri = "Utilisez {primaryfire} pour offrir des cadeaux à des enfants gentils"
+L.rdmtsanta_xmascannon_help_sec = "Utilisez le {secondaryfire} pour tirer du charbon sur des enfants coquins"
+-- Jingle Jam 2022 Randomats
+L.donate_name = "Faire un don"
+L.donate_send = "Envoyer un don"
+L.donate_menutitle = "Donner a une oeuvre de charité"
+L.donate_no_credits = "Aucun crédit disponible pour un don"
+L.equip_tooltip_donate = "Faire don de crédits à une œuvre caritative"
+L.equip_donation_amount = "Montant du don"
+L.equip_donation_message = "Faire un don"
+L.equip_donation_anon = "Faire un don anonyme"
+-- Jingle Jam 2023 Randomats
+L.win_yeti = "Le yéti a repoussé les chasseurs pour la victoire!"
+L.ev_win_yeti = "Le yéti a repoussé les chasseurs pour la victoire!"
+L.yeticlub_help_pri = "Appuyez sur {primaryfire} pour endommager et repousser les joueurs."
+L.yeticlub_help_sec = "Appuyez sur {secondaryfire} pour lancer un projectile gelant."
+L.info_popup_yeti = [[Vous êtes {role}!
+
+Utilisez votre massue pour tuer vos ennemis ou les geler sur place!]]
+-- Malivil's Randomat 2.0 for Custom Roles
+L.rdmt_carepackage_name = "Paquet de soins"
+L.rdmt_carepackage_hint = "Appuyez sur '{usekey}' pour recevoir l'article"
+L.rdmt_count_hud = "{count} événements aléatoires actifs"
+-- The Stig's Randomat Packs
+L.win_battleroyale = "Quelqu'un a gagné!"
+L.win_battleroyale2 = "Une paire a gagné!"
+L.win_pistols = "Quelqu'un a gagné!"
+L.win_horror_killer = "Les innocents sont morts"
+L.win_horror_innocent = "Les innocents survivent"
+-- External randomat events
+L.win_bees = "Les abeilles ont réussi à gagner!"
+L.ev_win_bees = "Les abeilles ont réussi à gagner!"
+L.info_popup_queenbee = [[Vous êtes {role}! {comrades}
+
+Travaillez avec les autres abeilles pour vaincre vos ennemis en utilisant votre boutique sur le thème des abeilles.
+
+Appuyez sur {menukey} pour recevoir votre équipement spécial!]]
+L.info_popup_bee = [[Vous êtes {role}! {comrades}
+
+Utilisez votre canon à abeilles pour lancer des abeilles sur vos ennemis et protéger votre reine !]]
+L.candycant_help_pri = "Utilisez {primaryfire} pour répandre la joie de Noël"
+L.win_elf = "Les lutins ont répandu la joie de Noël parmi tout le monde!"
+L.ev_win_elf = "Les lutins ont répandu la joie de Noël parmi tout le monde!"
+L.info_popup_elf = [[Vous êtes {role}!
+Utilisez votre canne en bonbon pour tartiner
+un peu de joie de Noël à tous!]]
+-- EXTERNAL MOD TRANSLATIONS --
+-- Ties are bees win
+L.win_bee = "Les abeilles ont réussi à gagner!"
+L.ev_win_bee = "Les abeilles ont réussi à gagner!"
+-- Bruh bunker
+L.bunker_name = "Bunker de Bruh"
+L.bunker_desc = "Crée un bunker autour de vous après avoir subi des dégâts de balle."
+L.bunker_alert = "Violation de grincement détectée! Un bunker Bruh d'urgence a été activé!"
+L.bunker_buy = "Vous avez reçu un Bunker de Bruh."
+-- Passive demonic possession
+L.possess_press_r = "Appuyez sur R (Recharger) pour posséder {ply}!"
+L.possess_no_longer_possessing = "[Possession démoniaque] Vous ne possédez plus {ply}."
+L.possess_start_observing = "Commencez à observer un joueur pour en prendre le contrôle!"
+L.possess_available_commands = "Commandes disponibles"
+L.possess_move_keys = "Déplacer les clés"
+L.possess_camera = "Déplacer et contrôler la caméra"
+L.possess_click = "Click gauche"
+L.possess_name = "Possession démoniaque"
+L.possess_desc = "Permet un contrôle limité sur quelqu'un après sa mort. \n\nUne fois que vous êtes spectateur, faites un clic droit pour parcourir les joueurs vivants. \n\nAppuyez sur R pour commencer à les manipuler."
+L.possess_no_longer = "Vous n'êtes plus possédé."
+L.possess_attack = "Attaque"
+L.possess_switch_weapon = "Changer d'arme"
+L.possess_power = "Pouvoir"
+-- A second chance
+L.second_chance_desc = "Petite chance d'être réanimé à la mort. \n\nAprès avoir tué quelqu'un, les chances augmentent."
+L.second_chance_desc_nerf = "Réapparaissez sur votre corps après un délai. \n\nAprès l'achat, tout le monde est informé."
+L.second_chance_name = "Une seconde chance"
+L.second_chance_alert = "Quelqu'un a acheté une seconde chance!"
+L.second_chance_time_left = "Temps restant: "
+L.second_chance_r_respawn = "Appuyez sur R pour réapparaître sur votre cadavre"
+L.second_chance_space_respawn = "Appuyez sur Espace pour réapparaître sur la carte."
+L.second_chance_revive_buy = "Vous serez réanimé avec une chance de {chancetxt}% !"
+L.second_chance_revive_kill = "Vos chances de résurrection ont été modifiées à {chancetxt}% !"
+L.second_chance_revive_chat = "Appuyez sur Recharger pour apparaître sur votre corps. Appuyez sur Espace pour apparaître à l'apparition de la carte."
+L.second_chance_revive_chat_nerf = "Appuyez sur Recharger pour apparaître sur votre corps."
+L.second_chance_name_colon = "Deuxième chance: "
+L.second_chance_not_revived = "Vous ne serez pas réanimé."
+L.second_chance_error = "ERREUR"
+L.second_chance_error_spawn = "Aucun point d'apparition valide! Apparition à Map Spawn."
+L.second_chance_error_body = "Corps introuvable ou en feu, vous ne pouvez donc pas vous réanimer."
+L.second_chance_search = "Ils auront peut-être une seconde chance..."
+L.second_chance_search_nerf = "Ils auront une seconde chance..."
+-- Time stop
+L.timestop_name = "Arrêt du temps"
+L.timestop_desc = "Une seconde... Deux secondes...\n"
+-- Clairvoyancy perk
+L.clairvoyant_perk_name = "Clairvoyance"
+L.clairvoyant_perk_desc = "Quand quelqu'un meurt, vous pouvez voir son corps pendant un bref instant."
+-- Pack-a-punch
+L.pap_name = "Emballez un coup de poing"
+L.pap_desc = "Améliore votre arme tenue!\n\nTenez l'arme que vous souhaitez améliorer entre vos mains, puis achetez cet objet!"
+-- Passive amaterasu
+L.amaterasu_name = "Amaterasu"
+L.amaterasu_desc = "La prochaine personne que vous regardez sera incendiée!\nm Obscurcit votre vision après avoir été utilisé."
+-- Wonder weapons
+L.ww_desc_lightningstaff_ult = "MORSURE DE KIMAT: clic gauche enfoncé: attaque chargée\nClic droit: attaque de mêlée"
+L.ww_desc_windstaff_ult = "LA FUREUR DE BOREAS: clic gauche enfoncé: attaque chargée\nClic droit: attaque de mêlée"
+L.ww_desc_wunderwaffe = "WUNDERWAFFE DG-2: tire un éclair qui tue instantanément!"
+L.ww_desc_wavegun = "PISTOLETS ZAP: Pistolets laser à double usage, appuyez sur le clic gauche ou droit pour tirer!"
+L.ww_desc_windstaff = "BÂTON DE VENT: tire des souffles d'air à courte portée et à dégâts élevés!"
+L.ww_desc_shrinkray = "LE FABRICANT DE BÉBÉS: tire sur un orbe qui réduit tous ceux qu'il touche!\nCela les réduit à 1 point de vie. Marcher sur quelqu'un alors qu'il est rétréci le tue."
+L.ww_desc_vr11 = "VR-11: Tous ceux sur qui vous tirez ont le pouvoir de tuer instantanément avec des armes ordinaires ! Dure une durée limitée."
+L.ww_desc_wintershowl = "HOWL D'HIVER: tire un souffle d'air froid à courte portée qui gèle n'importe qui à mort!"
+L.ww_desc_thundergun = "TONNERRE: tire une explosion aérienne massive qui envoie voler toute personne se trouvant à courte distance!"
+L.ww_desc_lightningstaff = "BÂTON DE LIGHTNING: tire rapidement des boules de plasma!\nLes projectiles ne sont pas un hitscan et mettent du temps à voyager dans les airs."
+L.ww_desc_sliquifier = "SLIQUIFIER: tire des boules de slime qui tuent instantanément! Si vous touchez quelqu'un ou le sol, cela laisse une flaque de bave glissante."
+L.ww_desc_raygun_mark2 = "PISTOLET À RAYONS MARQUE DEUX: tire une rafale de lasers à dégâts élevés!"
+L.ww_desc_raygun = "PISTOLET À RAYONS: Tire des lasers à gros dégâts! Vous subissez des dégâts de recul si vous tirez trop près de votre cible."
+L.ww_desc_jetgun = "LE PISTOLET À RÉACTION: Aspire les gens et tue instantanément ! Surchauffe s'il est utilisé trop longtemps."
+L.ww_desc_blundergat = "BLUNDERGAT: Un fusil de chasse incroyablement puissant !"
+L.ww_desc_acidgat = "ACIDE GAT: Tire une rafale d'explosifs collants qui explosent après un certain temps."
+-- Heartbeat monitor
+L.heartbeat_monitor_name = "Moniteur de rythme cardiaque"
+L.heartbeat_monitor_desc = "Alerte tous les terroristes de votre disparition prématurée."
