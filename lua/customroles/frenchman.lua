@@ -13,6 +13,7 @@ ROLE.isactive = function(ply) return ply:GetNWBool("FrenchmanActive", false) end
 ROLE.shouldactlikejester = function(ply) return not ply:IsRoleActive() end
 ROLE.startinghealth = 5
 ROLE.maxhealth = 5
+ROLE.shortdesc = "On being shot, becomes temporarily invincible and must kill everyone else with a high damage-baguette crowbar to win"
 ROLE.convars = {}
 local frenchman_hide_when_active = CreateConVar("ttt_frenchman_hide_when_active", "0", FCVAR_REPLICATED)
 CreateConVar("ttt_frenchman_adrenaline_baguette_damage", "1000", FCVAR_REPLICATED, "Damage the baguette deals", 0, 1000)
