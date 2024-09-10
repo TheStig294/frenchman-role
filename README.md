@@ -74,8 +74,7 @@ If hosting a game from the main menu, put **ttt_frenchman_enabled 1** in your li
 If hosting a game from a dedicated server, put **ttt_frenchman_enabled 1** in your server.cfg.
 
 ## Credits
-Credit goes to **[url=https://steamcommunity.com/id/noxxflame]Noxx[/url]**\
-and **[url=https://steamcommunity.com/id/malivil]Malivil[/url]** for the code for making the frenchman activate, making Custom Roles itself, and external roles possible!
+Credit goes to [Noxx](https://steamcommunity.com/id/noxxflame) and [Malivil](https://steamcommunity.com/id/malivil) for the code for making the frenchman activate, making Custom Roles itself, and external roles possible!
 
 ## Steam Workshop Link
 https://steamcommunity.com/sharedfiles/filedetails/?id=2876412670
