@@ -1,4 +1,6 @@
 # Frenchman Role for Custom Roles for TTT
+![Frenchman.png](https://steamuserimages-a.akamaihd.net/ugc/1915744051298280834/045B00B56E481A96AE8DA41C91C2D1CF13930691/?imw=5000&imh=5000&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false)
+
 **The "Frenchman" role for Custom Roles for TTT**\
 The Frenchman is a member of the jester team that becomes temporarily invincible, and able to damage others when they take damage!\
 \
