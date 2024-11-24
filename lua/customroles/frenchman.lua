@@ -92,20 +92,40 @@ ROLE.translations = {
 
 RegisterRole(ROLE)
 
+function SetFrenchmanTeam(independent)
+    if INDEPENDENT_ROLES[ROLE_FRENCHMAN] and independent then return end
+    INDEPENDENT_ROLES[ROLE_FRENCHMAN] = independent
+    JESTER_ROLES[ROLE_FRENCHMAN] = not independent
+    UpdateRoleColours()
+
+    if SERVER then
+        net.Start("FrenchmanTeamChange")
+        net.WriteBool(independent)
+        net.Broadcast()
+    end
+end
+
+if CLIENT then
+    net.Receive("FrenchmanTeamChange", function()
+        local independent = net.ReadBool()
+        SetFrenchmanTeam(independent)
+    end)
+end
+
 if SERVER then
     AddCSLuaFile()
     local hook = hook
     local IsValid = IsValid
     local net = net
-    local pairs = pairs
     local player = player
     local resource = resource
     local timer = timer
     local util = util
-    local GetAllPlayers = player.GetAll
+    local PlayerIterator = player.Iterator
     util.AddNetworkString("FrenchmanBeginScreenEffects")
     util.AddNetworkString("FrenchmanEndScreenEffects")
     util.AddNetworkString("FrenchmanConfetti")
+    util.AddNetworkString("FrenchmanTeamChange")
 
     for i = 1, 6 do
         resource.AddSingleFile("sound/frenchman/death" .. i .. ".mp3")
@@ -181,7 +201,7 @@ if SERVER then
 
         if frenchman_drain_health > 0 then
             timer.Create("frenchmanhealthdrain", 3, 0, function()
-                for _, p in pairs(GetAllPlayers()) do
+                for _, p in PlayerIterator() do
                     if p:IsActiveFrenchman() then
                         local hp = p:Health()
 
@@ -291,6 +311,7 @@ if SERVER then
             if IsPlayer(att) then
                 ent:SetHealth(1)
                 ent:SetNWBool("FrenchmanActive", true)
+                SetFrenchmanTeam(true)
 
                 if frenchman_adrenaline_ramble:GetBool() then
                     local randomActivationSound = "frenchman/death" .. math.random(6) .. ".mp3"
@@ -356,7 +377,7 @@ if SERVER then
     end)
 
     hook.Add("TTTEndRound", "French_Reset_Screen_Effects_TTTEndRound", function()
-        for _, v in pairs(GetAllPlayers()) do
+        for _, v in PlayerIterator() do
             if v:GetNWBool("FrenchmanActive") then
                 net.Start("FrenchmanEndScreenEffects")
                 net.WriteBool(false)
@@ -366,11 +387,13 @@ if SERVER then
     end)
 
     hook.Add("TTTPrepareRound", "Frenchman_Adrenaline_TTTPrepareRound", function()
-        for _, v in pairs(GetAllPlayers()) do
+        for _, v in PlayerIterator() do
             v:SetNWBool("FrenchmanActive", false)
             v:SetNWBool("FrenchmanActivated", false)
             timer.Remove(v:Nick() .. "FrenchmanActive")
         end
+
+        SetFrenchmanTeam(false)
     end)
 
     -----------
