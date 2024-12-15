@@ -839,7 +839,7 @@ if CLIENT then
         customPassiveItemsOrig = {}
 
         for role = 1, ROLE_MAX do
-            if SHOP_ROLES[role] then
+            if SHOP_ROLES[role] and EquipmentItems[role] then
                 customPassiveItemsOrig[role] = table.Copy(EquipmentItems[role])
 
                 for _, equ in pairs(EquipmentItems[role]) do
@@ -2356,7 +2356,7 @@ if CLIENT then
 
         -- Resets the names of custom passive items
         for role = 1, ROLE_MAX do
-            if SHOP_ROLES[role] then
+            if SHOP_ROLES[role] and EquipmentItems[role] then
                 EquipmentItems[role] = customPassiveItemsOrig[role]
             end
         end
